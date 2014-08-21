@@ -1,0 +1,56 @@
+*** v012 : 
+ - Envoi de la reconnaissance en OSC
+
+*** v011 : 
+ - choix entre adc~ ou audio inlet.
+ - update du AUDIO on si l'état change en dehors du patch.
+
+*** v010 : 
+ - enlevé le adc~ embarqué et ajouté inlets/outlets pour inclure + facilement dans un patch parent.
+
+*** v008 :
+- rectifié valeur de log-vraisemblances sorties en tant que liste.
+- ajout infosReconnaissance.maxpat: d'exemple d'utilisation des paramètres de détection.
+
+
+*** v007 :
+- réduit x 100 le délai de chargement/sauvegarde des corpus : plus possible de faire une autre action sur le patch en même temps.
+- mnm.obsprob.c : ne crash plus max si la matrice de modeles est vide.
+- amélioration intégrité de la matrice modèle : une nouvelle ligne ajoutée dès la création d'une classe, même si l'apprentissage n'est pas fait.
+
+*** v006 :
+- debug : la lecture de fichiers est rétablie.
+- debug : mis à jour mnm.obsprob : ne crash plus Max si la matrice d'états n'est pas bien définie et qu'un vecteur d'observation est entré. Permet de changer de corpus avec la reconnaissance sur ON, sans crash de Max. 
+- debug : l'affichage de reconnaissance se met à jour après chargement d'un nouveau corpus.
+
+*** v005 :
+- ajout : possibilité d'entrainer des modèles plus complexes ( parametre ncentres ). recompilé gmmem.mxo pour ça. 
+- gestion de rebuts : quand un son non modélisé est joué, les vraisemblances des classes modélisées baissent. Sortie d'une information en cas vraisemblance au dessus d'un seuil (segment rouge superposé aux barres de vraisemblance dans le patch reconnaissance).
+- DB : possibilité de choisir un fichier son en entrée.
+- ajout : nbangs : transformé l'abstraction en objet compilé. évite d'utiliser l'objet graphique "incr".
+
+
+*** v004 :
+- debug : permet de charger un corpus qui aurait été déplacé depuis sa création.
+- debug : n'affiche plus d'erreurs dans la console à la création d'un nouveau corpus.
+- ajout : le patch timbreRecognition peut fonctionner comme une abstraction. Dans ce cas, plusieurs copies peuvent tourner en parallèle, dans un patch de plus haut niveau. Voir le patch d'exemple multirec, et fxTest, adapté en fonction.
+- ajout : choix de l'entrée audio.
+- dev : distinction entre nbEx (nb courant d'ex enregistrés) et maxIdx (identifiant maximal donné jusqu'à présent). Le maxIdx ne peut jamais être décrémenté, pour éviter les doublons d'identifiant.
+- ajout possibilité de supprimer une classe (efface les fichiers et les modeles correspondants). 
+
+
+*** v003 :
+- debug : vérifie que des modeles sont chargés avant la reconnaissance. 
+- debug : changé init dans mfccHTK pour eviter message d'erreur de gabor bands.
+
+*** v002 : 
+- debug : une selection dans le menu déroulant sélectionne la classe à enregistrer (pas seulement l'index).
+- ajout : messages OSC envoyés pr la reconnaissance des classes.
+- ajout : fxTest.maxpat pour tester la liaison avec un banc d'effets simple.
+- ajout : boost de la probabilité de silence, en fonction inverse de l'energie.
+
+
+
+ 
+
+
