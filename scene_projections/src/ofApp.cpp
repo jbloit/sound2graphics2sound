@@ -1,6 +1,8 @@
 #include "ofApp.h"
 
 
+ofxBox2d ofworld; // an extern variable has to be defined once and only once.
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -12,38 +14,29 @@ void ofApp::setup(){
 	ofBackgroundHex(0xfdefc2);
 	ofSetLogLevel(OF_LOG_NOTICE);
 	
-	world.init();
-	world.setGravity(0, 10);
-	world.createBounds();
-	world.setFPS(30.0);
-	world.registerGrabbing();
+	ofworld.init();
+	ofworld.setGravity(0, 10);
+	ofworld.createBounds();
+	ofworld.setFPS(30.0);
+	ofworld.registerGrabbing();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
     osc.update();
-    world.update();
-
+    ofworld.update();
+    proj.update();
 }
 
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	for(int i=0; i<circles.size(); i++) {
-		ofFill();
-		ofSetHexColor(0xf6c738);
-		circles[i].get()->draw();
-	}
-	
-	for(int i=0; i<boxes.size(); i++) {
-		ofFill();
-		ofSetHexColor(0xBF2545);
-		boxes[i].get()->draw();
-	}
+
+    proj.draw();
     
 	// draw the ground
-	world.drawGround();
+	ofworld.drawGround();
 
 }
 
@@ -51,19 +44,12 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
 
     if(key == 'c') {
-		float r = ofRandom(4, 20);
-		circles.push_back(ofPtr<ofxBox2dCircle>(new ofxBox2dCircle));
-		circles.back().get()->setPhysics(3.0, 0.53, 0.1);
-		circles.back().get()->setup(world.getWorld(), mouseX, mouseY, r);
+        proj.addCircle();
 		
 	}
 	
 	if(key == 'b') {
-		float w = ofRandom(4, 20);
-		float h = ofRandom(4, 20);
-		boxes.push_back(ofPtr<ofxBox2dRect>(new ofxBox2dRect));
-		boxes.back().get()->setPhysics(3.0, 0.53, 0.1);
-		boxes.back().get()->setup(world.getWorld(), mouseX, mouseY, w, h);
+        proj.addBox();
 	}
     
 }

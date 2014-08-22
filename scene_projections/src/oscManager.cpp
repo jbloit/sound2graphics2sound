@@ -35,18 +35,9 @@ void oscManager::update(){
         
         // check for mouse moved message
         if(m.getAddress() == "/v/onset"){
-            cout << "Received vocal onset\n" ;
+            cout << "Received vocal onset\n";
         }
-        //            // check for mouse button message
-        //            else if(m.getAddress() == "/mouse/button"){
-        //                // the single argument is a string
-        //                mouseButtonState = m.getArgAsString(0);
-        //            }
-        //            // check for an image being sent (note: the size of the image depends greatly on your network buffer sizes - if an image is too big the message won't come through )
-        //            else if(m.getAddress() == "/image" ){
-        //                ofBuffer buffer = m.getArgAsBlob(0);
-        //                receivedImage.loadImage(buffer);
-        //            }
+
         else{
             // unrecognized message: display on the bottom of the screen
             string msg_string;
