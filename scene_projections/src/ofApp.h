@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "oscManager.h"
+#include "ofxBox2D.h"
 
 class ofApp : public ofBaseApp {
 	public:
@@ -21,5 +22,8 @@ class ofApp : public ofBaseApp {
 		void gotMessage(ofMessage msg);
 
     oscManager osc;
+    ofxBox2d world;
+	vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
+	vector	  <ofPtr<ofxBox2dRect> >	boxes;			  //	defalut box2d rects
     
 };
