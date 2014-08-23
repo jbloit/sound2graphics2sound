@@ -10,6 +10,11 @@
 
 using namespace std;
 
+
+void projections::setup(){
+    
+}
+
 // ------------------------------------------------------
 void projections::update(){
 
@@ -28,6 +33,13 @@ void projections::draw(){
 		ofSetHexColor(0xBF2545);
 		boxes[i].get()->draw();
 	}
+}
+;
+// ------------------------------------------------------
+void projections::onVocalOnset(){
+    cout << "vocal onset event received in projections\n";
+    addBox();
+    
 }
 
 # pragma mark private

@@ -4,6 +4,7 @@
 #include "oscManager.h"
 #include "_projectGlobals.h"
 #include "projections.h"
+#include "ofEvents.h"
 
 class ofApp : public ofBaseApp {
 	public:

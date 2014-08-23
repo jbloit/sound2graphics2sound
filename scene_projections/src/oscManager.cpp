@@ -36,6 +36,8 @@ void oscManager::update(){
         // check for mouse moved message
         if(m.getAddress() == "/v/onset"){
             cout << "Received vocal onset\n";
+            
+            ofNotifyEvent(vocalOnset, this);
         }
 
         else{

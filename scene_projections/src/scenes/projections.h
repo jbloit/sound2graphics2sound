@@ -16,18 +16,19 @@
 class projections{
 
 public:
-
+    
+    void setup();
     void update();
     void draw();
     void listen();
-    
-// this should be private once we have callback system in place
-    void addCircle();
-    void addBox();
+    void onVocalOnset();
 
 private:
     vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
 	vector	  <ofPtr<ofxBox2dRect> >	boxes;			  //	defalut box2d rects
+    
+    void addCircle();
+    void addBox();
 };
 
 

@@ -7,7 +7,7 @@
 			"revision" : 4
 		}
 ,
-		"rect" : [ 36.0, 44.0, 641.0, 710.0 ],
+		"rect" : [ 95.0, 104.0, 641.0, 710.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -49,7 +49,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 390.0, 285.0, 147.0, 20.0 ],
-					"presentation_rect" : [ 394.0, 288.0, 0.0, 0.0 ],
 					"text" : "udpsend 127.0.0.1 12345"
 				}
 
@@ -873,16 +872,16 @@
 ,
 									"patching_rect" : [ 30.0, 262.0, 118.0, 28.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p MAPPING"
@@ -1301,16 +1300,16 @@
 ,
 					"patching_rect" : [ 188.0, 540.0, 143.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p sc2.1_coursePoursuite"
@@ -1644,16 +1643,16 @@
 ,
 									"patching_rect" : [ 30.0, 262.0, 118.0, 28.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p MAPPING"
@@ -1982,16 +1981,16 @@
 ,
 					"patching_rect" : [ 188.0, 510.0, 111.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p sc1.2_dispersion"
@@ -2931,16 +2930,16 @@
 ,
 									"patching_rect" : [ 60.0, 90.0, 83.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p MAP_step2"
@@ -4030,16 +4029,16 @@
 ,
 									"patching_rect" : [ 60.0, 45.0, 79.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p MAP_v3_2"
@@ -4057,16 +4056,16 @@
 ,
 					"patching_rect" : [ 218.0, 375.0, 85.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p MAParchive"
@@ -4649,7 +4648,7 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "ntoggles.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -4658,16 +4657,16 @@
 ,
 					"patching_rect" : [ 68.0, 420.0, 92.5, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p menu"
@@ -5829,16 +5828,16 @@
 ,
 									"patching_rect" : [ 30.0, 262.0, 118.0, 28.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p MAPPING"
@@ -6344,16 +6343,16 @@
 ,
 					"patching_rect" : [ 188.0, 480.0, 127.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p sc1.1_accumulation"
@@ -7067,16 +7066,16 @@
 ,
 									"patching_rect" : [ 90.0, 120.0, 61.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p params"
@@ -7489,7 +7488,7 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "autoscale.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -7506,16 +7505,16 @@
 ,
 					"patching_rect" : [ 390.0, 225.0, 111.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p ANALYSE_percu"
@@ -7659,16 +7658,16 @@
 ,
 					"patching_rect" : [ 435.0, 90.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p reset"
@@ -7797,16 +7796,16 @@
 ,
 					"patching_rect" : [ 195.0, 90.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p reset"
@@ -8051,16 +8050,16 @@
 ,
 					"patching_rect" : [ 420.0, 90.0, 67.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p populate"
@@ -8253,16 +8252,16 @@
 ,
 					"patching_rect" : [ 180.0, 90.0, 67.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p populate"
@@ -8282,7 +8281,7 @@
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 165.0, 90.0, 141.0, 20.0 ],
-					"prefix" : "Macintosh SSD:/Users/bloit/jbloit.com/PROJETS/bleuDeLune/AUDIO/guylaine/",
+					"prefix" : "notfound",
 					"presentation" : 1,
 					"presentation_rect" : [ 165.0, 90.0, 141.0, 20.0 ],
 					"types" : "WAVE"
@@ -8802,16 +8801,16 @@
 ,
 					"patching_rect" : [ 363.0, 540.0, 109.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p DIFFUSION"
@@ -9112,16 +9111,16 @@
 ,
 					"patching_rect" : [ 390.0, 165.0, 53.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p player"
@@ -9437,16 +9436,16 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 150.0, 165.0, 54.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p player"
@@ -9520,6 +9519,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -10214,16 +10214,16 @@
 ,
 									"patching_rect" : [ 90.0, 120.0, 61.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"fontname" : "Arial",
-										"globalpatchername" : "",
-										"default_fontsize" : 12.0,
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
 										"default_fontface" : 0,
 										"tags" : "",
 										"digest" : "",
-										"default_fontname" : "Arial"
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p params"
@@ -10690,19 +10690,19 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "autoscale.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
 								"type" : "JSON",
 								"implicit" : 1
 							}
 , 							{
 								"name" : "timbreRecognition.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
 , 							{
 								"name" : "mfccHTK.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -10720,7 +10720,7 @@
 							}
 , 							{
 								"name" : "medfilter.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -10841,16 +10841,16 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 150.0, 225.0, 102.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"fontname" : "Arial",
-						"globalpatchername" : "",
-						"default_fontsize" : 12.0,
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
 						"default_fontface" : 0,
 						"tags" : "",
 						"digest" : "",
-						"default_fontname" : "Arial"
+						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"globalpatchername" : "",
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p ANALYSE_voix"
@@ -11323,22 +11323,22 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "autoscale.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib",
-				"patcherrelativepath" : "../maxAudioAnalysis/maxlib",
+				"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
+				"patcherrelativepath" : "../../../../../../jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "timbreRecognition.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
-				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
+				"patcherrelativepath" : "../../../../../../jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "mfccHTK.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
-				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
+				"patcherrelativepath" : "../../../../../../jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -11358,8 +11358,8 @@
 			}
 , 			{
 				"name" : "medfilter.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib/timbreRecognition_v012",
-				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
+				"patcherrelativepath" : "../../../../../../jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -11372,8 +11372,8 @@
 			}
 , 			{
 				"name" : "ntoggles.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/guylaineCosseron/maxAudioAnalysis/maxlib",
-				"patcherrelativepath" : "../maxAudioAnalysis/maxlib",
+				"bootpath" : "/Users/bloit/jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
+				"patcherrelativepath" : "../../../../../../jbloit.com/PROJETS/bleuDeLune/releases/unoeuf_v07/maxlib",
 				"type" : "JSON",
 				"implicit" : 1
 			}

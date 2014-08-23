@@ -1,11 +1,15 @@
 #include "ofApp.h"
 
 
-ofxBox2d ofworld; // an extern variable has to be defined once and only once.
+// Extern variables have to be defined once and only once.
+ofxBox2d ofworld;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+    //
+    ofAddListener(osc.vocalOnset, &proj, &projections::onVocalOnset);
+    
     osc.setup();
 	ofBackground(30, 30, 130);
 
@@ -43,14 +47,6 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
-    if(key == 'c') {
-        proj.addCircle();
-		
-	}
-	
-	if(key == 'b') {
-        proj.addBox();
-	}
     
 }
 

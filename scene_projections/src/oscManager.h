@@ -21,14 +21,19 @@ class oscManager{
 public:
     
     oscManager();
-    
     void setup();
     void update();
+
+    // events
+    ofEvent<void> vocalOnset;
     
+    
+private:
     ofxOscReceiver receiver;
     int current_msg_string;
     string msg_strings[OSC_NUM_MSG_STRINGS];
     float timers[OSC_NUM_MSG_STRINGS];
+    
 };
 
 #endif /* defined(__scene_projections__oscManager__) */
