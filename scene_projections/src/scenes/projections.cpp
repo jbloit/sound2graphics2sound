@@ -34,12 +34,16 @@ void projections::draw(){
 		boxes[i].get()->draw();
 	}
 }
-;
+
 // ------------------------------------------------------
 void projections::onVocalOnset(){
     cout << "vocal onset event received in projections\n";
     addBox();
-    
+}
+// ------------------------------------------------------
+void projections::onVocalLoudness(float& value){
+    cout << "vocal loudness event received in projections : " << value << " \n";
+
 }
 
 # pragma mark private

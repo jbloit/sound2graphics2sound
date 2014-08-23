@@ -26,6 +26,12 @@ public:
 
     // events
     ofEvent<void> vocalOnset;
+    ofEvent<float> vocalLoudness;
+    ofEvent<float> vocalBrightness;
+    ofEvent<float> vocalNoisiness;
+    ofEvent<float> vocalPitch;
+    ofEvent<int> vocalClass;
+    
     
     
 private:

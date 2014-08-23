@@ -33,13 +33,16 @@ void oscManager::update(){
         ofxOscMessage m;
         receiver.getNextMessage(&m);
         
-        // check for mouse moved message
+        // Check for vocal events
         if(m.getAddress() == "/v/onset"){
-            cout << "Received vocal onset\n";
-            
             ofNotifyEvent(vocalOnset, this);
         }
+        if(m.getAddress() == "/v/loud"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(vocalLoudness, value , this);
+        }
 
+        
         else{
             // unrecognized message: display on the bottom of the screen
             string msg_string;

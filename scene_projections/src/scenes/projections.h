@@ -21,7 +21,9 @@ public:
     void update();
     void draw();
     void listen();
+    
     void onVocalOnset();
+    void onVocalLoudness(float& value);
 
 private:
     vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
