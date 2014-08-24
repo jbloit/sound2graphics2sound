@@ -6,12 +6,13 @@ ofxBox2d ofworld;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
-    // Register event listeners
-    ofAddListener(osc.vocalOnset, &proj, &projections::onVocalOnset);
-    ofAddListener(osc.vocalLoudness, &proj, &projections::onVocalLoudness);
     
-    osc.setup();
+    osc = oscManager::Instance();
+    // Register event listeners
+    ofAddListener(osc->vocalOnset, &proj, &projections::onVocalOnset);
+    ofAddListener(osc->vocalLoudness, &proj, &projections::onVocalLoudness);
+    
+    osc->setup();
 	ofBackground(30, 30, 130);
 
     
@@ -29,7 +30,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
-    osc.update();
+    osc->update();
     ofworld.update();
     proj.update();
 }

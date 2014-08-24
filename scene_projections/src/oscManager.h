@@ -17,14 +17,16 @@
 #include <iostream>
 #include "ofxOsc.h"
 
+// Singleton class
+
 class oscManager{
 public:
     
-    oscManager();
+    static oscManager* Instance();
     void setup();
     void update();
 
-    // events
+    // Events to dispatch to registered clients
     ofEvent<void> vocalOnset;
     ofEvent<float> vocalLoudness;
     ofEvent<float> vocalBrightness;
@@ -32,9 +34,11 @@ public:
     ofEvent<float> vocalPitch;
     ofEvent<int> vocalClass;
     
-    
-    
 private:
+    
+    oscManager();
+    static oscManager* m_pInstance; // the unique instance
+    
     ofxOscReceiver receiver;
     int current_msg_string;
     string msg_strings[OSC_NUM_MSG_STRINGS];
