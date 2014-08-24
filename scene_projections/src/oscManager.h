@@ -17,7 +17,7 @@
 #include <iostream>
 #include "ofxOsc.h"
 
-// Singleton class
+// Singleton class. See tutorial here http://www.yolinux.com/TUTORIALS/C++Singleton.html
 
 class oscManager{
 public:
@@ -37,7 +37,9 @@ public:
 private:
     
     oscManager();
-    static oscManager* m_pInstance; // the unique instance
+    oscManager(oscManager const&){};            // copy constructor is private
+    oscManager& operator=(oscManager const&){}; // assignment operator is private
+    static oscManager* m_pInstance;             // the unique instance
     
     ofxOscReceiver receiver;
     int current_msg_string;

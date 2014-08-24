@@ -13,6 +13,7 @@
 #include "ofxBox2D.h"
 #include "_projectGlobals.h"
 #include "globals.h"
+#include "oscManager.h"
 
 class projections{
 
@@ -25,6 +26,11 @@ public:
     
     void onVocalOnset();
     void onVocalLoudness(float& value);
+    void onVocalBrightness(float& value);
+    void onVocalNoisiness(float& value);
+    void onVocalPitch(float& value);
+    void onVocalClass(int& value);
+
 
 private:
     vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
@@ -32,6 +38,8 @@ private:
     
     void addCircle();
     void addBox();
+    
+    oscManager * osc; // pointer to osc the singleton class
 };
 
 

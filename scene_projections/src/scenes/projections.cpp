@@ -13,6 +13,12 @@ using namespace std;
 
 void projections::setup(){
     
+    osc = oscManager::Instance();
+    // Register event listeners
+    ofAddListener(osc->vocalOnset, this, &projections::onVocalOnset);
+    ofAddListener(osc->vocalLoudness, this, &projections::onVocalLoudness);
+    ofAddListener(osc->vocalBrightness, this, &projections::onVocalBrightness);
+    ofAddListener(osc->vocalNoisiness, this, &projections::onVocalNoisiness);
 }
 
 // ------------------------------------------------------
@@ -39,6 +45,8 @@ void projections::draw(){
 	}
 }
 
+#pragma mark callbacks
+
 // ------------------------------------------------------
 void projections::onVocalOnset(){
     cout << "vocal onset event received in projections\n";
@@ -47,7 +55,22 @@ void projections::onVocalOnset(){
 // ------------------------------------------------------
 void projections::onVocalLoudness(float& value){
     cout << "vocal loudness event received in projections : " << value << " \n";
-
+}
+// ------------------------------------------------------
+void projections::onVocalBrightness(float& value){
+    cout << "vocal brightness event received in projections : " << value << " \n";
+}
+// ------------------------------------------------------
+void projections::onVocalNoisiness(float& value){
+    cout << "vocal noisiness event received in projections : " << value << " \n";
+}
+// ------------------------------------------------------
+void projections::onVocalPitch(float& value){
+    cout << "vocal pitch event received in projections : " << value << " \n";
+}
+// ------------------------------------------------------
+void projections::onVocalClass(int& value){
+    cout << "vocal class event received in projections : " << value << " \n";
 }
 
 # pragma mark private

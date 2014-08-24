@@ -49,6 +49,24 @@ void oscManager::update(){
             float value = m.getArgAsFloat(0);
             ofNotifyEvent(vocalLoudness, value , this);
         }
+        if(m.getAddress() == "/v/bright"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(vocalBrightness, value , this);
+        }
+        if(m.getAddress() == "/v/noise"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(vocalNoisiness, value , this);
+        }
+        if(m.getAddress() == "/v/pitch"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(vocalPitch, value , this);
+        }
+        if(m.getAddress() == "/v/class"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(vocalClass, value , this);
+        }
+        
+        
     }
     
 }

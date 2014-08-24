@@ -7,15 +7,11 @@ ofxBox2d ofworld;
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    osc = oscManager::Instance();
-    // Register event listeners
-    ofAddListener(osc->vocalOnset, &proj, &projections::onVocalOnset);
-    ofAddListener(osc->vocalLoudness, &proj, &projections::onVocalLoudness);
+    osc = oscManager::Instance(); // get pointer to osc singleton instance
     
     osc->setup();
 	ofBackground(30, 30, 130);
 
-    
     ofSetVerticalSync(true);
 	ofBackgroundHex(0xfdefc2);
 	ofSetLogLevel(OF_LOG_NOTICE);
@@ -25,6 +21,9 @@ void ofApp::setup(){
 	ofworld.createBounds();
 	ofworld.setFPS(30.0);
 	ofworld.registerGrabbing();
+    
+    proj.setup();
+    
 }
 
 //--------------------------------------------------------------
