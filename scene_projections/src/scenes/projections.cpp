@@ -17,11 +17,15 @@ void projections::setup(){
 
 // ------------------------------------------------------
 void projections::update(){
-
+    
+    
 }
 
 // ------------------------------------------------------
 void projections::draw(){
+    
+    cout << "global value " << globals::Instance()->getValue() << " \n";
+    
 	for(int i=0; i<circles.size(); i++) {
 		ofFill();
 		ofSetHexColor(0xf6c738);

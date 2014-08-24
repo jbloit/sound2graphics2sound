@@ -12,6 +12,7 @@
 #include <iostream>
 #include "ofxBox2D.h"
 #include "_projectGlobals.h"
+#include "globals.h"
 
 class projections{
 

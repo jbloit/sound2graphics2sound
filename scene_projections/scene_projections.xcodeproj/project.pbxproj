@@ -15,6 +15,7 @@
 		62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */; };
 		640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */; };
 		67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */; };
+		6D4B0EE619A9C8FC00E9B699 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B0EE419A9C8FC00E9B699 /* globals.cpp */; };
 		6D68896919A5EFD900383F9F /* oscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D68896719A5EFD900383F9F /* oscManager.cpp */; };
 		6D688DA119A7395900383F9F /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D2519A7395900383F9F /* b2BroadPhase.cpp */; };
 		6D688DA219A7395900383F9F /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D2719A7395900383F9F /* b2CollideCircle.cpp */; };
@@ -144,6 +145,8 @@
 		63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscOutboundPacketStream.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp; sourceTree = SOURCE_ROOT; };
 		65EEFA3DA3526E9CDD9C21F9 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscBundle.cpp; path = ../../../addons/ofxOsc/src/ofxOscBundle.cpp; sourceTree = SOURCE_ROOT; };
 		6B65E6930994CC4B2D2B8B33 /* OscPacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscPacketListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h; sourceTree = SOURCE_ROOT; };
+		6D4B0EE419A9C8FC00E9B699 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		6D4B0EE519A9C8FC00E9B699 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		6D68896419A5EAD200383F9F /* _projectGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _projectGlobals.h; sourceTree = "<group>"; };
 		6D68896719A5EFD900383F9F /* oscManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = oscManager.cpp; sourceTree = "<group>"; };
 		6D68896819A5EFD900383F9F /* oscManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oscManager.h; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 			children = (
 				6D68896719A5EFD900383F9F /* oscManager.cpp */,
 				6D68896819A5EFD900383F9F /* oscManager.h */,
+				6D4B0EE419A9C8FC00E9B699 /* globals.cpp */,
+				6D4B0EE519A9C8FC00E9B699 /* globals.h */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				6D688DB119A7395900383F9F /* b2StackAllocator.cpp in Sources */,
 				8F5205AEF8861EF234F0651A /* ofxOscSender.cpp in Sources */,
 				6D688DA319A7395900383F9F /* b2CollideEdge.cpp in Sources */,
+				6D4B0EE619A9C8FC00E9B699 /* globals.cpp in Sources */,
 				6D688DA819A7395900383F9F /* b2TimeOfImpact.cpp in Sources */,
 				6D688DD219A7395A00383F9F /* ofxBox2dCircle.cpp in Sources */,
 				6D688DB819A7395900383F9F /* b2WorldCallbacks.cpp in Sources */,
