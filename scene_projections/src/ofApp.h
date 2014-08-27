@@ -5,6 +5,7 @@
 #include "_projectGlobals.h"
 #include "projections.h"
 #include "ofEvents.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp {
 	public:
@@ -24,8 +25,12 @@ class ofApp : public ofBaseApp {
 		void gotMessage(ofMessage msg);
 
     oscManager * osc;
+
+    // ----------------- scenes and gui-menu controls
+    ofxPanel gui;
+    bool showMenu;
     
-    // ----------------- scenes
     projections proj;
+    ofxToggle proj_on;
     
 };

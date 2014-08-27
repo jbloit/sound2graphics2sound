@@ -10,10 +10,8 @@ void ofApp::setup(){
     osc = oscManager::Instance(); // get pointer to osc singleton instance
     
     osc->setup();
-	ofBackground(30, 30, 130);
-
+	ofBackground(0, 0, 0);
     ofSetVerticalSync(true);
-	ofBackgroundHex(0xfdefc2);
 	ofSetLogLevel(OF_LOG_NOTICE);
 	
 	ofworld.init();
@@ -22,7 +20,13 @@ void ofApp::setup(){
 	ofworld.setFPS(30.0);
 	ofworld.registerGrabbing();
     
+    gui.setup();
+    gui.add(proj_on.setup("projections", false));
+    
+    showMenu = true;
+    
     proj.setup();
+    
     
 }
 
@@ -31,14 +35,19 @@ void ofApp::update(){
 
     osc->update();
     ofworld.update();
+    
     proj.update();
 }
-
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-    proj.draw();
+    if( showMenu ){
+		gui.draw();
+	}
+    
+    if (proj_on) proj.draw();
+    
     
 	// draw the ground
 	ofworld.drawGround();
@@ -47,7 +56,9 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	if( key == 'm' ){
+		showMenu = !showMenu;
+	}
     
 }
 
