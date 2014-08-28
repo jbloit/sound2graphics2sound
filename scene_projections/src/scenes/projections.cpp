@@ -19,6 +19,9 @@ void projections::setup(){
     ofAddListener(osc->vocalLoudness, this, &projections::onVocalLoudness);
     ofAddListener(osc->vocalBrightness, this, &projections::onVocalBrightness);
     ofAddListener(osc->vocalNoisiness, this, &projections::onVocalNoisiness);
+    
+    ofRegisterKeyEvents(this);
+    
 }
 
 // ------------------------------------------------------
@@ -43,6 +46,10 @@ void projections::draw(){
 		ofSetHexColor(0xBF2545);
 		boxes[i].get()->draw();
 	}
+    
+    for(int i=0; i<dots.size(); i++) {
+		dots[i].get()->draw();
+	}
 }
 
 #pragma mark callbacks
@@ -50,7 +57,7 @@ void projections::draw(){
 // ------------------------------------------------------
 void projections::onVocalOnset(){
     cout << "vocal onset event received in projections\n";
-    addBox();
+    addDot();
 }
 // ------------------------------------------------------
 void projections::onVocalLoudness(float& value){
@@ -73,6 +80,17 @@ void projections::onVocalClass(int& value){
     cout << "vocal class event received in projections : " << value << " \n";
 }
 
+// ------------------------------------------------------
+void projections::keyPressed(ofKeyEventArgs& args){
+	if( args.key == 'o' ){
+		onVocalOnset();
+	}
+}
+void projections::keyReleased(ofKeyEventArgs& args){
+
+}
+
+
 # pragma mark private
 // ------------------------------------------------------
 void projections::addCircle(){
@@ -88,6 +106,14 @@ void projections::addBox(){
     boxes.push_back(ofPtr<ofxBox2dRect>(new ofxBox2dRect));
     boxes.back().get()->setPhysics(3.0, 0.53, 0.1);
     boxes.back().get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, w, h);
+}
+
+// ------------------------------------------------------
+void projections::addDot(){
+    float x = ofGetWidth()/2;
+    float y = ofGetHeight()/2;
+    dots.push_back(ofPtr<dot>(new dot));
+    dots.back().get()->setup(x, y);
 }
 
 

@@ -14,6 +14,7 @@
 #include "_projectGlobals.h"
 #include "globals.h"
 #include "oscManager.h"
+#include "dot.h"
 
 class projections{
 
@@ -30,14 +31,18 @@ public:
     void onVocalNoisiness(float& value);
     void onVocalPitch(float& value);
     void onVocalClass(int& value);
-
+    
+    void keyPressed(ofKeyEventArgs& args);
+    void keyReleased(ofKeyEventArgs& args);
 
 private:
     vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
 	vector	  <ofPtr<ofxBox2dRect> >	boxes;			  //	defalut box2d rects
+    vector	  <ofPtr<dot> >	dots;			  //	defalut box2d rects
     
     void addCircle();
     void addBox();
+    void addDot();
     
     oscManager * osc; // pointer to osc the singleton class
 };
