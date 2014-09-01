@@ -41,19 +41,44 @@ void dot::update(){
 }
 
 void dot::draw(){
-	ofSetHexColor(0xf2ab01);
+
+	// Skeleton
+    ofFill();
+    ofSetColor(255);
 	nucleus.draw();
-	
 	for(int i=0; i<nodes.size(); i++) {
-		ofFill();
-		ofSetHexColor(0x01b1f2);
 		nodes[i].get()->draw();
 	}
 	
 	for(int i=0; i<joints.size(); i++) {
-		ofSetHexColor(0x444342);
 		joints[i].get()->draw();
 	}
+    
+    // Membrane
+    ofFill();
+    ofSetColor(255, 255, 255, 150);
+    ofBeginShape();
+    for (int i = 0; i < nodes.size(); i++){
+        // sorry about all the if/states here, but to do catmull rom curves
+        // we need to duplicate the start and end points so the curve acutally
+        // goes through them.
+        
+        // for i == 0, we just call the vertex twice
+        // for i == nCurveVertices-1 (last point) we call vertex 0 twice
+        // otherwise just normal ofCurveVertex call
+        
+        if (i == 0){
+            ofCurveVertex(nodes[0]->getPosition().x, nodes[0]->getPosition().y); // we need to duplicate 0 for the curve to start at point 0
+            ofCurveVertex(nodes[0]->getPosition().x, nodes[0]->getPosition().y);; // we need to duplicate 0 for the curve to start at point 0
+        } else if (i == nodes.size()-1){
+            ofCurveVertex(nodes[i]->getPosition().x, nodes[i]->getPosition().y);
+            ofCurveVertex(nodes[0]->getPosition().x, nodes[0]->getPosition().y);	// to draw a curve from pt N to pt 0
+            ofCurveVertex(nodes[0]->getPosition().x, nodes[0]->getPosition().y);	// we duplicate the first point twice
+        } else {
+            ofCurveVertex(nodes[i]->getPosition().x, nodes[i]->getPosition().y);
+        }
+    }
+    ofEndShape();
 }
 
 
