@@ -17,21 +17,38 @@ void dot::setup(float _x, float _y){
     nucleus.setup(ofworld.getWorld(), 20, ofGetHeight()/2, 4);
     
     // First we add nodes
-    numberOfNodes = (int) ofRandom(2, 6);
+    numberOfNodes = 4;
+    float nodeX[4] = {0, 1, 0, -1 };
+    float nodeY[4] = {1, 0, -1, 0};
 	for (int i=0; i<numberOfNodes; i++) {
 		ofPtr<ofxBox2dCircle> node = ofPtr<ofxBox2dCircle>(new ofxBox2dCircle);
 		node.get()->setPhysics(3.0, 0.53, 0.1);
-		node.get()->setup(ofworld.getWorld(), nucleus_x + ofRandom(-30,30), nucleus_y + ofRandom(-30,30), 8);
+		node.get()->setup(ofworld.getWorld(), nucleus_x + nodeX[i] * 30, nucleus_y + nodeY[i] * 30, 8);
 		nodes.push_back(node);
 	}
     
-    // now connect each circle with a joint
+    // now connect each circle to the nucleus
 	for (int i=0; i<nodes.size(); i++) {
 		ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
         joint.get()->setup(ofworld.getWorld(), nucleus.body, nodes[i].get()->body);
 		joint.get()->setLength(25);
 		joints.push_back(joint);
 	}
+    
+    // and connect each circle to its neighbors
+    for (int i=0; i<nodes.size(); i++) {
+		ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
+        if (i == nodes.size()-1){
+            joint.get()->setup(ofworld.getWorld(), nodes[i].get()->body, nodes[0].get()->body);
+        }
+        else{
+            joint.get()->setup(ofworld.getWorld(), nodes[i].get()->body, nodes[i+1].get()->body);
+        }
+        joint.get()->setDamping(1.f);
+        joint.get()->setFrequency(0.f);
+		joints.push_back(joint);
+	}
+    
     cout << "new dot with " << numberOfNodes << " nodes\n";
 }
 
