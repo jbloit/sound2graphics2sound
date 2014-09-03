@@ -59,6 +59,10 @@ void ofApp::keyPressed(int key){
 	if( key == 'm' ){
 		showMenu = !showMenu;
 	}
+    if( key == 'f' ){
+		ofToggleFullscreen();
+	}
+    
     
 }
 
