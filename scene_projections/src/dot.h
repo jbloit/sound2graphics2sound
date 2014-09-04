@@ -17,17 +17,21 @@
 class dot{
 
 public:
-    void setup(float _x, float _y);
+    void setup(float _x, float _y, float _radius);
     void update();
-    void draw();
+    void draw(bool _drawSkeleton);
+
+    void keyPressed(ofKeyEventArgs& args);
+    void keyReleased(ofKeyEventArgs& args);
 
 private:
     float nucleus_x;
     float nucleus_y;
+    float radius;
     int numberOfNodes;
-    ofxBox2dCircle nucleus; // center
-    vector <ofPtr<ofxBox2dCircle> >	nodes;		  //	default box2d circles
-	vector <ofPtr<ofxBox2dJoint> > joints;			  //	joints
+    ofxBox2dCircle nucleus;                         // center
+    vector <ofPtr<ofxBox2dCircle> >	nodes;          // default box2d circles
+	vector <ofPtr<ofxBox2dJoint> > joints;			// joints
 };
 
 

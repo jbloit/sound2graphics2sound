@@ -22,6 +22,8 @@ void projections::setup(){
     
     ofRegisterKeyEvents(this);
     
+    drawSkeleton = false;
+    
 }
 
 // ------------------------------------------------------
@@ -48,7 +50,7 @@ void projections::draw(){
 	}
     
     for(int i=0; i<dots.size(); i++) {
-		dots[i].get()->draw();
+		dots[i].get()->draw(drawSkeleton);
 	}
 }
 
@@ -58,10 +60,14 @@ void projections::draw(){
 void projections::onVocalOnset(){
     cout << "vocal onset event received in projections\n";
     addDot();
+    addBox();
 }
 // ------------------------------------------------------
 void projections::onVocalLoudness(float& value){
     cout << "vocal loudness event received in projections : " << value << " \n";
+    
+    
+
 }
 // ------------------------------------------------------
 void projections::onVocalBrightness(float& value){
@@ -85,6 +91,15 @@ void projections::keyPressed(ofKeyEventArgs& args){
 	if( args.key == 'o' ){
 		onVocalOnset();
 	}
+ 
+    if( args.key == 's' ){
+		drawSkeleton = !drawSkeleton;
+	}
+    
+    if( args.key == ' ' ){
+		drawSkeleton = !drawSkeleton;
+	}
+    
 }
 void projections::keyReleased(ofKeyEventArgs& args){
 
@@ -110,10 +125,11 @@ void projections::addBox(){
 
 // ------------------------------------------------------
 void projections::addDot(){
-    float x = ofGetWidth()/2;
+    float x = ofGetWidth()/4;
     float y = ofGetHeight()/2;
+    float radius = ofRandom(30, 200);
     dots.push_back(ofPtr<dot>(new dot));
-    dots.back().get()->setup(x, y);
+    dots.back().get()->setup(x, y, radius);
 }
 
 

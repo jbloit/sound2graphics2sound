@@ -44,6 +44,8 @@ private:
     void addBox();
     void addDot();
     
+    bool drawSkeleton;
+    
     oscManager * osc; // pointer to osc the singleton class
 };
 

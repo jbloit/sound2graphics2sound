@@ -9,21 +9,31 @@
 #include "dot.h"
 #include "ofMath.h"
 
-void dot::setup(float _x, float _y){
+void dot::setup(float _x, float _y, float _radius=100){
+    
+    
+    ofRegisterKeyEvents(this); // TODO : remove this
     
     nucleus_x = _x;
     nucleus_y = _y;
+    radius = _radius;
     
-    nucleus.setup(ofworld.getWorld(), 20, ofGetHeight()/2, 4);
+    nucleus.setPhysics(3.0, 0.53, 0.1);
+    nucleus.setup(ofworld.getWorld(), ofGetWidth()/2, ofGetHeight()/2, 4);
     
-    // First we add nodes
+    
+    // First we add nodes around the nucleus
+
+    // TODO : make number of points random
     numberOfNodes = 4;
     float nodeX[4] = {0, 1, 0, -1 };
     float nodeY[4] = {1, 0, -1, 0};
+    
 	for (int i=0; i<numberOfNodes; i++) {
 		ofPtr<ofxBox2dCircle> node = ofPtr<ofxBox2dCircle>(new ofxBox2dCircle);
 		node.get()->setPhysics(3.0, 0.53, 0.1);
-		node.get()->setup(ofworld.getWorld(), nucleus_x + nodeX[i] * 30, nucleus_y + nodeY[i] * 30, 8);
+		node.get()->setup(ofworld.getWorld(), nucleus_x + nodeX[i] * radius, nucleus_y + nodeY[i] * radius, 8);
+        node.get()->addRepulsionForce(0, 0, 3);
 		nodes.push_back(node);
 	}
     
@@ -57,19 +67,21 @@ void dot::update(){
 
 }
 
-void dot::draw(){
+void dot::draw(bool _drawSkeleton = false){
 
-	// Skeleton
-    ofFill();
-    ofSetColor(255);
-	nucleus.draw();
-	for(int i=0; i<nodes.size(); i++) {
-		nodes[i].get()->draw();
-	}
-	
-	for(int i=0; i<joints.size(); i++) {
-		joints[i].get()->draw();
-	}
+    if (_drawSkeleton){
+        // Skeleton
+        ofFill();
+        ofSetColor(255);
+        nucleus.draw();
+        for(int i=0; i<nodes.size(); i++) {
+            nodes[i].get()->draw();
+        }
+        
+        for(int i=0; i<joints.size(); i++) {
+            joints[i].get()->draw();
+        }
+    }
     
     // Membrane
     ofFill();
@@ -98,5 +110,23 @@ void dot::draw(){
     ofEndShape();
 }
 
+
+// TODO : remove this
+// ------------------------------------------------------
+void dot::keyPressed(ofKeyEventArgs& args){
+    
+    // try repulsion force from nucleus
+    
+    if( args.key == ' ' ){
+        ofVec2f center = nucleus.getPosition();
+        for (int i=0; i<numberOfNodes; i++) {
+            nodes[i].get()->addRepulsionForce(center, 100);
+        }
+	}
+    
+}
+void dot::keyReleased(ofKeyEventArgs& args){
+    
+}
 
 
