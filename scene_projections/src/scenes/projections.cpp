@@ -14,6 +14,7 @@ using namespace std;
 void projections::setup(){
     
     osc = oscManager::Instance();
+    
     // Register event listeners
     ofAddListener(osc->vocalOnset, this, &projections::onVocalOnset);
     ofAddListener(osc->vocalLoudness, this, &projections::onVocalLoudness);
@@ -27,9 +28,27 @@ void projections::setup(){
 }
 
 // ------------------------------------------------------
+// End scene and deallocate objects if needed. This is not a destructor, we want to
+// be able to call it even when the object is not destroyed.
+void projections::terminate(){
+    
+    ofUnregisterKeyEvents(this);
+    ofRemoveListener(osc->vocalOnset, this, &projections::onVocalOnset);
+    ofRemoveListener(osc->vocalLoudness, this, &projections::onVocalLoudness);
+    ofRemoveListener(osc->vocalBrightness, this, &projections::onVocalBrightness);
+    ofRemoveListener(osc->vocalNoisiness, this, &projections::onVocalNoisiness);
+    
+    circles.clear();
+    boxes.clear();
+    dots.clear();
+}
+
+
+// ------------------------------------------------------
 void projections::update(){
-    
-    
+    for(int i=0; i<dots.size(); i++) {
+		dots[i].get()->update();
+	}
 }
 
 // ------------------------------------------------------

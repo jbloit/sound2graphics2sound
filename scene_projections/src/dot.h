@@ -32,6 +32,9 @@ private:
     ofxBox2dCircle nucleus;                         // center
     vector <ofPtr<ofxBox2dCircle> >	nodes;          // default box2d circles
 	vector <ofPtr<ofxBox2dJoint> > joints;			// joints
+    ofPolyline membraneLine;                        // 
+    ofxBox2dEdge membrane;                          // a solid exterior membrane for collision
+
 };
 
 

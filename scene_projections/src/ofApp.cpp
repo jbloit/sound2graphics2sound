@@ -25,8 +25,7 @@ void ofApp::setup(){
     
     showMenu = true;
     
-    proj.setup();
-    
+    previousProjToggle = false;
     
 }
 
@@ -36,7 +35,17 @@ void ofApp::update(){
     osc->update();
     ofworld.update();
     
-    proj.update();
+    // detect projection scene toggle-on event
+    if (proj_on && !previousProjToggle) {
+        proj.setup();
+        previousProjToggle = true;
+    }
+    // detect projection scene toggle-off event
+    if (!proj_on && previousProjToggle) {
+        proj.terminate();
+        previousProjToggle = false;
+    }
+    if (proj_on) proj.update();
 }
 
 //--------------------------------------------------------------
@@ -47,7 +56,6 @@ void ofApp::draw(){
 	}
     
     if (proj_on) proj.draw();
-    
     
 	// draw the ground
 	ofworld.drawGround();

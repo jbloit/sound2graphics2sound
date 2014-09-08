@@ -59,11 +59,30 @@ void dot::setup(float _x, float _y, float _radius=100){
 		joints.push_back(joint);
 	}
     
+    // make membrane line
+    for (int i=0; i<nodes.size(); i++) {
+        membraneLine.addVertex(nodes[i]->getPosition());
+    }
+    
+    membrane.addVertexes(membraneLine);
+    membrane.create(ofworld.getWorld());
+    
     cout << "new dot with " << numberOfNodes << " nodes\n";
 }
 
 void dot::update(){
 // TODO: add ALIVE_CHECK code here
+    
+    for (int i=0; i<nodes.size(); i++) {
+        membraneLine[i].x = nodes[i]->getPosition().x;
+        membraneLine[i].y = nodes[i]->getPosition().y;
+    }
+    
+    membrane.updateShape();
+    
+//    membrane.clear();
+//    membrane.addVertexes(membraneLine);
+//    membrane.create(ofworld.getWorld());
 
 }
 
@@ -81,7 +100,11 @@ void dot::draw(bool _drawSkeleton = false){
         for(int i=0; i<joints.size(); i++) {
             joints[i].get()->draw();
         }
+        
+        ofSetColor(255,0,0);
+        membrane.draw();
     }
+    
     
     // Membrane
     ofFill();

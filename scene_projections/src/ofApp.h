@@ -32,5 +32,6 @@ class ofApp : public ofBaseApp {
     
     projections proj;
     ofxToggle proj_on;
+    bool previousProjToggle;
     
 };

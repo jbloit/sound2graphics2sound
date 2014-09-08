@@ -24,6 +24,7 @@ public:
     void update();
     void draw();
     void listen();
+    void terminate();
     
     void onVocalOnset();
     void onVocalLoudness(float& value);
@@ -38,7 +39,7 @@ public:
 private:
     vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
 	vector	  <ofPtr<ofxBox2dRect> >	boxes;			  //	defalut box2d rects
-    vector	  <ofPtr<dot> >	dots;			  //	defalut box2d rects
+    vector	  <ofPtr<dot> >	dots;                         //	dots
     
     void addCircle();
     void addBox();
