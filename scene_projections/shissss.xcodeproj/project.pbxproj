@@ -24,7 +24,6 @@
 		6D43512B19AE7D7C0046AB83 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D43512119AE7D7C0046AB83 /* ofxSliderGroup.cpp */; };
 		6D43512C19AE7D7C0046AB83 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D43512319AE7D7C0046AB83 /* ofxToggle.cpp */; };
 		6D43513019AF116F0046AB83 /* dot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D43512E19AF116F0046AB83 /* dot.cpp */; };
-		6D46692819B8F64C00D0F187 /* blow_Pop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D46692619B8F64C00D0F187 /* blow_Pop.cpp */; };
 		6D4B0EE619A9C8FC00E9B699 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B0EE419A9C8FC00E9B699 /* globals.cpp */; };
 		6D68896919A5EFD900383F9F /* oscManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D68896719A5EFD900383F9F /* oscManager.cpp */; };
 		6D688DA119A7395900383F9F /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D2519A7395900383F9F /* b2BroadPhase.cpp */; };
@@ -174,8 +173,6 @@
 		6D43512419AE7D7C0046AB83 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		6D43512E19AF116F0046AB83 /* dot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dot.cpp; sourceTree = "<group>"; };
 		6D43512F19AF116F0046AB83 /* dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dot.h; sourceTree = "<group>"; };
-		6D46692619B8F64C00D0F187 /* blow_Pop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blow_Pop.cpp; sourceTree = "<group>"; };
-		6D46692719B8F64C00D0F187 /* blow_Pop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blow_Pop.h; sourceTree = "<group>"; };
 		6D4B0EE419A9C8FC00E9B699 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
 		6D4B0EE519A9C8FC00E9B699 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		6D68896419A5EAD200383F9F /* _projectGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _projectGlobals.h; sourceTree = "<group>"; };
@@ -454,8 +451,6 @@
 			children = (
 				6D688DDD19A73CDB00383F9F /* projections.cpp */,
 				6D688DDE19A73CDB00383F9F /* projections.h */,
-				6D46692619B8F64C00D0F187 /* blow_Pop.cpp */,
-				6D46692719B8F64C00D0F187 /* blow_Pop.h */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -1006,7 +1001,6 @@
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
 				6D688DBA19A7395900383F9F /* b2ChainAndPolygonContact.cpp in Sources */,
 				6D688DC219A7395900383F9F /* b2DistanceJoint.cpp in Sources */,
-				6D46692819B8F64C00D0F187 /* blow_Pop.cpp in Sources */,
 				6D688DAB19A7395900383F9F /* b2EdgeShape.cpp in Sources */,
 				6D688DBE19A7395900383F9F /* b2EdgeAndCircleContact.cpp in Sources */,
 				6D43513019AF116F0046AB83 /* dot.cpp in Sources */,
