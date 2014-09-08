@@ -91,7 +91,7 @@ void projections::keyPressed(ofKeyEventArgs& args){
 	if( args.key == 'o' ){
 		onVocalOnset();
 	}
- 
+    
     if( args.key == 's' ){
 		drawSkeleton = !drawSkeleton;
 	}
