@@ -20,12 +20,18 @@ void ofApp::setup(){
 	ofworld.setFPS(30.0);
 	ofworld.registerGrabbing();
     
+    // init gui menu
     gui.setup();
+    
     gui.add(proj_on.setup("projections", false));
+    previousProjToggle = proj_on;
+    
+    gui.add(blowpop_on.setup("blowpop", false));
+    previousProjToggle = blowpop_on;
     
     showMenu = true;
     
-    previousProjToggle = false;
+
     
 }
 
@@ -35,17 +41,32 @@ void ofApp::update(){
     osc->update();
     ofworld.update();
     
-    // detect projection scene toggle-on event
+    ///// -------------------- Scene selection
+    ///// ----- projection
+    // detect scene toggle-on event
     if (proj_on && !previousProjToggle) {
         proj.setup();
         previousProjToggle = true;
     }
-    // detect projection scene toggle-off event
+    // detect scene toggle-off event
     if (!proj_on && previousProjToggle) {
         proj.terminate();
         previousProjToggle = false;
     }
     if (proj_on) proj.update();
+    
+    ///// ----- blowpop
+    // detect scene toggle-on event
+    if (blowpop_on && !previousBlowpopToggle) {
+        blowpop.setup();
+        previousBlowpopToggle = true;
+    }
+    // detect scene toggle-off event
+    if (!blowpop_on && previousBlowpopToggle) {
+        blowpop.terminate();
+        previousBlowpopToggle = false;
+    }
+    if (blowpop_on) blowpop.update();
 }
 
 //--------------------------------------------------------------
@@ -55,7 +76,10 @@ void ofApp::draw(){
 		gui.draw();
 	}
     
+    // draw scenes
     if (proj_on) proj.draw();
+    if (blowpop_on) blowpop.draw();
+    
     
 	// draw the ground
 	ofworld.drawGround();

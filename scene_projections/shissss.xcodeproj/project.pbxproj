@@ -81,6 +81,7 @@
 		6D688DD519A7395A00383F9F /* ofxBox2dPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D9A19A7395900383F9F /* ofxBox2dPolygon.cpp */; };
 		6D688DD619A7395A00383F9F /* ofxBox2dRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D9D19A7395900383F9F /* ofxBox2dRect.cpp */; };
 		6D688DDF19A73CDB00383F9F /* projections.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688DDD19A73CDB00383F9F /* projections.cpp */; };
+		6D9079D119BF947E002DBC41 /* blowpop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D9079CF19BF947E002DBC41 /* blowpop.cpp */; };
 		72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EEFA3DA3526E9CDD9C21F9 /* ofxOscBundle.cpp */; };
 		879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9BFFBBF4CC43DEE890B3C3E /* OscTypes.cpp */; };
 		8F5205AEF8861EF234F0651A /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81967292BFC87A0144BD32C6 /* ofxOscSender.cpp */; };
@@ -297,6 +298,8 @@
 		6D688DA019A7395900383F9F /* ofxBox2dUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2dUtils.h; sourceTree = "<group>"; };
 		6D688DDD19A73CDB00383F9F /* projections.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = projections.cpp; path = scenes/projections.cpp; sourceTree = "<group>"; };
 		6D688DDE19A73CDB00383F9F /* projections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = projections.h; path = scenes/projections.h; sourceTree = "<group>"; };
+		6D9079CF19BF947E002DBC41 /* blowpop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blowpop.cpp; sourceTree = "<group>"; };
+		6D9079D019BF947E002DBC41 /* blowpop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blowpop.h; sourceTree = "<group>"; };
 		7689F8A0F3D0B7635A8C3104 /* ofxOscArg.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscArg.h; path = ../../../addons/ofxOsc/src/ofxOscArg.h; sourceTree = SOURCE_ROOT; };
 		81967292BFC87A0144BD32C6 /* ofxOscSender.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscSender.cpp; path = ../../../addons/ofxOsc/src/ofxOscSender.cpp; sourceTree = SOURCE_ROOT; };
 		8B30E93FD3D3475EED522A0E /* ofxOscBundle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscBundle.h; path = ../../../addons/ofxOsc/src/ofxOscBundle.h; sourceTree = SOURCE_ROOT; };
@@ -451,6 +454,8 @@
 			children = (
 				6D688DDD19A73CDB00383F9F /* projections.cpp */,
 				6D688DDE19A73CDB00383F9F /* projections.h */,
+				6D9079CF19BF947E002DBC41 /* blowpop.cpp */,
+				6D9079D019BF947E002DBC41 /* blowpop.h */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -999,6 +1004,7 @@
 				6D688DAE19A7395900383F9F /* b2Draw.cpp in Sources */,
 				6D43512719AE7D7C0046AB83 /* ofxGuiGroup.cpp in Sources */,
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
+				6D9079D119BF947E002DBC41 /* blowpop.cpp in Sources */,
 				6D688DBA19A7395900383F9F /* b2ChainAndPolygonContact.cpp in Sources */,
 				6D688DC219A7395900383F9F /* b2DistanceJoint.cpp in Sources */,
 				6D688DAB19A7395900383F9F /* b2EdgeShape.cpp in Sources */,

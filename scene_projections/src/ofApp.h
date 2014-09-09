@@ -3,9 +3,11 @@
 #include "ofMain.h"
 #include "oscManager.h"
 #include "_projectGlobals.h"
-#include "projections.h"
 #include "ofEvents.h"
 #include "ofxGui.h"
+
+#include "projections.h"
+#include "blowpop.h"
 
 class ofApp : public ofBaseApp {
 	public:
@@ -33,5 +35,9 @@ class ofApp : public ofBaseApp {
     projections proj;
     ofxToggle proj_on;
     bool previousProjToggle;
+    
+    blowpop blowpop;
+    ofxToggle blowpop_on;
+    bool previousBlowpopToggle;
     
 };
