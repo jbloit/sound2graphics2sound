@@ -25,6 +25,16 @@ void blowpop::setup(){
     
     drawSkeleton = false;
     
+    //// Scene elements
+    // TODO: see if we want to push that to new class
+    nucleus_x = ofGetWidth()/2;
+    nucleus_y = ofGetHeight()/2;
+    
+    nucleus.setup(ofworld.getWorld(), nucleus_x, nucleus_y, 8);
+    
+    focus = NULL;
+    
+    
 }
 
 // ------------------------------------------------------
@@ -38,17 +48,14 @@ void blowpop::terminate(){
     ofRemoveListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofRemoveListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
     
-    circles.clear();
-    boxes.clear();
-    dots.clear();
+    nucleus.destroy();
+    
 }
 
 
 // ------------------------------------------------------
 void blowpop::update(){
-    for(int i=0; i<dots.size(); i++) {
-		dots[i].get()->update();
-	}
+    
 }
 
 // ------------------------------------------------------
@@ -56,53 +63,52 @@ void blowpop::draw(){
     
     cout << "global value " << globals::Instance()->getValue() << " \n";
     
-	for(int i=0; i<circles.size(); i++) {
-		ofFill();
-		ofSetHexColor(0xf6c738);
-		circles[i].get()->draw();
-	}
-	
-	for(int i=0; i<boxes.size(); i++) {
-		ofFill();
-		ofSetHexColor(0xBF2545);
-		boxes[i].get()->draw();
-	}
+    nucleus.draw();
+    for(int i=0; i<grains.size(); i++) {
+        grains[i].get()->draw();
+    }
     
-    for(int i=0; i<dots.size(); i++) {
-		dots[i].get()->draw(drawSkeleton);
-	}
 }
 
 #pragma mark callbacks
 
 // ------------------------------------------------------
 void blowpop::onVocalOnset(){
-    cout << "vocal onset event received in projections\n";
-    addDot();
-    addBox();
+//    cout << "vocal onset event received in projections\n";
+
+    addGrain();
+//    addDot();
+//    addBox();
 }
+
 // ------------------------------------------------------
 void blowpop::onVocalLoudness(float& value){
-    cout << "vocal loudness event received in projections : " << value << " \n";
-    
+
+    // make focus grain grow
+    float growfactor = 1;
+    if (focus != NULL){
+        float currentRadius =  focus->getRadius();
+        currentRadius += growfactor * value;
+        focus->setRadius(currentRadius);
+    }
     
     
 }
 // ------------------------------------------------------
 void blowpop::onVocalBrightness(float& value){
-    cout << "vocal brightness event received in projections : " << value << " \n";
+//    cout << "vocal brightness event received in projections : " << value << " \n";
 }
 // ------------------------------------------------------
 void blowpop::onVocalNoisiness(float& value){
-    cout << "vocal noisiness event received in projections : " << value << " \n";
+//    cout << "vocal noisiness event received in projections : " << value << " \n";
 }
 // ------------------------------------------------------
 void blowpop::onVocalPitch(float& value){
-    cout << "vocal pitch event received in projections : " << value << " \n";
+//    cout << "vocal pitch event received in projections : " << value << " \n";
 }
 // ------------------------------------------------------
 void blowpop::onVocalClass(int& value){
-    cout << "vocal class event received in projections : " << value << " \n";
+//    cout << "vocal class event received in projections : " << value << " \n";
 }
 
 // ------------------------------------------------------
@@ -127,28 +133,21 @@ void blowpop::keyReleased(ofKeyEventArgs& args){
 
 # pragma mark private
 // ------------------------------------------------------
-void blowpop::addCircle(){
-    float r = ofRandom(4, 20);
-    circles.push_back(ofPtr<ofxBox2dCircle>(new ofxBox2dCircle));
-    circles.back().get()->setPhysics(3.0, 0.53, 0.1);
-    circles.back().get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
-}
-// ------------------------------------------------------
-void blowpop::addBox(){
-    float w = ofRandom(4, 20);
-    float h = ofRandom(4, 20);
-    boxes.push_back(ofPtr<ofxBox2dRect>(new ofxBox2dRect));
-    boxes.back().get()->setPhysics(3.0, 0.53, 0.1);
-    boxes.back().get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, w, h);
-}
+void blowpop::addGrain(){
+    float r = 1.f;
+    grains.push_back(ofPtr<ofxBox2dCircle>(new ofxBox2dCircle));
+    grains.back().get()->setPhysics(3.0, 0.53, 0.1);
+    grains.back().get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
+    grains.back().get()->addAttractionPoint(nucleus.getPosition(), 100.f);
+    
+    // now connect circle to the nucleus
+    ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
+    joint.get()->setup(ofworld.getWorld(), nucleus.body, grains.back().get()->body);
+    joint.get()->setLength(25);
+    joints.push_back(joint);
+    
+    focus = grains.back().get();
 
-// ------------------------------------------------------
-void blowpop::addDot(){
-    float x = ofGetWidth()/4;
-    float y = ofGetHeight()/2;
-    float radius = ofRandom(30, 200);
-    dots.push_back(ofPtr<dot>(new dot));
-    dots.back().get()->setup(x, y, radius);
 }
 
 

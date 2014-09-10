@@ -39,14 +39,18 @@ public:
     void keyReleased(ofKeyEventArgs& args);
     
 private:
-    vector    <ofPtr<ofxBox2dCircle> >	circles;		  //	default box2d circles
-	vector	  <ofPtr<ofxBox2dRect> >	boxes;			  //	defalut box2d rects
-    vector	  <ofPtr<dot> >	dots;                         //	dots
     
-    void addCircle();
-    void addBox();
-    void addDot();
+    float nucleus_x;
+    float nucleus_y;
+    float radius;
+    int numberOfNodes;
+    ofxBox2dCircle nucleus;                         // center of vocal cluster
+    vector <ofPtr<ofxBox2dCircle> >	grains;         // default box2d circles
+    vector <ofPtr<ofxBox2dJoint> > joints;
+    ofxBox2dCircle * focus;                    // pointer to element that currently has focus
     
+    void addGrain();
+
     bool drawSkeleton;
     
     oscManager * osc; // pointer to osc the singleton class
