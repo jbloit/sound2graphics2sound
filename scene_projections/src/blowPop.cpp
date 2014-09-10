@@ -48,6 +48,7 @@ void blowpop::terminate(){
     ofRemoveListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofRemoveListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
     
+    grains.clear();
     nucleus.destroy();
     
 }
