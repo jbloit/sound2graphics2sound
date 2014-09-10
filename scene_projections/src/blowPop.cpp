@@ -15,6 +15,13 @@ void blowpop::setup(){
     
     osc = oscManager::Instance();
     
+    
+    // notify Max of scene start
+    ofxOscMessage m;
+    m.setAddress("/blowpop");
+    m.addIntArg(1);
+    osc->sender.sendMessage(m);
+    
     // Register event listeners
     ofAddListener(osc->vocalOnset, this, &blowpop::onVocalOnset);
     ofAddListener(osc->vocalLoudness, this, &blowpop::onVocalLoudness);
@@ -34,6 +41,8 @@ void blowpop::setup(){
     
     focus = NULL;
     
+   
+    
     
 }
 
@@ -50,6 +59,12 @@ void blowpop::terminate(){
     
     grains.clear();
     nucleus.destroy();
+    
+    // notify Max of scene end
+    ofxOscMessage m;
+    m.setAddress("/blowpop");
+    m.addIntArg(0);
+    osc->sender.sendMessage(m);
     
 }
 

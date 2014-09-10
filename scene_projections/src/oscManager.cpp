@@ -24,7 +24,11 @@ void oscManager::setup(){
     // listen on the given port
     cout << "listening for osc messages on port " << OSC_RECEIVE_PORT << "\n";
     receiver.setup(OSC_RECEIVE_PORT);
+    
+    // open an outgoing connection to HOST:PORT
+	sender.setup(HOST, OSC_SEND_PORT);
 }
+
 
 // --------------------------------------------------------------------------
 void oscManager::update(){

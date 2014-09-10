@@ -13,6 +13,7 @@
 #define OSC_RECEIVE_PORT 12345
 #define OSC_SEND_PORT 54321
 #define OSC_NUM_MSG_STRINGS 20
+#define HOST "localhost"
 
 #include <iostream>
 #include "ofxOsc.h"
@@ -34,6 +35,9 @@ public:
     ofEvent<float> vocalPitch;
     ofEvent<int> vocalClass;
     
+    // allow client objects to call the sender directly
+    ofxOscSender sender;
+    
 private:
     
     oscManager();
@@ -45,6 +49,8 @@ private:
     int current_msg_string;
     string msg_strings[OSC_NUM_MSG_STRINGS];
     float timers[OSC_NUM_MSG_STRINGS];
+    
+    
     
 };
 
