@@ -18,7 +18,7 @@ void blowpop::setup(){
     
     // notify Max of scene start
     ofxOscMessage m;
-    m.setAddress("/blowpop");
+    m.setAddress("/blowpop/on");
     m.addIntArg(1);
     osc->sender.sendMessage(m);
     
@@ -62,7 +62,7 @@ void blowpop::terminate(){
     
     // notify Max of scene end
     ofxOscMessage m;
-    m.setAddress("/blowpop");
+    m.setAddress("/blowpop/on");
     m.addIntArg(0);
     osc->sender.sendMessage(m);
     
