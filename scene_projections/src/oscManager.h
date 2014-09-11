@@ -28,7 +28,7 @@ public:
     void update();
 
     // Events to dispatch to registered clients
-    ofEvent<void> vocalOnset;
+    ofEvent<int> vocalOnset;
     ofEvent<float> vocalLoudness;
     ofEvent<float> vocalBrightness;
     ofEvent<float> vocalNoisiness;

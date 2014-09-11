@@ -54,7 +54,7 @@ void projections::update(){
 // ------------------------------------------------------
 void projections::draw(){
     
-    cout << "global value " << globals::Instance()->getValue() << " \n";
+//    cout << "global value " << globals::Instance()->getValue() << " \n";
     
 	for(int i=0; i<circles.size(); i++) {
 		ofFill();
@@ -76,8 +76,8 @@ void projections::draw(){
 #pragma mark callbacks
 
 // ------------------------------------------------------
-void projections::onVocalOnset(){
-    cout << "vocal onset event received in projections\n";
+void projections::onVocalOnset(int& value){
+    cout << "vocal onset event received in projections id : " << value << "\n";
     addDot();
     addBox();
 }
@@ -108,7 +108,8 @@ void projections::onVocalClass(int& value){
 // ------------------------------------------------------
 void projections::keyPressed(ofKeyEventArgs& args){
 	if( args.key == 'o' ){
-		onVocalOnset();
+        int val = 0;
+		onVocalOnset(val);
 	}
     
     if( args.key == 's' ){

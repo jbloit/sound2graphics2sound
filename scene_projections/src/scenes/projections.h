@@ -26,7 +26,7 @@ public:
     void listen();
     void terminate();
     
-    void onVocalOnset();
+    void onVocalOnset(int& value);
     void onVocalLoudness(float& value);
     void onVocalBrightness(float& value);
     void onVocalNoisiness(float& value);

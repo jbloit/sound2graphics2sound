@@ -77,7 +77,7 @@ void blowpop::update(){
 // ------------------------------------------------------
 void blowpop::draw(){
     
-    cout << "global value " << globals::Instance()->getValue() << " \n";
+//    cout << "global value " << globals::Instance()->getValue() << " \n";
     
     nucleus.draw();
     for(int i=0; i<grains.size(); i++) {
@@ -89,8 +89,8 @@ void blowpop::draw(){
 #pragma mark callbacks
 
 // ------------------------------------------------------
-void blowpop::onVocalOnset(){
-//    cout << "vocal onset event received in projections\n";
+void blowpop::onVocalOnset(int& value){
+    cout << "BLOWPOP - VOCAL ONSET, id: " << value << " \n";
 
     addGrain();
 //    addDot();
@@ -130,7 +130,8 @@ void blowpop::onVocalClass(int& value){
 // ------------------------------------------------------
 void blowpop::keyPressed(ofKeyEventArgs& args){
 	if( args.key == 'o' ){
-		onVocalOnset();
+        int val = 0;
+		onVocalOnset(val);
 	}
     
     if( args.key == 's' ){

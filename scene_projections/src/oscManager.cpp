@@ -47,7 +47,8 @@ void oscManager::update(){
         
         // Check for vocal events
         if(m.getAddress() == "/v/onset"){
-            ofNotifyEvent(vocalOnset, this);
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(vocalOnset, value, this);
         }
         if(m.getAddress() == "/v/loud"){
             float value = m.getArgAsFloat(0);
