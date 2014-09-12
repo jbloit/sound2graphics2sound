@@ -92,7 +92,7 @@ void blowpop::draw(){
 void blowpop::onVocalOnset(int& value){
     cout << "BLOWPOP - VOCAL ONSET, id: " << value << " \n";
 
-    addGrain();
+    addGrain(value);
 //    addDot();
 //    addBox();
 }
@@ -107,8 +107,7 @@ void blowpop::onVocalLoudness(float& value){
         currentRadius += growfactor * value;
         focus->setRadius(currentRadius);
     }
-    
-    
+
 }
 // ------------------------------------------------------
 void blowpop::onVocalBrightness(float& value){
@@ -139,8 +138,8 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 	}
     
     if( args.key == ' ' ){
-		drawSkeleton = !drawSkeleton;
-	}
+        joints.clear();
+    }
     
 }
 void blowpop::keyReleased(ofKeyEventArgs& args){
@@ -150,12 +149,14 @@ void blowpop::keyReleased(ofKeyEventArgs& args){
 
 # pragma mark private
 // ------------------------------------------------------
-void blowpop::addGrain(){
+void blowpop::addGrain(int grainId){
     float r = 1.f;
-    grains.push_back(ofPtr<ofxBox2dCircle>(new ofxBox2dCircle));
-    grains.back().get()->setPhysics(3.0, 0.53, 0.1);
-    grains.back().get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
-    grains.back().get()->addAttractionPoint(nucleus.getPosition(), 100.f);
+    ofPtr<ofxBox2dCircle> grain = ofPtr<ofxBox2dCircle>(new ofxBox2dCircle);
+    grain.get()->setPhysics(3.0, 0.53, 0.1);
+    grain.get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
+    grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
+    grain.get()->setData(&grainId);
+    grains.push_back(grain);
     
     // now connect circle to the nucleus
     ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);

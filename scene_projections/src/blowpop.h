@@ -49,7 +49,7 @@ private:
     vector <ofPtr<ofxBox2dJoint> > joints;
     ofxBox2dCircle * focus;                    // pointer to element that currently has focus
     
-    void addGrain();
+    void addGrain(int grainId);
 
     bool drawSkeleton;
     
