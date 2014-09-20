@@ -50,7 +50,12 @@ private:
     ofxBox2dCircle * focus;                    // pointer to element that currently has focus
     
     void addGrain(int grainId);
-
+	// this is the function for contacts
+	void contactStart(ofxBox2dContactArgs &e);
+	void contactEnd(ofxBox2dContactArgs &e);
+    
+    void destroyJoints();
+    
     bool drawSkeleton;
     
     oscManager * osc; // pointer to osc the singleton class

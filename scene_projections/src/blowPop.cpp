@@ -138,7 +138,7 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 	}
     
     if( args.key == ' ' ){
-        joints.clear();
+        destroyJoints();
     }
     
 }
@@ -165,6 +165,15 @@ void blowpop::addGrain(int grainId){
     joints.push_back(joint);
     
     focus = grains.back().get();
+
+}
+
+// remove all joints from nucleus to grains
+void blowpop::destroyJoints(){
+    for(int i=0; i<joints.size(); i++) {
+        joints[i].get()->destroy();
+    }
+    joints.clear();
 
 }
 
