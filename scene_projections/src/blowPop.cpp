@@ -15,7 +15,6 @@ void blowpop::setup(){
     
     osc = oscManager::Instance();
     
-    
     // notify Max of scene start
     ofxOscMessage m;
     m.setAddress("/blowpop/on");
@@ -27,8 +26,9 @@ void blowpop::setup(){
     ofAddListener(osc->vocalLoudness, this, &blowpop::onVocalLoudness);
     ofAddListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofAddListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
-    
     ofRegisterKeyEvents(this);
+	ofAddListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
+	ofAddListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
     
     drawSkeleton = false;
     
@@ -40,10 +40,7 @@ void blowpop::setup(){
     nucleus.setup(ofworld.getWorld(), nucleus_x, nucleus_y, 8);
     
     focus = NULL;
-    
-   
-    
-    
+
 }
 
 // ------------------------------------------------------
@@ -56,7 +53,8 @@ void blowpop::terminate(){
     ofRemoveListener(osc->vocalLoudness, this, &blowpop::onVocalLoudness);
     ofRemoveListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofRemoveListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
-    
+    ofRemoveListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
+	ofRemoveListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
     grains.clear();
     nucleus.destroy();
     
@@ -147,6 +145,48 @@ void blowpop::keyReleased(ofKeyEventArgs& args){
 }
 
 
+//--------------------------------------------------------------
+void blowpop::contactStart(ofxBox2dContactArgs &e) {
+	if(e.a != NULL && e.b != NULL) {
+		
+		// if a circle collides with an edge shape
+		if(e.a->GetType() + e.b->GetType() == 1) {
+            cout << "*** hit: a: " << e.a->GetType() << " b: " << e.b->GetType() << " \n";
+            
+//			SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+//			SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+//			
+//			if(aData) {
+//				aData->bHit = true;
+//				sound[aData->soundID].play();
+//			}
+//			
+//			if(bData) {
+//				bData->bHit = true;
+//				sound[bData->soundID].play();
+//			}
+		}
+	}
+}
+
+//--------------------------------------------------------------
+void blowpop::contactEnd(ofxBox2dContactArgs &e) {
+//	if(e.a != NULL && e.b != NULL) {
+//		
+//		SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
+//		SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
+//		
+//		if(aData) {
+//			aData->bHit = false;
+//		}
+//		
+//		if(bData) {
+//			bData->bHit = false;
+//		}
+//	}
+}
+
+
 # pragma mark private
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
@@ -174,7 +214,6 @@ void blowpop::destroyJoints(){
         joints[i].get()->destroy();
     }
     joints.clear();
-
 }
 
 

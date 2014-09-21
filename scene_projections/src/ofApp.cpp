@@ -19,6 +19,7 @@ void ofApp::setup(){
 	ofworld.createBounds();
 	ofworld.setFPS(30.0);
 	ofworld.registerGrabbing();
+    ofworld.enableEvents();   // <-- turn on the event listener
     
     // init gui menu
     gui.setup();
