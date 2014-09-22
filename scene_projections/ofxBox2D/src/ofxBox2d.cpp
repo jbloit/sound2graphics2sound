@@ -394,7 +394,12 @@ void ofxBox2d::createBounds(float x, float y, float w, float h) {
 	// bottom wall
 	shape.Set(b2Vec2(rec.x, rec.y+rec.height), b2Vec2(rec.x+rec.width, rec.y+rec.height));
 	ground->CreateFixture(&shape, 0.0f);
-	
+    
+    
+    // add custom user data
+    ground->SetUserData(new BoundsData());
+    BoundsData * myBoundsData = (BoundsData*) ground->GetUserData();
+
 }
 
 // ------------------------------------------------------ check if shapes are out of bounds

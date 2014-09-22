@@ -13,6 +13,8 @@
 #include "ofxBox2dRender.h"
 #include "ofxBox2dContactListener.h"
 
+#include "BaseUserData.h"
+
 #ifdef TARGET_OPENGLES
 #define OF_MAX_TOUCH_JOINTS		5			// max number of touch points on iPhone + iPad (this may change in the future though).
 #endif
@@ -132,3 +134,13 @@ public:
 	void		drawGround();
         
 };
+
+// Class(es) for user data
+class BoundsData : public BaseUserData{
+public:
+    BoundsData();
+};
+inline BoundsData::BoundsData(){
+	m_type = bounds;
+}
+

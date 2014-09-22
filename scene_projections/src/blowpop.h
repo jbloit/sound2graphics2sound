@@ -17,6 +17,7 @@
 #include "globals.h"
 #include "oscManager.h"
 #include "dot.h"
+#include "BaseUserData.h"
 
 class blowpop{
     
@@ -61,7 +62,16 @@ private:
     oscManager * osc; // pointer to osc the singleton class
 };
 
-
+// Class(es) for user data
+class GrainData : public BaseUserData{
+public:
+    GrainData();
+	int	 grainId;
+	bool bHit;
+};
+inline GrainData::GrainData(){
+	m_type = blowpop_grain;
+}
 
 
 #endif /* defined(__shissss__blowPop__) */

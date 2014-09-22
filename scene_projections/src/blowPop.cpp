@@ -7,7 +7,7 @@
 //
 
 #include "blowpop.h"
-
+#include <typeinfo>  //for 'typeid'
 
 using namespace std;
 
@@ -149,13 +149,36 @@ void blowpop::keyReleased(ofKeyEventArgs& args){
 void blowpop::contactStart(ofxBox2dContactArgs &e) {
 	if(e.a != NULL && e.b != NULL) {
 		
-		// if a circle collides with an edge shape
-		if(e.a->GetType() + e.b->GetType() == 1) {
-            cout << "*** hit: a: " << e.a->GetType() << " b: " << e.b->GetType() << " \n";
-            
-//			SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
-//			SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
-//			
+        // Determine which elements collided
+        BaseUserData *dataA = (BaseUserData*) e.a->GetBody()->GetUserData();
+        BaseUserData *dataB = (BaseUserData*) e.b->GetBody()->GetUserData();
+        
+        if (dataA && dataB){
+            // grain-grain collision
+            if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::blowpop_grain){
+                cout << "*--* grain-grain collision " << endl;
+            }
+            // grain-bounds collision
+            if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::bounds){
+                cout << "*--_ grain-bounds collision " << endl;
+            }
+            // bounds-grain collision
+            if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
+                cout << "*--_ bounds-grain collision " << endl;
+            }
+        }
+        
+
+//            if (e.a->GetBody()->GetUserData() != NULL) data = (GrainData*)e.a->GetBody()->GetUserData();
+//            if (e.b->GetBody()->GetUserData() != NULL) data = (GrainData*)e.b->GetBody()->GetUserData();
+//            
+//            cout << "grain id :" << data->grainId << "\n";
+//            // play grain
+//            ofxOscMessage m;
+//            m.setAddress("/blowpop/play");
+//            m.addIntArg(data->grainId);
+//            osc->sender.sendMessage(m);
+//
 //			if(aData) {
 //				aData->bHit = true;
 //				sound[aData->soundID].play();
@@ -165,7 +188,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
 //				bData->bHit = true;
 //				sound[bData->soundID].play();
 //			}
-		}
+		
 	}
 }
 
@@ -190,12 +213,20 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 # pragma mark private
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
+    
+    // Create grain
     float r = 1.f;
     ofPtr<ofxBox2dCircle> grain = ofPtr<ofxBox2dCircle>(new ofxBox2dCircle);
     grain.get()->setPhysics(3.0, 0.53, 0.1);
     grain.get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
     grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
-    grain.get()->setData(&grainId);
+    
+    // add custom data
+    grain.get()->setData(new GrainData());
+    GrainData * myGrainData = (GrainData*) grain.get()->getData();
+    myGrainData->grainId = grainId;
+    myGrainData->bHit = false;
+    
     grains.push_back(grain);
     
     // now connect circle to the nucleus
