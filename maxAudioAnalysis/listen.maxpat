@@ -7,7 +7,7 @@
 			"revision" : 4
 		}
 ,
-		"rect" : [ 88.0, 44.0, 679.0, 574.0 ],
+		"rect" : [ 136.0, 44.0, 679.0, 574.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,7 +42,7 @@
 							"revision" : 4
 						}
 ,
-						"rect" : [ 211.0, 64.0, 913.0, 562.0 ],
+						"rect" : [ 263.0, 95.0, 1017.0, 668.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -63,6 +63,131 @@
 						"tags" : "",
 						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-25",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 270.0, 540.0, 71.0, 20.0 ],
+									"text" : "print NOTE"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "multislider",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 520.0, 562.0, 165.0, 15.0 ],
+									"setminmax" : [ 0.0, 1.0 ],
+									"setstyle" : 1,
+									"settype" : 0,
+									"size" : 50,
+									"spacing" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-9",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 630.0, 440.0, 72.0, 20.0 ],
+									"text" : "loadmess 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-34",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 630.0, 467.0, 20.0, 20.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-32",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 630.0, 496.0, 53.0, 18.0 ],
+									"text" : "steal $1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-13",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 375.0, 473.0, 81.0, 20.0 ],
+									"text" : "prepend note"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-22",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 460.0, 477.0, 69.0, 18.0 ],
+									"text" : "busymap 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-23",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 460.0, 453.0, 115.0, 20.0 ],
+									"text" : "metro 20 @active 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 507.0, 522.0, 113.0, 20.0 ],
+									"text" : "start time, end time"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-145",
 									"maxclass" : "toggle",
@@ -1043,7 +1168,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 430.0, 525.0, 63.0, 20.0 ],
+									"patching_rect" : [ 445.0, 558.0, 63.0, 20.0 ],
 									"text" : "send~ in1"
 								}
 
@@ -1056,7 +1181,7 @@
 									"numoutlets" : 1,
 									"orientation" : 1,
 									"outlettype" : [ "list" ],
-									"patching_rect" : [ 360.0, 529.0, 66.0, 12.0 ]
+									"patching_rect" : [ 375.0, 562.0, 66.0, 12.0 ]
 								}
 
 							}
@@ -1069,8 +1194,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 350.0, 460.0, 67.0, 18.0 ],
-									"text" : "start $1 $2"
+									"patching_rect" : [ 375.0, 442.0, 61.0, 18.0 ],
+									"text" : "$1 $2 1 1"
 								}
 
 							}
@@ -1082,9 +1207,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
-									"outlettype" : [ "signal", "bang" ],
-									"patching_rect" : [ 360.0, 489.0, 122.0, 20.0 ],
-									"text" : "play~ blowpop_voice"
+									"outlettype" : [ "signal", "" ],
+									"patching_rect" : [ 375.0, 522.0, 132.0, 20.0 ],
+									"text" : "poly~ samplerVoice 50"
 								}
 
 							}
@@ -1386,7 +1511,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-19", 0 ],
+									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-108", 0 ]
@@ -1454,6 +1579,24 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-125", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-19", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-13", 0 ]
 								}
 
 							}
@@ -1585,6 +1728,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-19", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-18", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -1599,6 +1751,25 @@
 									"hidden" : 0,
 									"midpoints" : [ 249.5, 394.5, 384.5, 394.5 ],
 									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-19", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-22", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"midpoints" : [ 469.5, 476.0 ],
+									"source" : [ "obj-23", 0 ]
 								}
 
 							}
@@ -1626,6 +1797,24 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-19", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-32", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-32", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-34", 0 ]
 								}
 
 							}
@@ -1674,8 +1863,23 @@
 								}
 
 							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-34", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-9", 0 ]
+								}
+
+							}
  ],
 						"dependency_cache" : [ 							{
+								"name" : "samplerVoice.maxpat",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis",
+								"type" : "JSON",
+								"implicit" : 1
+							}
+, 							{
 								"name" : "OSC-route.mxo",
 								"type" : "iLaX"
 							}
@@ -6865,6 +7069,13 @@
 				"name" : "mnm.winfilter.maxpat",
 				"bootpath" : "/Applications/Max6/Cycling '74/ftm-and-co/mnm-abstractions",
 				"patcherrelativepath" : "../../../../../../../../Applications/Max6/Cycling '74/ftm-and-co/mnm-abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "samplerVoice.maxpat",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis",
+				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
 			}
