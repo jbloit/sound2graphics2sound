@@ -56,6 +56,7 @@ void blowpop::terminate(){
     ofRemoveListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
 	ofRemoveListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
     grains.clear();
+    joints.clear();
     nucleus.destroy();
     
     // notify Max of scene end
