@@ -161,34 +161,16 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             // grain-bounds collision
             if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::bounds){
                 cout << "*--_ grain-bounds collision " << endl;
+                GrainData * myGrain = (GrainData*) dataA;
+                playGrain(myGrain->grainId);
             }
             // bounds-grain collision
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
                 cout << "_--* bounds-grain collision " << endl;
+                GrainData * myGrain = (GrainData*) dataB;
+                playGrain(myGrain->grainId);
             }
         }
-        
-
-//            if (e.a->GetBody()->GetUserData() != NULL) data = (GrainData*)e.a->GetBody()->GetUserData();
-//            if (e.b->GetBody()->GetUserData() != NULL) data = (GrainData*)e.b->GetBody()->GetUserData();
-//            
-//            cout << "grain id :" << data->grainId << "\n";
-//            // play grain
-//            ofxOscMessage m;
-//            m.setAddress("/blowpop/play");
-//            m.addIntArg(data->grainId);
-//            osc->sender.sendMessage(m);
-//
-//			if(aData) {
-//				aData->bHit = true;
-//				sound[aData->soundID].play();
-//			}
-//			
-//			if(bData) {
-//				bData->bHit = true;
-//				sound[bData->soundID].play();
-//			}
-		
 	}
 }
 
@@ -211,6 +193,15 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 
 
 # pragma mark private
+// ------------------------------------------------------
+// Trigger the grain's sound
+void blowpop::playGrain(int grainId){
+    // play grain
+    ofxOscMessage m;
+    m.setAddress("/blowpop/play");
+    m.addIntArg(grainId);
+    osc->sender.sendMessage(m);
+}
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
     
