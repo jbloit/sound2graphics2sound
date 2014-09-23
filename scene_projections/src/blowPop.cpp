@@ -164,7 +164,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             }
             // bounds-grain collision
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
-                cout << "*--_ bounds-grain collision " << endl;
+                cout << "_--* bounds-grain collision " << endl;
             }
         }
         
