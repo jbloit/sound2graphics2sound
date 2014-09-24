@@ -18,6 +18,7 @@
 #include "oscManager.h"
 #include "dot.h"
 #include "BaseUserData.h"
+#include "Grain.h"
 
 class blowpop{
     
@@ -46,7 +47,7 @@ private:
     float radius;
     int numberOfNodes;
     ofxBox2dCircle nucleus;                         // center of vocal cluster
-    vector <ofPtr<ofxBox2dCircle> >	grains;         // default box2d circles
+    vector <ofPtr<Grain> >	grains;         // default box2d circles
     vector <ofPtr<ofxBox2dJoint> > joints;
     ofxBox2dCircle * focus;                    // pointer to element that currently has focus
     
@@ -65,15 +66,6 @@ private:
 };
 
 // ---------------------------------- Class(es) for user data attached to physical objects
-class GrainData : public BaseUserData{
-public:
-    GrainData();
-	int	 grainId;
-	bool bHit;
-};
-inline GrainData::GrainData(){
-	m_type = blowpop_grain;
-}
 
 class NucleusData : public BaseUserData{
 public:

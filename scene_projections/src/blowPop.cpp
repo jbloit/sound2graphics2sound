@@ -219,17 +219,13 @@ void blowpop::addGrain(int grainId){
     
     // Create grain
     float r = 1.f;
-    ofPtr<ofxBox2dCircle> grain = ofPtr<ofxBox2dCircle>(new ofxBox2dCircle);
+    ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
     grain.get()->setPhysics(3.0, 0.53, 0.1);
     grain.get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
     grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
     
     // add custom data
-    grain.get()->setData(new GrainData());
-    GrainData * myGrainData = (GrainData*) grain.get()->getData();
-    myGrainData->grainId = grainId;
-    myGrainData->bHit = false;
-    
+    grain.get()->setId(grainId);
     grains.push_back(grain);
     
     // now connect circle to the nucleus
