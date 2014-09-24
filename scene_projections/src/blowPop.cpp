@@ -36,8 +36,14 @@ void blowpop::setup(){
     // TODO: see if we want to push that to new class
     nucleus_x = ofGetWidth()/2;
     nucleus_y = ofGetHeight()/2;
-    
     nucleus.setup(ofworld.getWorld(), nucleus_x, nucleus_y, 8);
+    
+    // add custom data
+    nucleus.setData(new NucleusData());
+    NucleusData * myNucleusData = (NucleusData*) nucleus.getData();
+    myNucleusData->bHit = false;
+    
+    
     
     focus = NULL;
 
@@ -170,6 +176,11 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
                 cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
                 playGrain(myGrain->grainId);
+            }
+            // nucleus-grain collision
+            if (dataA->getType() == BaseUserData::blowpop_nucleus && dataB->getType() == BaseUserData::blowpop_grain){
+                cout << ".--* nucleus-grain collision " << endl;
+//                destroyJoints();
             }
         }
 	}

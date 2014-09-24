@@ -64,7 +64,7 @@ private:
     oscManager * osc; // pointer to osc the singleton class
 };
 
-// Class(es) for user data
+// ---------------------------------- Class(es) for user data attached to physical objects
 class GrainData : public BaseUserData{
 public:
     GrainData();
@@ -75,5 +75,14 @@ inline GrainData::GrainData(){
 	m_type = blowpop_grain;
 }
 
+class NucleusData : public BaseUserData{
+public:
+    NucleusData();
+	int	 nucleusId;
+	bool bHit;
+};
+inline NucleusData::NucleusData(){
+	m_type = blowpop_nucleus;
+}
 
 #endif /* defined(__shissss__blowPop__) */
