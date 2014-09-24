@@ -89,6 +89,32 @@ void blowpop::draw(){
         grains[i].get()->draw();
     }
     
+    if (grains.size()>2){
+        vector<ofPoint> points, membrane;
+        for (int i = 0; i<grains.size(); i++){
+            points.push_back(ofPoint(grains[i]->getPosition()));
+        }
+        points.push_back(ofPoint(nucleus.getPosition()));
+        membrane = hull.getHull(points);
+        
+        ofFill();
+        ofSetColor(255, 0, 255, 150);
+        ofBeginShape();
+        for (int i = 0; i < membrane.size(); i++){
+            if (i == 0){
+                ofCurveVertex(membrane[0].x, membrane[0].y); // we need to duplicate 0 for the curve to start at point 0
+                ofCurveVertex(membrane[0].x, membrane[0].y);; // we need to duplicate 0 for the curve to start at point 0
+            } else if (i == membrane.size()-1){
+                ofCurveVertex(membrane[i].x, membrane[i].y);
+                ofCurveVertex(membrane[0].x, membrane[0].y);	// to draw a curve from pt N to pt 0
+                ofCurveVertex(membrane[0].x, membrane[0].y);	// we duplicate the first point twice
+            } else {
+                ofCurveVertex(membrane[i].x, membrane[i].y);
+            }
+        }
+        ofEndShape();
+    }
+    
 }
 
 #pragma mark callbacks

@@ -10,7 +10,7 @@ void ofApp::setup(){
     osc = oscManager::Instance(); // get pointer to osc singleton instance
     
     osc->setup();
-	ofBackground(0, 0, 0);
+	ofBackground(0);
     ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_NOTICE);
 	

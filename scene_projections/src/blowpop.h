@@ -19,6 +19,7 @@
 #include "dot.h"
 #include "BaseUserData.h"
 #include "Grain.h"
+#include "Hull.h"
 
 class blowpop{
     
@@ -47,9 +48,9 @@ private:
     float radius;
     int numberOfNodes;
     ofxBox2dCircle nucleus;                         // center of vocal cluster
-    vector <ofPtr<Grain> >	grains;         // default box2d circles
+    vector <ofPtr<Grain> >	grains;                 // default box2d circles
     vector <ofPtr<ofxBox2dJoint> > joints;
-    ofxBox2dCircle * focus;                    // pointer to element that currently has focus
+    ofxBox2dCircle * focus;                         // pointer to element that currently has focus
     
     void addGrain(int grainId);
     void playGrain(int grainId);
@@ -63,6 +64,8 @@ private:
     bool drawSkeleton;
     
     oscManager * osc; // pointer to osc the singleton class
+    
+    Hull hull;
 };
 
 // ---------------------------------- Class(es) for user data attached to physical objects

@@ -41,12 +41,6 @@ public:
 	void draw() {
 		GrainData* theData = (GrainData*)getData();
 		if(theData) {
-			
-			// Evan though we know the data object lets just
-			// see how we can get the data out from box2d
-			// you would use this when using a contact listener
-			// or tapping into box2d's solver.
-			
 			float radius = getRadius();
 			ofPushMatrix();
 			ofTranslate(getPosition());
