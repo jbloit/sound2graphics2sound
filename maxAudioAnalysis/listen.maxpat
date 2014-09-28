@@ -7,7 +7,7 @@
 			"revision" : 4
 		}
 ,
-		"rect" : [ 505.0, 44.0, 775.0, 577.0 ],
+		"rect" : [ 371.0, 44.0, 1348.0, 592.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -28,6 +28,47 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"channels" : 6,
+					"id" : "obj-14",
+					"maxclass" : "live.gain~",
+					"numinlets" : 6,
+					"numoutlets" : 9,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "", "float", "list" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 720.0, 135.0, 180.0, 120.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_unitstyle" : 4,
+							"parameter_mmax" : 6.0,
+							"parameter_mmin" : -70.0,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_type" : 0,
+							"parameter_shortname" : "live.gain~",
+							"parameter_longname" : "live.gain~"
+						}
+
+					}
+,
+					"varname" : "live.gain~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 6,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal" ],
+					"patching_rect" : [ 750.0, 65.0, 97.0, 20.0 ],
+					"text" : "adc~ 1 2 3 4 5 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "live.slider",
 					"numinlets" : 1,
@@ -37,14 +78,14 @@
 					"patching_rect" : [ 600.0, 375.0, 48.0, 95.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "OUT R",
-							"parameter_longname" : "live.slider[2]",
 							"parameter_unitstyle" : 4,
 							"parameter_mmax" : 36.0,
 							"parameter_mmin" : -70.0,
 							"parameter_initial" : [ -70.0 ],
 							"parameter_type" : 0,
-							"parameter_initial_enable" : 1
+							"parameter_initial_enable" : 1,
+							"parameter_shortname" : "OUT R",
+							"parameter_longname" : "live.slider[2]"
 						}
 
 					}
@@ -65,12 +106,12 @@
 					"patching_rect" : [ 552.0, 375.0, 48.0, 95.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "OUT L",
-							"parameter_longname" : "live.slider[3]",
 							"parameter_unitstyle" : 4,
 							"parameter_mmax" : 36.0,
 							"parameter_mmin" : -70.0,
-							"parameter_type" : 0
+							"parameter_type" : 0,
+							"parameter_shortname" : "OUT L",
+							"parameter_longname" : "live.slider[3]"
 						}
 
 					}
@@ -559,16 +600,16 @@
 ,
 													"patching_rect" : [ 138.0, 210.0, 53.0, 20.0 ],
 													"saved_object_attributes" : 													{
-														"description" : "",
-														"fontface" : 0,
-														"fontsize" : 12.0,
-														"tags" : "",
 														"default_fontface" : 0,
 														"digest" : "",
-														"fontname" : "Arial",
 														"default_fontname" : "Arial",
+														"fontname" : "Arial",
+														"default_fontsize" : 12.0,
+														"description" : "",
+														"tags" : "",
 														"globalpatchername" : "",
-														"default_fontsize" : 12.0
+														"fontface" : 0,
+														"fontsize" : 12.0
 													}
 ,
 													"text" : "p fillColl"
@@ -761,16 +802,16 @@
 ,
 													"patching_rect" : [ 138.0, 180.0, 73.0, 20.0 ],
 													"saved_object_attributes" : 													{
-														"description" : "",
-														"fontface" : 0,
-														"fontsize" : 12.0,
-														"tags" : "",
 														"default_fontface" : 0,
 														"digest" : "",
-														"fontname" : "Arial",
 														"default_fontname" : "Arial",
+														"fontname" : "Arial",
+														"default_fontsize" : 12.0,
+														"description" : "",
+														"tags" : "",
 														"globalpatchername" : "",
-														"default_fontsize" : 12.0
+														"fontface" : 0,
+														"fontsize" : 12.0
 													}
 ,
 													"text" : "p loopTimer"
@@ -963,16 +1004,16 @@
 ,
 									"patching_rect" : [ 240.0, 320.0, 135.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
-										"tags" : "",
 										"default_fontface" : 0,
 										"digest" : "",
-										"fontname" : "Arial",
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontsize" : 12.0
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p indexNewGrainOnset"
@@ -1196,16 +1237,16 @@
 ,
 									"patching_rect" : [ 240.0, 410.0, 154.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
-										"tags" : "",
 										"default_fontface" : 0,
 										"digest" : "",
-										"fontname" : "Arial",
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontsize" : 12.0
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p retrieveGrainOnsetOffset"
@@ -1950,7 +1991,7 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "samplerVoice.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -1963,16 +2004,16 @@
 ,
 					"patching_rect" : [ 165.0, 405.0, 65.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p blowpop"
@@ -2148,7 +2189,7 @@
 							"revision" : 4
 						}
 ,
-						"rect" : [ 294.0, 71.0, 880.0, 659.0 ],
+						"rect" : [ 516.0, 141.0, 880.0, 659.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2168,6 +2209,143 @@
 						"digest" : "",
 						"tags" : "",
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-44",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 6,
+											"minor" : 0,
+											"revision" : 4
+										}
+,
+										"rect" : [ 29.0, 69.0, 640.0, 480.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 0,
+										"gridsize" : [ 10.0, 10.0 ],
+										"gridsnaponopen" : 0,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"boxanimatetime" : 200,
+										"imprint" : 0,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"boxes" : [ 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-39",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 77.0, 100.0, 72.0, 20.0 ],
+													"text" : "loadmess 0"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial",
+													"fontsize" : 12.0,
+													"id" : "obj-28",
+													"maxclass" : "newobj",
+													"numinlets" : 5,
+													"numoutlets" : 4,
+													"outlettype" : [ "int", "", "", "int" ],
+													"patching_rect" : [ 50.0, 130.0, 73.0, 20.0 ],
+													"text" : "counter"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-41",
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "bang" ],
+													"patching_rect" : [ 50.0, 40.0, 25.0, 25.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-42",
+													"maxclass" : "outlet",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 50.0, 210.0, 25.0, 25.0 ]
+												}
+
+											}
+ ],
+										"lines" : [ 											{
+												"patchline" : 												{
+													"destination" : [ "obj-42", 0 ],
+													"disabled" : 0,
+													"hidden" : 0,
+													"source" : [ "obj-28", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-28", 2 ],
+													"disabled" : 0,
+													"hidden" : 0,
+													"source" : [ "obj-39", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-28", 0 ],
+													"disabled" : 0,
+													"hidden" : 0,
+													"source" : [ "obj-41", 0 ]
+												}
+
+											}
+ ],
+										"dependency_cache" : [  ]
+									}
+,
+									"patching_rect" : [ 510.0, 570.0, 62.0, 20.0 ],
+									"saved_object_attributes" : 									{
+										"default_fontface" : 0,
+										"digest" : "",
+										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
+										"globalpatchername" : "",
+										"fontface" : 0,
+										"fontsize" : 12.0
+									}
+,
+									"text" : "p onsetID"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -2328,7 +2506,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 555.0, 600.0, 25.0, 25.0 ]
+									"patching_rect" : [ 547.0, 535.0, 25.0, 25.0 ]
 								}
 
 							}
@@ -2353,8 +2531,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 510.0, 630.0, 53.0, 18.0 ],
-									"text" : "/p/onset"
+									"patching_rect" : [ 510.0, 630.0, 70.0, 18.0 ],
+									"text" : "/p/onset $1"
 								}
 
 							}
@@ -2790,16 +2968,16 @@
 ,
 									"patching_rect" : [ 90.0, 120.0, 61.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
-										"tags" : "",
 										"default_fontface" : 0,
 										"digest" : "",
-										"fontname" : "Arial",
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontsize" : 12.0
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p params"
@@ -3045,6 +3223,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-73", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-44", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-46", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -3073,7 +3260,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-5", 0 ],
+									"destination" : [ "obj-44", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-53", 0 ]
@@ -3082,7 +3269,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-73", 0 ],
+									"destination" : [ "obj-5", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-53", 0 ]
@@ -3212,7 +3399,7 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "autoscale.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -3229,16 +3416,16 @@
 ,
 					"patching_rect" : [ 390.0, 225.0, 111.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p ANALYSE_percu"
@@ -3382,16 +3569,16 @@
 ,
 					"patching_rect" : [ 435.0, 90.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p reset"
@@ -3520,16 +3707,16 @@
 ,
 					"patching_rect" : [ 195.0, 90.0, 47.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p reset"
@@ -3774,16 +3961,16 @@
 ,
 					"patching_rect" : [ 420.0, 90.0, 67.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p populate"
@@ -3976,16 +4163,16 @@
 ,
 					"patching_rect" : [ 180.0, 90.0, 67.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p populate"
@@ -4005,7 +4192,7 @@
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 165.0, 90.0, 141.0, 20.0 ],
-					"prefix" : "Macintosh SSD:/Users/bloit/jbloit.com/PROJETS/---bleuDeLune/AUDIO/guylaine/",
+					"prefix" : "notfound",
 					"presentation" : 1,
 					"presentation_rect" : [ 165.0, 90.0, 141.0, 20.0 ],
 					"types" : "WAVE"
@@ -4114,14 +4301,14 @@
 					"patching_rect" : [ 499.0, 375.0, 48.0, 95.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "perc.",
-							"parameter_longname" : "live.slider[1]",
 							"parameter_unitstyle" : 4,
 							"parameter_mmax" : 36.0,
 							"parameter_mmin" : -70.0,
 							"parameter_initial" : [ -70.0 ],
 							"parameter_type" : 0,
-							"parameter_initial_enable" : 1
+							"parameter_initial_enable" : 1,
+							"parameter_shortname" : "perc.",
+							"parameter_longname" : "live.slider[1]"
 						}
 
 					}
@@ -4142,12 +4329,12 @@
 					"patching_rect" : [ 451.0, 375.0, 48.0, 95.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_shortname" : "voix",
-							"parameter_longname" : "live.slider",
 							"parameter_unitstyle" : 4,
 							"parameter_mmax" : 36.0,
 							"parameter_mmin" : -70.0,
-							"parameter_type" : 0
+							"parameter_type" : 0,
+							"parameter_shortname" : "voix",
+							"parameter_longname" : "live.slider"
 						}
 
 					}
@@ -4855,16 +5042,16 @@
 ,
 					"patching_rect" : [ 451.0, 480.0, 109.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p DIFFUSION"
@@ -4998,7 +5185,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 90.0, 45.0, 47.0, 20.0 ],
-									"text" : "adc~ 2"
+									"text" : "adc~ 5"
 								}
 
 							}
@@ -5165,16 +5352,16 @@
 ,
 					"patching_rect" : [ 390.0, 165.0, 53.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p player"
@@ -5490,16 +5677,16 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 150.0, 165.0, 54.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p player"
@@ -5694,16 +5881,16 @@
 ,
 									"patching_rect" : [ 435.0, 585.0, 62.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
-										"tags" : "",
 										"default_fontface" : 0,
 										"digest" : "",
-										"fontname" : "Arial",
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontsize" : 12.0
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p onsetID"
@@ -6417,16 +6604,16 @@
 ,
 									"patching_rect" : [ 90.0, 90.0, 61.0, 20.0 ],
 									"saved_object_attributes" : 									{
-										"description" : "",
-										"fontface" : 0,
-										"fontsize" : 12.0,
-										"tags" : "",
 										"default_fontface" : 0,
 										"digest" : "",
-										"fontname" : "Arial",
 										"default_fontname" : "Arial",
+										"fontname" : "Arial",
+										"default_fontsize" : 12.0,
+										"description" : "",
+										"tags" : "",
 										"globalpatchername" : "",
-										"default_fontsize" : 12.0
+										"fontface" : 0,
+										"fontsize" : 12.0
 									}
 ,
 									"text" : "p params"
@@ -6911,19 +7098,19 @@
  ],
 						"dependency_cache" : [ 							{
 								"name" : "autoscale.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib",
 								"type" : "JSON",
 								"implicit" : 1
 							}
 , 							{
 								"name" : "timbreRecognition.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
 , 							{
 								"name" : "mfccHTK.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -6941,7 +7128,7 @@
 							}
 , 							{
 								"name" : "medfilter.maxpat",
-								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+								"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 								"type" : "JSON",
 								"implicit" : 1
 							}
@@ -7024,10 +7211,6 @@
 								"type" : "iLaX"
 							}
 , 							{
-								"name" : "bargraf~.mxo",
-								"type" : "iLaX"
-							}
-, 							{
 								"name" : "mnm.gmmem.mxo",
 								"type" : "iLaX"
 							}
@@ -7062,16 +7245,16 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 150.0, 225.0, 102.0, 20.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"fontface" : 0,
-						"fontsize" : 12.0,
-						"tags" : "",
 						"default_fontface" : 0,
 						"digest" : "",
-						"fontname" : "Arial",
 						"default_fontname" : "Arial",
+						"fontname" : "Arial",
+						"default_fontsize" : 12.0,
+						"description" : "",
+						"tags" : "",
 						"globalpatchername" : "",
-						"default_fontsize" : 12.0
+						"fontface" : 0,
+						"fontsize" : 12.0
 					}
 ,
 					"text" : "p ANALYSE_voix"
@@ -7129,6 +7312,60 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 5 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 5 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 4 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 3 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 0 ]
 				}
 
 			}
@@ -7461,6 +7698,7 @@
  ],
 		"parameters" : 		{
 			"obj-45" : [ "live.slider[1]", "perc.", 0 ],
+			"obj-14" : [ "live.gain~", "live.gain~", 0 ],
 			"obj-34" : [ "live.slider", "voix", 0 ],
 			"obj-8" : [ "live.slider[2]", "OUT R", 0 ],
 			"obj-10" : [ "live.slider[3]", "OUT L", 0 ]
@@ -7468,21 +7706,21 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "autoscale.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib",
 				"patcherrelativepath" : "../maxAudioAnalysis/maxlib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "timbreRecognition.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "mfccHTK.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
@@ -7503,7 +7741,7 @@
 			}
 , 			{
 				"name" : "medfilter.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis/maxlib/timbreRecognition_v012",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"patcherrelativepath" : "../maxAudioAnalysis/maxlib/timbreRecognition_v012",
 				"type" : "JSON",
 				"implicit" : 1
@@ -7517,7 +7755,7 @@
 			}
 , 			{
 				"name" : "samplerVoice.maxpat",
-				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.3_osx_release/apps/unOeuf/maxAudioAnalysis",
+				"bootpath" : "/Users/bloit/LIBS/openFrameworks/of_v0.8.4_osx_release/apps/un-oeuf-OF/maxAudioAnalysis",
 				"patcherrelativepath" : "",
 				"type" : "JSON",
 				"implicit" : 1
@@ -7592,10 +7830,6 @@
 			}
 , 			{
 				"name" : "ftm.iter.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "bargraf~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

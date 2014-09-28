@@ -62,7 +62,7 @@ void oscManager::update(){
             float value = m.getArgAsFloat(0);
             ofNotifyEvent(vocalNoisiness, value , this);
         }
-        if(m.getAddress() == "/v/pitch"){
+        if(m.getAddress() == "/v/f0"){
             float value = m.getArgAsFloat(0);
             ofNotifyEvent(vocalPitch, value , this);
         }
@@ -71,7 +71,28 @@ void oscManager::update(){
             ofNotifyEvent(vocalClass, value , this);
         }
         
-        
+        // Check for percussion events
+        if(m.getAddress() == "/p/onset"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(percussionOnset, value, this);
+        }
+        if(m.getAddress() == "/p/loud"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(percussionLoudness, value , this);
+        }
+        if(m.getAddress() == "/p/bright"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(percussionBrightness, value , this);
+        }
+        if(m.getAddress() == "/p/noise"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(percussionNoisiness, value , this);
+        }
+        if(m.getAddress() == "/p/f0"){
+            float value = m.getArgAsFloat(0);
+            ofNotifyEvent(percussionPitch, value , this);
+        }
+
     }
     
 }

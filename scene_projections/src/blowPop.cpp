@@ -26,6 +26,15 @@ void blowpop::setup(){
     ofAddListener(osc->vocalLoudness, this, &blowpop::onVocalLoudness);
     ofAddListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofAddListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
+    ofAddListener(osc->vocalPitch, this, &blowpop::onVocalPitch);
+    ofAddListener(osc->vocalClass, this, &blowpop::onVocalClass);
+    
+    ofAddListener(osc->percussionOnset, this, &blowpop::onPercussionOnset);
+    ofAddListener(osc->percussionLoudness, this, &blowpop::onPercussionLoudness);
+    ofAddListener(osc->percussionBrightness, this, &blowpop::onPercussionBrightness);
+    ofAddListener(osc->percussionNoisiness, this, &blowpop::onPercussionNoisiness);
+    ofAddListener(osc->percussionPitch, this, &blowpop::onPercussionPitch);
+    
     ofRegisterKeyEvents(this);
 	ofAddListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
 	ofAddListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
@@ -43,7 +52,6 @@ void blowpop::setup(){
     NucleusData * myNucleusData = (NucleusData*) nucleus.getData();
     myNucleusData->bHit = false;
     
-    
     focus = NULL;
 
 }
@@ -58,6 +66,15 @@ void blowpop::terminate(){
     ofRemoveListener(osc->vocalLoudness, this, &blowpop::onVocalLoudness);
     ofRemoveListener(osc->vocalBrightness, this, &blowpop::onVocalBrightness);
     ofRemoveListener(osc->vocalNoisiness, this, &blowpop::onVocalNoisiness);
+    ofRemoveListener(osc->vocalPitch, this, &blowpop::onVocalPitch);
+    ofRemoveListener(osc->vocalClass, this, &blowpop::onVocalClass);
+    
+    ofRemoveListener(osc->percussionOnset, this, &blowpop::onPercussionOnset);
+    ofRemoveListener(osc->percussionLoudness, this, &blowpop::onPercussionLoudness);
+    ofRemoveListener(osc->percussionBrightness, this, &blowpop::onPercussionBrightness);
+    ofRemoveListener(osc->percussionNoisiness, this, &blowpop::onPercussionNoisiness);
+    ofRemoveListener(osc->percussionPitch, this, &blowpop::onPercussionPitch);
+    
     ofRemoveListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
 	ofRemoveListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
     grains.clear();
@@ -116,20 +133,17 @@ void blowpop::draw(){
     
 }
 
-#pragma mark callbacks
+#pragma mark vocal callbacks
 
 // ------------------------------------------------------
 void blowpop::onVocalOnset(int& value){
     cout << "BLOWPOP - VOCAL ONSET, id: " << value << " \n";
 
     addGrain(value);
-//    addDot();
-//    addBox();
 }
 
 // ------------------------------------------------------
 void blowpop::onVocalLoudness(float& value){
-
     // make focus grain grow
     float growfactor = 1;
     if (focus != NULL){
@@ -141,21 +155,44 @@ void blowpop::onVocalLoudness(float& value){
 }
 // ------------------------------------------------------
 void blowpop::onVocalBrightness(float& value){
-//    cout << "vocal brightness event received in projections : " << value << " \n";
+
 }
 // ------------------------------------------------------
 void blowpop::onVocalNoisiness(float& value){
-//    cout << "vocal noisiness event received in projections : " << value << " \n";
+
 }
 // ------------------------------------------------------
 void blowpop::onVocalPitch(float& value){
-//    cout << "vocal pitch event received in projections : " << value << " \n";
+
 }
 // ------------------------------------------------------
 void blowpop::onVocalClass(int& value){
-//    cout << "vocal class event received in projections : " << value << " \n";
+
 }
 
+#pragma mark percussion callbacks
+// ------------------------------------------------------
+void blowpop::onPercussionOnset(int& value){
+    cout << "percussion onset : " << value << " \n";
+}
+// ------------------------------------------------------
+void blowpop::onPercussionBrightness(float &value){
+
+}
+// ------------------------------------------------------
+void blowpop::onPercussionNoisiness(float &value){
+
+}
+// ------------------------------------------------------
+void blowpop::onPercussionLoudness(float &value){
+
+}
+// ------------------------------------------------------
+void blowpop::onPercussionPitch(float &value){
+
+}
+
+#pragma mark keyboard callbacks
 // ------------------------------------------------------
 void blowpop::keyPressed(ofKeyEventArgs& args){
 	if( args.key == 'o' ){
@@ -164,7 +201,7 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 	}
 
     if( args.key == ' ' ){
-        onPercOnset();
+//        onPercOnset();
     }
     
     if( args.key == 's' ){
@@ -180,6 +217,7 @@ void blowpop::keyReleased(ofKeyEventArgs& args){
     
 }
 
+#pragma mark collision callbacks
 
 //--------------------------------------------------------------
 void blowpop::contactStart(ofxBox2dContactArgs &e) {

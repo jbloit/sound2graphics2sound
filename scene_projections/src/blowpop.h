@@ -32,6 +32,7 @@ public:
     void listen();
     void terminate();
     
+    // Vocal events callbacks
     void onVocalOnset(int& value);
     void onVocalLoudness(float& value);
     void onVocalBrightness(float& value);
@@ -39,6 +40,14 @@ public:
     void onVocalPitch(float& value);
     void onVocalClass(int& value);
     
+    // Percussion events callbacks
+    void onPercussionOnset(int& value);
+    void onPercussionLoudness(float& value);
+    void onPercussionBrightness(float& value);
+    void onPercussionNoisiness(float& value);
+    void onPercussionPitch(float& value);
+    
+    //
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);
     

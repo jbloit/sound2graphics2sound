@@ -35,6 +35,12 @@ public:
     ofEvent<float> vocalPitch;
     ofEvent<int> vocalClass;
     
+    ofEvent<int> percussionOnset;
+    ofEvent<float> percussionLoudness;
+    ofEvent<float> percussionBrightness;
+    ofEvent<float> percussionNoisiness;
+    ofEvent<float> percussionPitch;
+    
     // allow client objects to call the sender directly
     ofxOscSender sender;
     
