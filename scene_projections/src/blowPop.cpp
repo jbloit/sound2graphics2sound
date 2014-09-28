@@ -79,6 +79,7 @@ void blowpop::terminate(){
 	ofRemoveListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
     grains.clear();
     joints.clear();
+    stars.clear();
     nucleus.destroy();
     
     // notify Max of scene end
@@ -101,6 +102,7 @@ void blowpop::draw(){
 //    cout << "global value " << globals::Instance()->getValue() << " \n";
     
     nucleus.draw();
+    
     for(int i=0; i<grains.size(); i++) {
         grains[i].get()->draw();
     }
@@ -129,6 +131,11 @@ void blowpop::draw(){
             }
         }
         ofEndShape();
+    }
+    
+    
+    for (int i=0; i<stars.size(); i++){
+        stars[i].get()->draw();
     }
     
 }
@@ -174,6 +181,7 @@ void blowpop::onVocalClass(int& value){
 // ------------------------------------------------------
 void blowpop::onPercussionOnset(int& value){
     cout << "percussion onset : " << value << " \n";
+    addStar(value);
 }
 // ------------------------------------------------------
 void blowpop::onPercussionBrightness(float &value){
@@ -271,7 +279,7 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 }
 
 
-# pragma mark private
+# pragma mark elements
 // ------------------------------------------------------
 // Trigger the grain's sound
 void blowpop::playGrain(int grainId){
@@ -302,7 +310,6 @@ void blowpop::addGrain(int grainId){
     joints.push_back(joint);
     
     focus = grains.back().get();
-
 }
 
 // remove all joints from nucleus to grains
@@ -312,5 +319,17 @@ void blowpop::destroyJoints(){
     }
     joints.clear();
 }
+
+// percussion polygons
+void blowpop::addStar(int starId){
+    ofPtr<Star> star = ofPtr<Star>(new Star);
+    star.get()->setPhysics(2.f, 0.7, 0.5);
+    star.get()->setPosition(440, 220);
+    star.get()->addTriangle(ofVec2f(40,200), ofVec2f(100,100), ofVec2f(300,310));
+    star.get()->create(ofworld.getWorld());
+    stars.push_back(star);
+}
+
+
 
 

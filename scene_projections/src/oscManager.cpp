@@ -29,7 +29,6 @@ void oscManager::setup(){
 	sender.setup(HOST, OSC_SEND_PORT);
 }
 
-
 // --------------------------------------------------------------------------
 void oscManager::update(){
     // hide old messages
