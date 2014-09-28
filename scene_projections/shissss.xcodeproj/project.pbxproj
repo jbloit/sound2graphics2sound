@@ -83,6 +83,7 @@
 		6D688DD619A7395A00383F9F /* ofxBox2dRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688D9D19A7395900383F9F /* ofxBox2dRect.cpp */; };
 		6D688DDF19A73CDB00383F9F /* projections.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D688DDD19A73CDB00383F9F /* projections.cpp */; };
 		6D68D47719D2F9D800CF543D /* Hull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D68D47519D2F9D800CF543D /* Hull.cpp */; };
+		6D68D47D19D4AF4D00CF543D /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D68D47B19D4AF4D00CF543D /* Star.cpp */; };
 		6D9079D119BF947E002DBC41 /* blowpop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D9079CF19BF947E002DBC41 /* blowpop.cpp */; };
 		72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EEFA3DA3526E9CDD9C21F9 /* ofxOscBundle.cpp */; };
 		879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9BFFBBF4CC43DEE890B3C3E /* OscTypes.cpp */; };
@@ -305,6 +306,8 @@
 		6D688DDE19A73CDB00383F9F /* projections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = projections.h; path = scenes/projections.h; sourceTree = "<group>"; };
 		6D68D47519D2F9D800CF543D /* Hull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hull.cpp; sourceTree = "<group>"; };
 		6D68D47619D2F9D800CF543D /* Hull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hull.h; sourceTree = "<group>"; };
+		6D68D47B19D4AF4D00CF543D /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
+		6D68D47C19D4AF4D00CF543D /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
 		6D9079CF19BF947E002DBC41 /* blowpop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blowpop.cpp; sourceTree = "<group>"; };
 		6D9079D019BF947E002DBC41 /* blowpop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blowpop.h; sourceTree = "<group>"; };
 		7689F8A0F3D0B7635A8C3104 /* ofxOscArg.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscArg.h; path = ../../../addons/ofxOsc/src/ofxOscArg.h; sourceTree = SOURCE_ROOT; };
@@ -455,6 +458,8 @@
 				6D13A5E819CF42A8006FCF14 /* BaseUserData.h */,
 				6D1DCB9819D2CE77007C3A5A /* Grain.cpp */,
 				6D1DCB9919D2CE77007C3A5A /* Grain.h */,
+				6D68D47B19D4AF4D00CF543D /* Star.cpp */,
+				6D68D47C19D4AF4D00CF543D /* Star.h */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -960,6 +965,7 @@
 				6D688DCD19A7395A00383F9F /* b2WheelJoint.cpp in Sources */,
 				6D688DAA19A7395900383F9F /* b2CircleShape.cpp in Sources */,
 				6D688DA519A7395900383F9F /* b2Collision.cpp in Sources */,
+				6D68D47D19D4AF4D00CF543D /* Star.cpp in Sources */,
 				6D688DD119A7395A00383F9F /* ofxBox2dBaseShape.cpp in Sources */,
 				6D688DA919A7395900383F9F /* b2ChainShape.cpp in Sources */,
 				6D688DD519A7395A00383F9F /* ofxBox2dPolygon.cpp in Sources */,

@@ -23,7 +23,8 @@ public:
     enum UserDataType {
             bounds = 0,
             blowpop_grain = 1,
-            blowpop_nucleus = 2
+            blowpop_nucleus = 2,
+            blowpop_star = 3
     };
     
     UserDataType getType() const;

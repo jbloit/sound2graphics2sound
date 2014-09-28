@@ -26,7 +26,7 @@ inline GrainData::GrainData(){
 }
 
 
-// A Custom Particle extedning the box2d circle
+// A Custom Particle extending the box2d circle
 class Grain : public ofxBox2dCircle {
 	
 public:

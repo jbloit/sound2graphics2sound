@@ -44,7 +44,6 @@ void blowpop::setup(){
     myNucleusData->bHit = false;
     
     
-    
     focus = NULL;
 
 }
@@ -163,6 +162,10 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
         int val = 0;
 		onVocalOnset(val);
 	}
+
+    if( args.key == ' ' ){
+        onPercOnset();
+    }
     
     if( args.key == 's' ){
 		drawSkeleton = !drawSkeleton;

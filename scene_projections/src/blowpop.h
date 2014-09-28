@@ -20,6 +20,7 @@
 #include "BaseUserData.h"
 #include "Grain.h"
 #include "Hull.h"
+#include "Star.h"
 
 class blowpop{
     
@@ -48,12 +49,13 @@ private:
     float radius;
     int numberOfNodes;
     ofxBox2dCircle nucleus;                         // center of vocal cluster
-    vector <ofPtr<Grain> >	grains;                 // default box2d circles
+    vector <ofPtr<Grain> >	grains;                 // vocal grains
     vector <ofPtr<ofxBox2dJoint> > joints;
     ofxBox2dCircle * focus;                         // pointer to element that currently has focus
-    
     void addGrain(int grainId);
     void playGrain(int grainId);
+    
+    vector <ofPtr<Star> > stars;                    // percussion stars
     
 	// this is the function for contacts
 	void contactStart(ofxBox2dContactArgs &e);
