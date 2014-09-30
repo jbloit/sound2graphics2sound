@@ -90,7 +90,7 @@ void blowpop::terminate(){
     ofxOscMessage m;
     m.setAddress("/blowpop/on");
     m.addIntArg(0);
-    osc->sender.sendMessage(m);    
+    osc->sender.sendMessage(m);
 }
 
 // ------------------------------------------------------
@@ -303,8 +303,7 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 //	}
 }
 
-
-# pragma mark elements
+# pragma mark behavior
 // ------------------------------------------------------
 // Trigger the grain's sound
 void blowpop::playGrain(int grainId){
