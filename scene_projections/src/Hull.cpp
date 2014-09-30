@@ -4,10 +4,9 @@
 //
 //  Created by Julien Bloit on 24/09/14.
 //
-//
+//  Find convex hull for a set of 2D points. Source code: https://gist.github.com/companje/10677337
 
 #include "Hull.h"
-
 
 bool lexicalComparison(const ofPoint& v1, const ofPoint& v2) {
     if (v1.x > v2.x) return true;

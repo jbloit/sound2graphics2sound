@@ -54,6 +54,10 @@ void blowpop::setup(){
     
     focus = NULL;
 
+    drawMembrane = true;
+    
+    doPop = false; // arm the pop() function
+
 }
 
 // ------------------------------------------------------
@@ -86,14 +90,16 @@ void blowpop::terminate(){
     ofxOscMessage m;
     m.setAddress("/blowpop/on");
     m.addIntArg(0);
-    osc->sender.sendMessage(m);
-    
+    osc->sender.sendMessage(m);    
 }
-
 
 // ------------------------------------------------------
 void blowpop::update(){
     
+    if (doPop) {
+        pop();
+        doPop = false;
+    }
 }
 
 // ------------------------------------------------------
@@ -101,13 +107,16 @@ void blowpop::draw(){
     
 //    cout << "global value " << globals::Instance()->getValue() << " \n";
     
+    // Nucleus
     nucleus.draw();
     
+    // Grains
     for(int i=0; i<grains.size(); i++) {
         grains[i].get()->draw();
     }
     
-    if (grains.size()>2){
+    // Membrane ( Hull around grains )
+    if (grains.size()>2 && drawMembrane){
         vector<ofPoint> points, membrane;
         for (int i = 0; i<grains.size(); i++){
             points.push_back(ofPoint(grains[i]->getPosition()));
@@ -116,7 +125,7 @@ void blowpop::draw(){
         membrane = hull.getHull(points);
         
         ofFill();
-        ofSetColor(255, 0, 255, 150);
+        ofSetColor(255, 255, 255, 100);
         ofBeginShape();
         for (int i = 0; i < membrane.size(); i++){
             if (i == 0){
@@ -133,7 +142,7 @@ void blowpop::draw(){
         ofEndShape();
     }
     
-    
+    // Percussions star shapes
     for (int i=0; i<stars.size(); i++){
         stars[i].get()->draw();
     }
@@ -152,7 +161,7 @@ void blowpop::onVocalOnset(int& value){
 // ------------------------------------------------------
 void blowpop::onVocalLoudness(float& value){
     // make focus grain grow
-    float growfactor = 1;
+    float growfactor = 0.2;
     if (focus != NULL){
         float currentRadius =  focus->getRadius();
         currentRadius += growfactor * value;
@@ -208,6 +217,12 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 		onVocalOnset(val);
 	}
 
+    if( args.key == 'p' ){
+        int val = 0;
+		onPercussionOnset(val);
+	}
+
+    
     if( args.key == ' ' ){
 //        onPercOnset();
     }
@@ -217,7 +232,7 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 	}
     
     if( args.key == ' ' ){
-        destroyJoints();
+        doPop = true;
     }
     
 }
@@ -236,9 +251,10 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
         BaseUserData *dataB = (BaseUserData*) e.b->GetBody()->GetUserData();
         
         if (dataA && dataB){
+
             // grain-grain collision
             if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::blowpop_grain){
-                cout << "*--* grain-grain collision " << endl;
+//                cout << "*--* grain-grain collision " << endl;
             }
             // grain-bounds collision
             if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::bounds){
@@ -251,30 +267,39 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
                 cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
                 playGrain(myGrain->grainId);
+                
             }
             // nucleus-grain collision
             if (dataA->getType() == BaseUserData::blowpop_nucleus && dataB->getType() == BaseUserData::blowpop_grain){
                 cout << ".--* nucleus-grain collision " << endl;
 //                destroyJoints();
             }
+            // star-grain collision
+            if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
+                cout << "$--* star-grain collision " << endl;
+                doPop = true;
+            }
+            
         }
 	}
 }
 
 //--------------------------------------------------------------
 void blowpop::contactEnd(ofxBox2dContactArgs &e) {
-//	if(e.a != NULL && e.b != NULL) {
+//    if(e.a != NULL && e.b != NULL) {
 //		
-//		SoundData * aData = (SoundData*)e.a->GetBody()->GetUserData();
-//		SoundData * bData = (SoundData*)e.b->GetBody()->GetUserData();
-//		
-//		if(aData) {
-//			aData->bHit = false;
-//		}
-//		
-//		if(bData) {
-//			bData->bHit = false;
-//		}
+//        // Determine which elements collided
+//        BaseUserData *dataA = (BaseUserData*) e.a->GetBody()->GetUserData();
+//        BaseUserData *dataB = (BaseUserData*) e.b->GetBody()->GetUserData();
+//        
+//        if (dataA && dataB){
+//
+//            // star-grain collision
+//            if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
+//                cout << "$--* star-grain collision " << endl;
+//
+//            }
+//        }
 //	}
 }
 
@@ -312,24 +337,23 @@ void blowpop::addGrain(int grainId){
     focus = grains.back().get();
 }
 
-// remove all joints from nucleus to grains
-void blowpop::destroyJoints(){
-    for(int i=0; i<joints.size(); i++) {
-        joints[i].get()->destroy();
-    }
-    joints.clear();
-}
 
 // percussion polygons
 void blowpop::addStar(int starId){
     ofPtr<Star> star = ofPtr<Star>(new Star);
-    star.get()->setPhysics(2.f, 0.7, 0.5);
-    star.get()->setPosition(440, 220);
-    star.get()->addTriangle(ofVec2f(40,200), ofVec2f(100,100), ofVec2f(300,310));
+    
     star.get()->create(ofworld.getWorld());
+    star.get()->setPosition(ofGetWidth()/3.f, ofGetHeight()/4.f);
+    star.get()->setId(starId);
     stars.push_back(star);
 }
 
-
-
+// Pop the grape of grains!
+void blowpop::pop(){
+    for(int i=0; i<joints.size(); i++) {
+        joints[i].get()->destroy();
+    }
+    joints.clear();
+    drawMembrane = false;
+}
 

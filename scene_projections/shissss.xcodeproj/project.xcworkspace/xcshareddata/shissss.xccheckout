@@ -10,29 +10,29 @@
 	<string>shissss</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>EA55470A-588C-4E4D-BFD5-8A8C53874F0C</key>
+		<key>E47E0751DCBFF97B78F5812A78AD9A5C1D41F67D</key>
 		<string>https://github.com/jbloit/un-oeuf-OF.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>scene_projections/shissss.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>EA55470A-588C-4E4D-BFD5-8A8C53874F0C</key>
+		<key>E47E0751DCBFF97B78F5812A78AD9A5C1D41F67D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jbloit/un-oeuf-OF.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EA55470A-588C-4E4D-BFD5-8A8C53874F0C</string>
+	<string>E47E0751DCBFF97B78F5812A78AD9A5C1D41F67D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EA55470A-588C-4E4D-BFD5-8A8C53874F0C</string>
+			<string>E47E0751DCBFF97B78F5812A78AD9A5C1D41F67D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>un-oeuf-OF</string>
 		</dict>

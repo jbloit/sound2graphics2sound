@@ -63,6 +63,10 @@ private:
     ofxBox2dCircle * focus;                         // pointer to element that currently has focus
     void addGrain(int grainId);
     void playGrain(int grainId);
+    void pop();                                     // POP!
+    bool doPop;
+    
+    bool drawMembrane;                              // membrane around grains
     
     vector <ofPtr<Star> > stars;                    // percussion stars
     void addStar(int starId);
@@ -71,7 +75,7 @@ private:
 	void contactStart(ofxBox2dContactArgs &e);
 	void contactEnd(ofxBox2dContactArgs &e);
     
-    void destroyJoints();
+
     
     bool drawSkeleton;
     

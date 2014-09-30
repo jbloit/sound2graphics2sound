@@ -39,17 +39,16 @@ public:
 	}
 
 	void draw() {
-		GrainData* theData = (GrainData*)getData();
-		if(theData) {
-			float radius = getRadius();
-			ofPushMatrix();
-			ofTranslate(getPosition());
-			ofRotateZ(getRotation());
-			ofSetColor(255);
-			ofFill();
-			ofCircle(0, 0, radius);
-			ofPopMatrix();
-		}
+        
+        float radius = getRadius();
+        ofPushMatrix();
+        ofTranslate(getPosition());
+        ofRotateZ(getRotation());
+        ofSetColor(255,255,255, 255 * log(1+getVelocity().lengthSquared()));   // velocity --> brightness
+        ofFill();
+        ofCircle(0, 0, radius);
+        ofPopMatrix();
+		
 	}
 };
 
