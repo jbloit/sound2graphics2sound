@@ -324,7 +324,7 @@ void blowpop::addGrain(int grainId){
     grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
     
     // add custom data
-    grain.get()->setId(grainId);
+    grain.get()->dataSetup(grainId);
     grains.push_back(grain);
     
     // now connect circle to the nucleus
@@ -343,7 +343,7 @@ void blowpop::addStar(int starId){
     
     star.get()->create(ofworld.getWorld());
     star.get()->setPosition(ofGetWidth()/3.f, ofGetHeight()/4.f);
-    star.get()->setId(starId);
+    star.get()->dataSetup(starId);
     stars.push_back(star);
 }
 

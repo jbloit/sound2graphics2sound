@@ -40,6 +40,7 @@ class ofApp : public ofBaseApp {
     ofxToggle blowpop_on;
     bool previousBlowpopToggle;
     
+    float previousGravity;
     ofxFloatSlider gravity;
 
 };

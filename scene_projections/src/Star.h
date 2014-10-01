@@ -38,7 +38,7 @@ public:
 //        addTriangle(ofVec2f(ofRandom(223, 33),200), ofVec2f(44,65), ofVec2f(23,78));
     }
     // Create user data with an id
-	void setId(int starId) {
+	void dataSetup(int starId) {
         setData(new StarData());
         StarData * myStarData = (StarData*) getData();
         myStarData->starId = starId;

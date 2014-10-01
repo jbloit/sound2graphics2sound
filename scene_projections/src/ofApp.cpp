@@ -31,6 +31,7 @@ void ofApp::setup(){
     previousProjToggle = blowpop_on;
     
     gui.add(gravity.setup( "gravity", 10, 0, 20 ));
+    previousGravity = gravity;
     
     showMenu = true;
     
@@ -68,10 +69,12 @@ void ofApp::update(){
         previousBlowpopToggle = false;
     }
     if (blowpop_on) blowpop.update();
-    
-    
-    cout << "gravity " << gravity << "\n";
-    ofworld.setGravity(0, gravity);
+
+    if (gravity != previousGravity){
+        ofworld.setGravity(0, gravity);
+        previousGravity = gravity;
+        cout << "gravity changed to: " << gravity << "\n";
+    }
 }
 
 //--------------------------------------------------------------
