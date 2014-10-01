@@ -10,10 +10,12 @@
 #define scene_projections__projectGlobals_h
 
 #include "ofxBox2D.h"
-
+#include "ofMain.h"
 // An extern variable can be declared multiple times, (so we can include that file in many others)
 // but defined once and only once (we do that in ofApp.cpp)
 
 extern ofxBox2d ofworld;
+extern ofVec2f percussionnistPosition;
+extern ofVec2f vocalistPosition;
 
 #endif

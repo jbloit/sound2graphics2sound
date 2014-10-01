@@ -20,7 +20,7 @@ public:
     GrainData();
 	int	 grainId;
 	bool bHit;
-    bool changedDirection;
+    
 };
 inline GrainData::GrainData(){
 	m_type = blowpop_grain;
@@ -34,14 +34,27 @@ public:
     // Create user data with an id
 	void dataSetup(int grainId) {
         setData(new GrainData());
-        GrainData * myGrainData = (GrainData*) getData();
+        myGrainData = (GrainData*) getData();
         myGrainData->grainId = grainId;
         myGrainData->bHit = false;
+
+        changedDirection =false;
+        energy = 0.f;
+        isMoving = true;
+        wasMoving = true;
 	}
     
     void update(){
-    
-    
+
+        energy = log( 1 + getVelocity().lengthSquared() );
+        
+        if (energy < 0.2f) isMoving = false; else isMoving = true;
+        
+        if (isMoving != wasMoving)
+            changedDirection = true;
+        else changedDirection = false;
+        
+        wasMoving = isMoving;
     }
 
 	void draw() {
@@ -50,14 +63,28 @@ public:
         ofPushMatrix();
         ofTranslate(getPosition());
         ofRotateZ(getRotation());
-        float energy = log(1+getVelocity().lengthSquared());
-        cout << "energy : " << energy << "\n";
+
         ofSetColor(255,255,255, 255 * energy);   // velocity --> brightness
         ofFill();
         ofCircle(0, 0, radius);
         ofPopMatrix();
 		
 	}
+    
+    int getId(){
+        if (myGrainData != NULL){
+            return myGrainData->grainId;
+        }
+    }
+
+    bool changedDirection;
+    bool isMoving;
+    float energy;
+    int objectId;
+    
+private:
+    GrainData * myGrainData;  // we need this data object, because that's all we have available during a collision event.
+    bool wasMoving;
 };
 
 

@@ -62,7 +62,7 @@ private:
     vector <ofPtr<ofxBox2dJoint> > joints;
     ofxBox2dCircle * focus;                         // pointer to element that currently has focus
     void addGrain(int grainId);
-    void playGrain(int grainId);
+    void playGrain(int grainId, float rate=1.f, float amplitude=1.f);
     void pop();                                     // POP!
     bool doPop;
     

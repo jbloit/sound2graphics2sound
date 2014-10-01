@@ -43,9 +43,7 @@ void blowpop::setup(){
     
     //// Scene elements
     // TODO: see if we want to push that to new class
-    nucleus_x = ofGetWidth()/2;
-    nucleus_y = ofGetHeight()/2;
-    nucleus.setup(ofworld.getWorld(), nucleus_x, nucleus_y, 8);
+    nucleus.setup(ofworld.getWorld(), vocalistPosition, 8);
     
     // add custom data
     nucleus.setData(new NucleusData());
@@ -100,12 +98,27 @@ void blowpop::update(){
         pop();
         doPop = false;
     }
+    
+    // make stars gravitate around nucleus
+    for(int i=0; i<stars.size(); i++) {
+        stars[i].get()->update();
+        float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
+        if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+        else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
+    }
+    
+    
+    // play grains when moving
+    for(int i=0; i<grains.size(); i++) {
+        grains[i].get()->update();
+        if (grains[i].get()->changedDirection){
+            playGrain(grains[i].get()->getId(), grains[i].get()->energy, 1.f/grains.size());
+        }
+    }
 }
 
 // ------------------------------------------------------
 void blowpop::draw(){
-    
-//    cout << "global value " << globals::Instance()->getValue() << " \n";
     
     // Nucleus
     nucleus.draw();
@@ -306,11 +319,13 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 # pragma mark behavior
 // ------------------------------------------------------
 // Trigger the grain's sound
-void blowpop::playGrain(int grainId){
+void blowpop::playGrain(int grainId, float rate, float amplitude){
     // play grain
     ofxOscMessage m;
     m.setAddress("/blowpop/play");
     m.addIntArg(grainId);
+    m.addFloatArg(rate);
+    m.addFloatArg(amplitude);
     osc->sender.sendMessage(m);
 }
 // ------------------------------------------------------
@@ -320,7 +335,7 @@ void blowpop::addGrain(int grainId){
     float r = 1.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
     grain.get()->setPhysics(3.0, 0.53, 0.1);
-    grain.get()->setup(ofworld.getWorld(), ofGetWidth()/2.f, ofGetHeight()/2.f, r);
+    grain.get()->setup(ofworld.getWorld(), vocalistPosition, r);
     grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
     
     // add custom data
@@ -340,9 +355,8 @@ void blowpop::addGrain(int grainId){
 // percussion polygons
 void blowpop::addStar(int starId){
     ofPtr<Star> star = ofPtr<Star>(new Star);
-    
     star.get()->create(ofworld.getWorld());
-    star.get()->setPosition(ofGetWidth()/3.f, ofGetHeight()/4.f);
+    star.get()->setPosition(percussionnistPosition);
     star.get()->dataSetup(starId);
     stars.push_back(star);
 }

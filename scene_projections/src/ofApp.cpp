@@ -3,6 +3,8 @@
 
 // Extern variables have to be defined once and only once.
 ofxBox2d ofworld;
+ofVec2f percussionnistPosition;
+ofVec2f vocalistPosition;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -35,6 +37,9 @@ void ofApp::setup(){
     
     showMenu = true;
     
+    // init players positions
+    vocalistPosition = ofVec2f(ofGetWidth()/4, ofGetHeight()/2);
+    percussionnistPosition = ofVec2f(3*ofGetWidth()/4, ofGetHeight()/2);
 }
 
 //--------------------------------------------------------------
