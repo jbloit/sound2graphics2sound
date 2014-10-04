@@ -298,7 +298,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
                 playGrain(myGrain->grainId, 1, 1/grains.size());
                 
                 // did collide with side walls?
-                if ((myGrain->position.x - 4 * myGrain->radius) <= 0 || myGrain->position.x + 4 * myGrain->radius >= ofGetWidth()) {
+                if ((myGrain->position.x - 10 * myGrain->radius) <= 0 || myGrain->position.x + 10 * myGrain->radius >= ofGetWidth()) {
                     myGrain->toRemove = true;
                     
                 }
