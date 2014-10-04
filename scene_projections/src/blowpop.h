@@ -67,6 +67,9 @@ private:
     void playGrain(int grainId, float rate=1.f, float amplitude=1.f);
     void pop();                                     // POP!
     bool doPop;
+    bool popped; 
+    
+    bool blowOut;   // if true, apply force from left to right
     
     bool drawMembrane;                              // membrane around grains
     

@@ -57,6 +57,10 @@ void blowpop::setup(){
     drawMembrane = true;
     
     doPop = false; // arm the pop() function
+    popped = false;
+    
+    
+    blowOut = false;
 
 }
 
@@ -96,7 +100,7 @@ void blowpop::terminate(){
 // ------------------------------------------------------
 void blowpop::update(){
 
-    cout << "grains size " << grains.size() << "\n";
+//    cout << "grains size " << grains.size() << "\n";
     
     if (doPop) {
         pop();
@@ -122,11 +126,22 @@ void blowpop::update(){
         }
         
         if (grains[i].get()->shouldRemove()){
-
             grains.erase(grains.begin()+i);
         }
-
     }
+    
+    // blow out particles off bounds
+    if (blowOut && popped){
+
+        for(int i=0; i<grains.size(); i++){
+             grains[i].get()->addAttractionPoint(ofVec2f(ofGetWidth() * 2, ofGetHeight()/2), 0.0001);
+        }
+        
+        for(int i=0; i<stars.size(); i++){
+            stars[i].get()->addAttractionPoint(ofVec2f(ofGetWidth() * 2, ofGetHeight()/2), 0.1);
+        }
+    }
+    
 }
 
 // ------------------------------------------------------
@@ -216,6 +231,9 @@ void blowpop::onVocalPitch(float& value){
 // ------------------------------------------------------
 void blowpop::onVocalClass(int& value){
 
+    cout << "----- VOCAL class " << value << "\n";
+    
+    if (value == 3) blowOut = true; else blowOut = false;
 }
 
 #pragma mark percussion callbacks
@@ -398,5 +416,6 @@ void blowpop::pop(){
     drawMembrane = false;
     focusJoint = NULL;
     focus = NULL;
+    popped = true;
 }
 
