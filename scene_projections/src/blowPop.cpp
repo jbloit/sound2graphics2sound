@@ -119,7 +119,7 @@ void blowpop::update(){
         }
         
         if (grains[i].get()->shouldRemove()){
-            cout << " -- REMOVE " << i << "\n";
+
             grains.erase(grains.begin()+i);
         }
 
@@ -355,7 +355,7 @@ void blowpop::addGrain(int grainId){
     // Create grain
     float r = 1.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
-    grain.get()->setPhysics(10.0, 0.9, 0.9);
+    grain.get()->setPhysics(3.0, 0.6, 0.5);
     grain.get()->setup(ofworld.getWorld(), vocalistPosition, r);
     grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
     
