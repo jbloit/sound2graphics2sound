@@ -32,7 +32,7 @@ void ofApp::setup(){
     gui.add(blowpop_on.setup("blowpop", false));
     previousProjToggle = blowpop_on;
     
-    gui.add(gravity.setup( "gravity", 10, 0, 20 ));
+    gui.add(gravity.setup( "gravity", 0, 0, 20 ));
     previousGravity = gravity;
     
     showMenu = true;

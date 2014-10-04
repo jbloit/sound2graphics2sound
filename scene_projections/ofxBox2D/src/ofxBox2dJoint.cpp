@@ -120,7 +120,7 @@ void ofxBox2dJoint::setLength(float len) {
 }
 float ofxBox2dJoint::getLength() {
 	if(joint) {
-		return (float)joint->GetLength();
+		return (float)joint->GetLength() * OFX_BOX2D_SCALE;
 	}
 	return 0;
 }

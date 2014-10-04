@@ -61,6 +61,8 @@ private:
     vector <ofPtr<Grain> >	grains;                 // vocal grains
     vector <ofPtr<ofxBox2dJoint> > joints;
     ofxBox2dCircle * focus;                         // pointer to element that currently has focus
+    ofxBox2dJoint * focusJoint;
+    
     void addGrain(int grainId);
     void playGrain(int grainId, float rate=1.f, float amplitude=1.f);
     void pop();                                     // POP!
@@ -74,7 +76,6 @@ private:
 	// this is the function for contacts
 	void contactStart(ofxBox2dContactArgs &e);
 	void contactEnd(ofxBox2dContactArgs &e);
-    
 
     
     bool drawSkeleton;
