@@ -43,7 +43,8 @@ void blowpop::setup(){
     
     //// Scene elements
     // TODO: see if we want to push that to new class
-    nucleus.setup(ofworld.getWorld(), vocalistPosition, 8);
+    ofVec2f nucleusPos = ofVec2f(ofGetWidth()/2, ofGetHeight()/2);
+    nucleus.setup(ofworld.getWorld(), nucleusPos, 8);
     
     // add custom data
     nucleus.setData(new NucleusData());
