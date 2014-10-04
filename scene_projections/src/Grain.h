@@ -20,8 +20,11 @@ public:
     GrainData();
 	int	 grainId;
 	bool bHit;
-    
+    ofVec2f position;
+    bool toRemove;
+    float radius;
 };
+
 inline GrainData::GrainData(){
 	m_type = blowpop_grain;
 }
@@ -37,6 +40,9 @@ public:
         myGrainData = (GrainData*) getData();
         myGrainData->grainId = grainId;
         myGrainData->bHit = false;
+        myGrainData->position = getPosition();
+        myGrainData->toRemove = false;
+        myGrainData->radius = getRadius();
 
         changedDirection =false;
         energy = 0.f;
@@ -55,6 +61,9 @@ public:
         else changedDirection = false;
         
         wasMoving = isMoving;
+        
+        myGrainData->position = getPosition();
+        myGrainData->radius = getRadius();
     }
 
 	void draw() {
@@ -75,6 +84,10 @@ public:
         if (myGrainData != NULL){
             return myGrainData->grainId;
         }
+    }
+    
+    bool shouldRemove(){
+        return myGrainData->toRemove;
     }
 
     bool changedDirection;

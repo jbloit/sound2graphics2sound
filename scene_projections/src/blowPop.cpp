@@ -95,6 +95,8 @@ void blowpop::terminate(){
 
 // ------------------------------------------------------
 void blowpop::update(){
+
+    cout << "grains size " << grains.size() << "\n";
     
     if (doPop) {
         pop();
@@ -109,13 +111,18 @@ void blowpop::update(){
         else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
     }
     
-    
     // play grains when moving
     for(int i=0; i<grains.size(); i++) {
         grains[i].get()->update();
         if (grains[i].get()->changedDirection){
             playGrain(grains[i].get()->getId(), grains[i].get()->energy, 1.f/grains.size());
         }
+        
+        if (grains[i].get()->shouldRemove()){
+            cout << " -- REMOVE " << i << "\n";
+            grains.erase(grains.begin()+i);
+        }
+
     }
 }
 
@@ -186,14 +193,10 @@ void blowpop::onVocalLoudness(float& value){
     float jointGrowFactor = 2.f;
     if (focusJoint != NULL){
         float currentLength =  focusJoint->getLength();
-        cout << "------ " << "\n";
         currentLength += jointGrowFactor * value;
         focusJoint->setLength(currentLength);
-        cout << "LEN " << currentLength << "\n";
     }
     
-    
-
 }
 // ------------------------------------------------------
 void blowpop::onVocalBrightness(float& value){
@@ -285,15 +288,20 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             // grain-bounds collision
             if (dataA->getType() == BaseUserData::blowpop_grain && dataB->getType() == BaseUserData::bounds){
 //                cout << "*--_ grain-bounds collision " << endl;
-                GrainData * myGrain = (GrainData*) dataA;
-                playGrain(myGrain->grainId);
+//                GrainData * myGrain = (GrainData*) dataA;
+//                playGrain(myGrain->grainId);
             }
             // bounds-grain collision
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
-//                cout << "_--* bounds-grain collision " << endl;
+                cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
-                playGrain(myGrain->grainId);
+                playGrain(myGrain->grainId, 1, 1/grains.size());
                 
+                // did collide with side walls?
+                if ((myGrain->position.x - 4 * myGrain->radius) <= 0 || myGrain->position.x + 4 * myGrain->radius >= ofGetWidth()) {
+                    myGrain->toRemove = true;
+                    
+                }
             }
             // nucleus-grain collision
             if (dataA->getType() == BaseUserData::blowpop_nucleus && dataB->getType() == BaseUserData::blowpop_grain){
@@ -359,13 +367,11 @@ void blowpop::addGrain(int grainId){
     ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
     joint.get()->setup(ofworld.getWorld(), nucleus.body, grains.back().get()->body);
     joint.get()->setLength(5);
-    cout << "New joint length "<< joint.get()->getLength() << "\n";
     joints.push_back(joint);
     
     focus = grains.back().get();
     focusJoint = joints.back().get();
 }
-
 
 // percussion polygons
 void blowpop::addStar(int starId){
@@ -384,5 +390,6 @@ void blowpop::pop(){
     joints.clear();
     drawMembrane = false;
     focusJoint = NULL;
+    focus = NULL;
 }
 

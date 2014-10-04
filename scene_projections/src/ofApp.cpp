@@ -19,6 +19,12 @@ void ofApp::setup(){
 	ofworld.init();
 	ofworld.setGravity(0, 10);
 	ofworld.createBounds();
+    
+//    ofworld.createGround(0, 0, ofGetWidth(), 0);                          // ceiling
+//    ofworld.createGround(0, ofGetHeight(), ofGetWidth(), ofGetHeight());  // floor
+    
+    
+    
 	ofworld.setFPS(30.0);
 	ofworld.registerGrabbing();
     ofworld.enableEvents();   // <-- turn on the event listener
