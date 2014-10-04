@@ -106,9 +106,12 @@ void blowpop::update(){
     // make stars gravitate around nucleus
     for(int i=0; i<stars.size(); i++) {
         stars[i].get()->update();
-        float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
-        if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
-        else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
+        
+        if (stars[i].get()->doGravitate()){
+            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
+            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
+        }
     }
     
     // play grains when moving
@@ -386,6 +389,10 @@ void blowpop::addStar(int starId){
 void blowpop::pop(){
     for(int i=0; i<joints.size(); i++) {
         joints[i].get()->destroy();
+    }
+    
+    for (int i=0; i<stars.size(); i++){
+        stars[i].get()->setGravitate(false);
     }
     joints.clear();
     drawMembrane = false;

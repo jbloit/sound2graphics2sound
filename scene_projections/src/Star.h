@@ -20,6 +20,7 @@ public:
     StarData();
 	int	 starId;
 	bool bHit;
+    bool gravitate; // should the star gravitate around nucleus
 };
 inline StarData::StarData(){
 	m_type = blowpop_star;
@@ -40,15 +41,16 @@ public:
     // Create user data with an id
 	void dataSetup(int starId) {
         setData(new StarData());
-        StarData * myStarData = (StarData*) getData();
+        myStarData = (StarData*) getData();
         myStarData->starId = starId;
         myStarData->bHit = false;
+        myStarData->gravitate = true;
 	}
     
     void update(){
         
     }
-    
+
     void draw(){
     	if(body == NULL) {
             ofLog(OF_LOG_ERROR, "ofxBox2dPolygon::draw body null\n");
@@ -62,6 +64,16 @@ public:
         mesh.draw(ofGetFill()==OF_OUTLINE?OF_MESH_WIREFRAME:OF_MESH_FILL);
         ofPopMatrix();
     }
+    
+    bool doGravitate(){
+        return myStarData->gravitate;
+    }
+    
+    void setGravitate(bool state){
+        myStarData->gravitate = state;
+    }
+private:
+    StarData * myStarData;  // we need this data object, because that's all we have available during a collision event.
 };
 
 
