@@ -29,7 +29,6 @@ inline GrainData::GrainData(){
 	m_type = blowpop_grain;
 }
 
-
 // A Custom Particle extending the box2d circle
 class Grain : public ofxBox2dCircle {
 	

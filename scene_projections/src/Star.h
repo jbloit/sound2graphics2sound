@@ -21,6 +21,7 @@ public:
 	int	 starId;
 	bool bHit;
     bool gravitate; // should the star gravitate around nucleus
+    float energy;
 };
 inline StarData::StarData(){
 	m_type = blowpop_star;
@@ -44,6 +45,7 @@ public:
         myStarData->starId = starId;
         myStarData->bHit = false;
         myStarData->gravitate = true;
+        myStarData->energy = 0;
         
         energy = 0.f;
         isMoving = true;
@@ -56,6 +58,7 @@ public:
         energy = log( 1 + getVelocity().lengthSquared() );
         if (energy < 0.2f) isMoving = false; else isMoving = true;
         wasMoving = isMoving;
+        myStarData->energy = energy;
         
     }
 

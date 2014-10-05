@@ -197,9 +197,8 @@ void blowpop::draw(){
 
 // ------------------------------------------------------
 void blowpop::onVocalOnset(int& value){
-    cout << "BLOWPOP - VOCAL ONSET, id: " << value << " \n";
 
-//    addGrain(value);
+    addGrain(value);
 }
 
 // ------------------------------------------------------
@@ -350,9 +349,9 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_star){
                 cout << "$--$ star-star collision " << endl;
                 StarData * myStar = (StarData*) dataB;
-                playStar(myStar->starId, 1, 1./stars.size());
+                playStar(myStar->starId, 1, myStar->energy);
                 myStar = (StarData*) dataA;
-                playStar(myStar->starId, 1, 1./stars.size());
+                playStar(myStar->starId, 1, myStar->energy);
             }
             
             // star-grain collision
