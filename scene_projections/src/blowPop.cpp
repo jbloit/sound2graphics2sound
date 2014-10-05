@@ -111,9 +111,8 @@ void blowpop::update(){
     for(int i=0; i<stars.size(); i++) {
         stars[i].get()->update();
         
-        
         if (stars[i].get()->isMoving){
-            starResonnator(i, stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
+            starResonnator(i, stars[i].get()->energy / stars.size(), stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
         
         if (stars[i].get()->doGravitate()){
@@ -231,7 +230,7 @@ void blowpop::onVocalNoisiness(float& value){
 }
 // ------------------------------------------------------
 void blowpop::onVocalPitch(float& value){
-    cout << "----- VOCAL PITCH " << value << "\n";
+//    cout << "----- VOCAL PITCH " << value << "\n";
 
     if (popped){
         ofworld.setGravity(0, - (2 * value - 1) * 5.f);
@@ -346,6 +345,24 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
                 doPop = true;
             }
             
+            
+            // star-star collision
+            if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_star){
+                cout << "$--$ star-star collision " << endl;
+                StarData * myStar = (StarData*) dataB;
+                playStar(myStar->starId, 1, 1./stars.size());
+                myStar = (StarData*) dataA;
+                playStar(myStar->starId, 1, 1./stars.size());
+            }
+            
+            // star-grain collision
+            if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
+                //                cout << "$--* star-grain collision " << endl;
+                GrainData * myGrain = (GrainData*) dataB;
+                playGrain(myGrain->grainId, 1, 1/grains.size());
+                doPop = true;
+            }
+            
         }
 	}
 }
@@ -375,7 +392,7 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 void blowpop::playGrain(int grainId, float rate, float amplitude){
     // play grain
     ofxOscMessage m;
-    m.setAddress("/blowpop/play");
+    m.setAddress("/blowpop/playVox");
     m.addIntArg(grainId);
     m.addFloatArg(rate);
     m.addFloatArg(amplitude);
@@ -394,6 +411,18 @@ void blowpop::starResonnator(int starId, float energy, float x, float y){
 
     osc->sender.sendMessage(m);
 }
+// ------------------------------------------------------
+// Trigger the star's sound
+void blowpop::playStar(int grainId, float rate, float amplitude){
+    // play grain
+    ofxOscMessage m;
+    m.setAddress("/blowpop/playDrum");
+    m.addIntArg(grainId);
+    m.addFloatArg(rate);
+    m.addFloatArg(amplitude);
+    osc->sender.sendMessage(m);
+}
+
 
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
