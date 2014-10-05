@@ -45,9 +45,18 @@ public:
         myStarData->starId = starId;
         myStarData->bHit = false;
         myStarData->gravitate = true;
+        
+        energy = 0.f;
+        isMoving = true;
+        wasMoving = true;
+        
 	}
     
     void update(){
+        
+        energy = log( 1 + getVelocity().lengthSquared() );
+        if (energy < 0.2f) isMoving = false; else isMoving = true;
+        wasMoving = isMoving;
         
     }
 
@@ -72,8 +81,13 @@ public:
     void setGravitate(bool state){
         myStarData->gravitate = state;
     }
+    
+    bool isMoving;
+    float energy;
+    
 private:
     StarData * myStarData;  // we need this data object, because that's all we have available during a collision event.
+    bool wasMoving;
 };
 
 

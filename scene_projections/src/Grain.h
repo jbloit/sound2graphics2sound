@@ -69,11 +69,13 @@ public:
 	void draw() {
         
         float radius = getRadius();
+        float alpha = MAX(100, 255 * energy);
+        
         ofPushMatrix();
         ofTranslate(getPosition());
         ofRotateZ(getRotation());
 
-        ofSetColor(255,255,255, 255 * energy);   // velocity --> brightness
+        ofSetColor(alpha,255,255, alpha);   // velocity --> brightness
         ofFill();
         ofCircle(0, 0, radius);
         ofPopMatrix();

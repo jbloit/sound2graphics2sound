@@ -107,9 +107,14 @@ void blowpop::update(){
         doPop = false;
     }
     
-    // make stars gravitate around nucleus
+    // Stars behavior
     for(int i=0; i<stars.size(); i++) {
         stars[i].get()->update();
+        
+        
+        if (stars[i].get()->isMoving){
+            starResonnator(i, stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
+        }
         
         if (stars[i].get()->doGravitate()){
             float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
@@ -195,7 +200,7 @@ void blowpop::draw(){
 void blowpop::onVocalOnset(int& value){
     cout << "BLOWPOP - VOCAL ONSET, id: " << value << " \n";
 
-    addGrain(value);
+//    addGrain(value);
 }
 
 // ------------------------------------------------------
@@ -226,12 +231,15 @@ void blowpop::onVocalNoisiness(float& value){
 }
 // ------------------------------------------------------
 void blowpop::onVocalPitch(float& value){
+    cout << "----- VOCAL PITCH " << value << "\n";
 
+    if (popped){
+        ofworld.setGravity(0, - (2 * value - 1) * 5.f);
+    }
 }
 // ------------------------------------------------------
 void blowpop::onVocalClass(int& value){
-
-    cout << "----- VOCAL class " << value << "\n";
+     cout << "----- VOCAL class " << value << "\n";
     
     if (value == 3) blowOut = true; else blowOut = false;
 }
@@ -256,6 +264,7 @@ void blowpop::onPercussionLoudness(float &value){
 }
 // ------------------------------------------------------
 void blowpop::onPercussionPitch(float &value){
+    
 
 }
 
@@ -316,7 +325,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
                 cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
-                playGrain(myGrain->grainId, 1, 1/grains.size());
+                playGrain(myGrain->grainId, 1, 0.3);
                 
                 // did collide with side walls?
                 if ((myGrain->position.x - 10 * myGrain->radius) <= 0 || myGrain->position.x + 10 * myGrain->radius >= ofGetWidth()) {
@@ -332,6 +341,8 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             // star-grain collision
             if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
 //                cout << "$--* star-grain collision " << endl;
+                GrainData * myGrain = (GrainData*) dataB;
+                playGrain(myGrain->grainId, 1, 1/grains.size());
                 doPop = true;
             }
             
@@ -370,11 +381,25 @@ void blowpop::playGrain(int grainId, float rate, float amplitude){
     m.addFloatArg(amplitude);
     osc->sender.sendMessage(m);
 }
+
+// ------------------------------------------------------
+// Trigger the star's sonic behavior
+void blowpop::starResonnator(int starId, float energy, float x, float y){
+    ofxOscMessage m;
+    m.setAddress("/blowpop/voxreson");
+    m.addFloatArg(energy);
+    m.addFloatArg(2.f * x / ofGetWidth() - 1.f); // map to [-1,1]
+    m.addFloatArg(ofGetHeight() - y);
+    m.addIntArg(starId);
+
+    osc->sender.sendMessage(m);
+}
+
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
     
     // Create grain
-    float r = 1.f;
+    float r = 5.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
     grain.get()->setPhysics(3.0, 0.6, 0.5);
     grain.get()->setup(ofworld.getWorld(), vocalistPosition, r);
