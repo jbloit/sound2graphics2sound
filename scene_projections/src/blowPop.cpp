@@ -278,11 +278,12 @@ void blowpop::onPercussionPitch(float &value){
 #pragma mark piezo pickup callbacks
 // ------------------------------------------------------
 void blowpop::onPiezo1(int &value){
-    
+    // Randomly delete a star
     int numStars = stars.size();
     if (numStars > 0){
         int i = int(ofRandom(numStars));
         cout << " --- DELETE STAR " << i << "\n";
+        starResonnator(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
         stars.erase(stars.begin()+i);
     }
 }
