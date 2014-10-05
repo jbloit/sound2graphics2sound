@@ -92,6 +92,24 @@ void oscManager::update(){
             ofNotifyEvent(percussionPitch, value , this);
         }
 
+        // Check for piezo pickup onsets
+        if(m.getAddress() == "/piezo1/onset"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(piezo1, value, this);
+        }
+        if(m.getAddress() == "/piezo2/onset"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(piezo2, value, this);
+        }
+        if(m.getAddress() == "/piezo3/onset"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(piezo3, value, this);
+        }
+        if(m.getAddress() == "/piezo4/onset"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(piezo4, value, this);
+        }
+        
     }
     
 }

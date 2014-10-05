@@ -35,12 +35,20 @@ public:
     ofEvent<float> vocalPitch;
     ofEvent<int> vocalClass;
     
+    // Percussion mic
     ofEvent<int> percussionOnset;
     ofEvent<float> percussionLoudness;
     ofEvent<float> percussionBrightness;
     ofEvent<float> percussionNoisiness;
     ofEvent<float> percussionPitch;
     
+    
+    ofEvent<int> piezo1; // onset for piezo pickup
+    ofEvent<int> piezo2; // onset for piezo pickup
+    ofEvent<int> piezo3; // onset for piezo pickup
+    ofEvent<int> piezo4; // onset for piezo pickup
+    
+
     // allow client objects to call the sender directly
     ofxOscSender sender;
     

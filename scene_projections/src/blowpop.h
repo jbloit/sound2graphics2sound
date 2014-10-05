@@ -47,6 +47,12 @@ public:
     void onPercussionNoisiness(float& value);
     void onPercussionPitch(float& value);
     
+    // Piezo pickup events
+    void onPiezo1(int& value);
+    void onPiezo2(int& value);
+    void onPiezo3(int& value);
+    void onPiezo4(int& value);
+    
     //
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);

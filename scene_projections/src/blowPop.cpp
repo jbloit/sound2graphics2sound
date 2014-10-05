@@ -35,6 +35,11 @@ void blowpop::setup(){
     ofAddListener(osc->percussionNoisiness, this, &blowpop::onPercussionNoisiness);
     ofAddListener(osc->percussionPitch, this, &blowpop::onPercussionPitch);
     
+    ofAddListener(osc->piezo1, this, &blowpop::onPiezo1);
+    ofAddListener(osc->piezo2, this, &blowpop::onPiezo2);
+    ofAddListener(osc->piezo3, this, &blowpop::onPiezo3);
+    ofAddListener(osc->piezo4, this, &blowpop::onPiezo4);
+    
     ofRegisterKeyEvents(this);
 	ofAddListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
 	ofAddListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
@@ -82,6 +87,11 @@ void blowpop::terminate(){
     ofRemoveListener(osc->percussionBrightness, this, &blowpop::onPercussionBrightness);
     ofRemoveListener(osc->percussionNoisiness, this, &blowpop::onPercussionNoisiness);
     ofRemoveListener(osc->percussionPitch, this, &blowpop::onPercussionPitch);
+    
+    ofRemoveListener(osc->piezo1, this, &blowpop::onPiezo1);
+    ofRemoveListener(osc->piezo2, this, &blowpop::onPiezo2);
+    ofRemoveListener(osc->piezo3, this, &blowpop::onPiezo3);
+    ofRemoveListener(osc->piezo4, this, &blowpop::onPiezo4);
     
     ofRemoveListener(ofworld.contactStartEvents, this, &blowpop::contactStart);
 	ofRemoveListener(ofworld.contactEndEvents, this, &blowpop::contactEnd);
@@ -265,6 +275,32 @@ void blowpop::onPercussionPitch(float &value){
     
 
 }
+#pragma mark piezo pickup callbacks
+// ------------------------------------------------------
+void blowpop::onPiezo1(int &value){
+    
+    int numStars = stars.size();
+    if (numStars > 0){
+        int i = int(ofRandom(numStars));
+        cout << " --- DELETE STAR " << i << "\n";
+        stars.erase(stars.begin()+i);
+    }
+}
+// ------------------------------------------------------
+void blowpop::onPiezo2(int &value){
+    
+}
+// ------------------------------------------------------
+void blowpop::onPiezo3(int &value){
+    
+}
+// ------------------------------------------------------
+void blowpop::onPiezo4(int &value){
+    
+}
+
+
+
 
 #pragma mark keyboard callbacks
 // ------------------------------------------------------
