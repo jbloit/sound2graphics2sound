@@ -17,5 +17,6 @@
 extern ofxBox2d ofworld;
 extern ofVec2f percussionnistPosition;
 extern ofVec2f vocalistPosition;
-
+extern int maxVocalSamples;             // should be reflected in Max patch when counting onsets
+extern  int maxPercussionSamples;       // should be reflected in Max patch when counting onsets
 #endif

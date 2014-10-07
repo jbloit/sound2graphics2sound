@@ -110,7 +110,7 @@ void blowpop::terminate(){
 // ------------------------------------------------------
 void blowpop::update(){
 
-//    cout << "grains size " << grains.size() << "\n";
+    cout << "stars size " << stars.size() << "\n";
     
     if (doPop) {
         pop();
