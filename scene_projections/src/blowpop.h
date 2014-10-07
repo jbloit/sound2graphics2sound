@@ -84,6 +84,7 @@ private:
     
     vector <ofPtr<Star> > stars;                    // percussion stars
     void addStar(int starId);
+    void removeRandomStar();
     
 	// this is the function for contacts
 	void contactStart(ofxBox2dContactArgs &e);

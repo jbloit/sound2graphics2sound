@@ -43,8 +43,8 @@ void ofApp::setup(){
     // init players positions
     vocalistPosition = ofVec2f(30, ofGetHeight()/2);
     percussionnistPosition = ofVec2f(3*ofGetWidth()/4, ofGetHeight()/2);
-    maxVocalSamples = 100;
-    maxPercussionSamples = 500;
+    maxVocalSamples = 10;
+    maxPercussionSamples = 10;
 }
 
 //--------------------------------------------------------------

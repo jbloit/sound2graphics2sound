@@ -64,9 +64,9 @@ void blowpop::setup(){
     doPop = false; // arm the pop() function
     popped = false;
     
-    
     blowOut = false;
 
+    stars.reserve(maxPercussionSamples);
 }
 
 // ------------------------------------------------------
@@ -278,14 +278,7 @@ void blowpop::onPercussionPitch(float &value){
 #pragma mark piezo pickup callbacks
 // ------------------------------------------------------
 void blowpop::onPiezo1(int &value){
-    // Randomly delete a star
-    int numStars = stars.size();
-    if (numStars > 0){
-        int i = int(ofRandom(numStars));
-        cout << " --- DELETE STAR " << i << "\n";
-        starResonnator(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
-        stars.erase(stars.begin()+i);
-    }
+    removeRandomStar();
 }
 // ------------------------------------------------------
 void blowpop::onPiezo2(int &value){
@@ -454,8 +447,8 @@ void blowpop::playStar(int grainId, float rate, float amplitude){
     ofxOscMessage m;
     m.setAddress("/blowpop/playDrum");
     m.addIntArg(grainId);
-    m.addFloatArg(rate);
-    m.addFloatArg(amplitude);
+//    m.addFloatArg(rate);
+//    m.addFloatArg(amplitude);
     osc->sender.sendMessage(m);
 }
 
@@ -490,7 +483,20 @@ void blowpop::addStar(int starId){
     star.get()->create(ofworld.getWorld());
     star.get()->setPosition(percussionnistPosition);
     star.get()->dataSetup(starId);
+
+    if (stars.size() > maxPercussionSamples) removeRandomStar();
     stars.push_back(star);
+}
+
+void blowpop::removeRandomStar(){
+    // Randomly delete a star
+    int numStars = stars.size();
+    if (numStars > 0){
+        int i = int(ofRandom(numStars));
+        cout << " --- DELETE STAR " << i << "\n";
+        starResonnator(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
+        stars.erase(stars.begin()+i);
+    }
 }
 
 // Pop the grape of grains!

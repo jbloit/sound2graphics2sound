@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 652.0, 44.0, 1616.0, 969.0 ],
+		"rect" : [ 262.0, 44.0, 1616.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -5079,6 +5079,36 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"id" : "obj-38",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 700.0, 140.0, 207.0, 18.0 ],
+									"presentation_rect" : [ 703.5, 138.549988, 0.0, 0.0 ],
+									"text" : "target 0, record 0, target $1, record 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-9",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 800.0, 240.0, 87.0, 18.0 ],
+									"presentation_rect" : [ 797.5, 238.0, 0.0, 0.0 ],
+									"text" : "target $1, play"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
 									"id" : "obj-52",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -5153,21 +5183,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 920.0, 480.0, 70.0, 20.0 ],
 									"text" : "send~ outL"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-66",
-									"linecount" : 2,
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 740.0, 600.0, 50.0, 31.0 ],
-									"text" : "record 0"
 								}
 
 							}
@@ -5299,7 +5314,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1162.0, 382.523438, 54.0, 18.0 ],
-									"text" : "open 5"
+									"text" : "open 6"
 								}
 
 							}
@@ -5352,7 +5367,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1000.0, 300.0, 50.0, 18.0 ],
-									"text" : "5"
+									"text" : "6"
 								}
 
 							}
@@ -10854,20 +10869,6 @@
 							}
 , 							{
 								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-45",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 800.0, 320.0, 76.0, 18.0 ],
-									"text" : "mutemap $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"background" : 1,
 									"id" : "obj-5",
 									"ignoreclick" : 1,
@@ -10935,7 +10936,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-40", 2 ],
+									"destination" : [ "obj-9", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-134", 2 ]
@@ -11205,28 +11206,10 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-40", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-40", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-43", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-45", 0 ]
 								}
 
 							}
@@ -11322,15 +11305,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-66", 1 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"source" : [ "obj-62", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -11371,6 +11345,15 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-8", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-7", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-9", 0 ]
 								}
 
 							}
@@ -11552,7 +11535,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 703.0, 114.0, 1038.0, 893.0 ],
+						"rect" : [ 437.0, 181.0, 1038.0, 893.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
