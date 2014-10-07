@@ -377,20 +377,22 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             
             // star-star collision
             if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_star){
-                cout << "$--$ star-star collision " << endl;
-                StarData * myStar = (StarData*) dataB;
-                playStar(myStar->starId, 1, myStar->energy);
-                myStar = (StarData*) dataA;
-                playStar(myStar->starId, 1, myStar->energy);
+//                cout << "$--$ star-star collision " << endl;
+//                StarData * myStar = (StarData*) dataB;
+//                playStar(myStar->starId, 1, myStar->energy);
+//                myStar = (StarData*) dataA;
+//                playStar(myStar->starId, 1, myStar->energy);
             }
             
-            // star-grain collision
-            if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
-                //                cout << "$--* star-grain collision " << endl;
-                GrainData * myGrain = (GrainData*) dataB;
-                playGrain(myGrain->grainId, 1, 1/grains.size());
-                doPop = true;
+            
+            // bounds-star collision
+            if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_star){
+                cout << "$--$ star-ground collision " << endl;
+                StarData * myStar = (StarData*) dataB;
+                playStar(myStar->starId);
+
             }
+            
             
         }
 	}
@@ -432,10 +434,8 @@ void blowpop::playGrain(int grainId, float rate, float amplitude){
 // Trigger the star's sonic behavior
 void blowpop::starResonnator(int starId, float energy, float x, float y){
     ofxOscMessage m;
-    m.setAddress("/blowpop/voxreson");
+    m.setAddress("/blowpop/droneDrum");
     m.addFloatArg(energy);
-    m.addFloatArg(2.f * x / ofGetWidth() - 1.f); // map to [-1,1]
-    m.addFloatArg(ofGetHeight() - y);
     m.addIntArg(starId);
 
     osc->sender.sendMessage(m);
