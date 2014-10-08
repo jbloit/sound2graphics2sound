@@ -87,6 +87,10 @@ public:
         myStarData->gravitate = state;
     }
     
+    int getId(){
+        return myStarData->starId;
+    }
+    
     bool isMoving;
     float energy;
     

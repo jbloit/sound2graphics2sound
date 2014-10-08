@@ -110,7 +110,7 @@ void blowpop::terminate(){
 // ------------------------------------------------------
 void blowpop::update(){
 
-    cout << "stars size " << stars.size() << "\n";
+//    cout << "stars size " << stars.size() << "\n";
     
     if (doPop) {
         pop();
@@ -122,7 +122,7 @@ void blowpop::update(){
         stars[i].get()->update();
         
         if (stars[i].get()->isMoving){
-            starDrone(i, stars[i].get()->energy / stars.size(), stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
+            starDrone(stars[i].get()->getId(), stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
         
         if (stars[i].get()->doGravitate()){
@@ -496,7 +496,7 @@ void blowpop::removeRandomStar(){
     if (numStars > 0){
         int i = int(ofRandom(numStars));
         cout << " --- DELETE STAR " << i << "\n";
-        starDrone(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
+        starDrone(stars[i].get()->getId(), 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
         stars.erase(stars.begin()+i);
     }
 }
