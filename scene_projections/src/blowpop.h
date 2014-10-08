@@ -72,7 +72,7 @@ private:
     void addGrain(int grainId);
     void playGrain(int grainId, float rate=1.f, float amplitude=1.f);
     void playStar(int grainId, float rate=1.f, float amplitude=1.f);
-    void starResonnator(int starId, float energy, float x, float y);
+    void starDrone(int starId, float energy, float x, float y);
     
     void pop();                                     // POP!
     bool doPop;

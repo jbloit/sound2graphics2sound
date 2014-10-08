@@ -122,7 +122,7 @@ void blowpop::update(){
         stars[i].get()->update();
         
         if (stars[i].get()->isMoving){
-            starResonnator(i, stars[i].get()->energy / stars.size(), stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
+            starDrone(i, stars[i].get()->energy / stars.size(), stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
         
         if (stars[i].get()->doGravitate()){
@@ -432,10 +432,12 @@ void blowpop::playGrain(int grainId, float rate, float amplitude){
 
 // ------------------------------------------------------
 // Trigger the star's sonic behavior
-void blowpop::starResonnator(int starId, float energy, float x, float y){
+void blowpop::starDrone(int starId, float energy, float x, float y){
     ofxOscMessage m;
     m.setAddress("/blowpop/droneDrum");
     m.addFloatArg(energy);
+    m.addFloatArg(2.f * x / ofGetWidth() - 1.f ); // panning
+    m.addFloatArg( -y / ofGetHeight() + 1.f);     // normalized filter freq 0-1
     m.addIntArg(starId);
 
     osc->sender.sendMessage(m);
@@ -494,7 +496,7 @@ void blowpop::removeRandomStar(){
     if (numStars > 0){
         int i = int(ofRandom(numStars));
         cout << " --- DELETE STAR " << i << "\n";
-        starResonnator(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
+        starDrone(i, 0.f, ofGetWidth()/2, ofGetHeight()/2); // turn off volume
         stars.erase(stars.begin()+i);
     }
 }
