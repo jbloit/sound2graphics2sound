@@ -124,12 +124,11 @@ void blowpop::update(){
         if (stars[i].get()->isMoving){
             starDrone(stars[i].get()->getId(), stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
-        
-//        if (stars[i].get()->doGravitate()){
-//            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
-//            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
-//            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
-//        }
+        for (int j = 0; j<grains.size(); j++){
+                float mydistance = grains[j].get()->getPosition().distance(stars[i].get()->getPosition());
+                if (mydistance < grains[j].get()->getRadius() * 1.5) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+                else stars[i].get()->addAttractionPoint( grains[j].get()->getPosition(), grains[j].get()->getRadius()/10.f);
+        }
     }
     
     // play grains when moving
@@ -311,6 +310,8 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 
     
     if( args.key == ' ' ){
+        grains.clear();
+        focus = NULL;
 //        onPercOnset();
     }
     
@@ -318,9 +319,9 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
 		drawSkeleton = !drawSkeleton;
 	}
     
-    if( args.key == ' ' ){
-        doPop = true;
-    }
+//    if( args.key == ' ' ){
+//        doPop = true;
+//    }
     
 }
 void blowpop::keyReleased(ofKeyEventArgs& args){
