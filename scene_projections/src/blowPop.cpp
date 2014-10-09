@@ -461,29 +461,30 @@ void blowpop::addGrain(int grainId){
     // Create grain
     float r = 5.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
-    grain.get()->setPhysics(3.0, 0.6, 0.5);
-    grain.get()->setup(ofworld.getWorld(), vocalistPosition, r);
-    grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
+    grain.get()->setPhysics(0.0, 0.6, 0.5);
+    ofVec2f position = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+    grain.get()->setup(ofworld.getWorld(), position, r);
+//    grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
     
     // add custom data
     grain.get()->dataSetup(grainId);
     grains.push_back(grain);
     
-    // now connect circle to the nucleus
-    ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
-    joint.get()->setup(ofworld.getWorld(), nucleus.body, grains.back().get()->body);
-    joint.get()->setLength(5);
-    joints.push_back(joint);
+//    // now connect circle to the nucleus
+//    ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
+//    joint.get()->setup(ofworld.getWorld(), nucleus.body, grains.back().get()->body);
+//    joint.get()->setLength(5);
+//    joints.push_back(joint);
     
     focus = grains.back().get();
-    focusJoint = joints.back().get();
+//    focusJoint = joints.back().get();
 }
 
 // percussion polygons
 void blowpop::addStar(int starId){
     ofPtr<Star> star = ofPtr<Star>(new Star);
     star.get()->create(ofworld.getWorld());
-    star.get()->setPosition(ofVec2f(ofRandom(ofGetWidth()), 10.f));
+    star.get()->setPosition(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
     star.get()->dataSetup(starId);
 
     if (stars.size() > maxPercussionSamples) removeRandomStar();

@@ -66,7 +66,7 @@ private:
     ofxBox2dCircle nucleus;                         // center of vocal cluster
     vector <ofPtr<Grain> >	grains;                 // vocal grains
     vector <ofPtr<ofxBox2dJoint> > joints;
-    ofxBox2dCircle * focus;                         // pointer to element that currently has focus
+    Grain * focus;                         // pointer to element that currently has focus
     ofxBox2dJoint * focusJoint;
     
     void addGrain(int grainId);

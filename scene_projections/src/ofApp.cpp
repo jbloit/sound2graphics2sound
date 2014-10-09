@@ -18,14 +18,6 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_NOTICE);
 	
-	ofworld.init();
-	ofworld.setGravity(0, 10);
-	ofworld.createBounds();
-    
-	ofworld.setFPS(30.0);
-	ofworld.registerGrabbing();
-    ofworld.enableEvents();   // <-- turn on the event listener
-    
     // init gui menu
     gui.setup();
     
@@ -35,8 +27,16 @@ void ofApp::setup(){
     gui.add(blowpop_on.setup("blowpop", false));
     previousProjToggle = blowpop_on;
     
-    gui.add(gravity.setup( "gravity", 0, 0, 20 ));
+    gui.add(gravity.setup( "gravity", 0, -20, 20 ));
     previousGravity = gravity;
+    
+    // Box2D world
+	ofworld.init();
+	ofworld.setGravity(0, gravity);
+	ofworld.createBounds();
+	ofworld.setFPS(30.0);
+	ofworld.registerGrabbing();
+    ofworld.enableEvents();   // <-- turn on the event listener
     
     showMenu = true;
     

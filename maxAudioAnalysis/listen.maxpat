@@ -6446,7 +6446,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 170.0, 300.0, 50.0, 18.0 ],
-																	"text" : "9"
+																	"text" : "2"
 																}
 
 															}
@@ -11674,6 +11674,7 @@
 						"description" : "",
 						"digest" : "",
 						"tags" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-26",
