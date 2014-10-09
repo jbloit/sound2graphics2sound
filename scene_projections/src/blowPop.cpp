@@ -125,11 +125,11 @@ void blowpop::update(){
             starDrone(stars[i].get()->getId(), stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
         
-//        if (stars[i].get()->doGravitate()){
-//            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
-//            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
-//            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
-//        }
+        if (stars[i].get()->doGravitate()){
+            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
+            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
+        }
     }
     
     // play grains when moving

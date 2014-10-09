@@ -10,6 +10,7 @@ int maxPercussionSamples;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
     
     osc = oscManager::Instance(); // get pointer to osc singleton instance
     
@@ -45,6 +46,8 @@ void ofApp::setup(){
     percussionnistPosition = ofVec2f(3*ofGetWidth()/4, ofGetHeight()/2);
     maxVocalSamples = 10;
     maxPercussionSamples = 10;
+    
+    ofAddListener(osc->blowpopToggle, this, &ofApp::onBlowpopToggle);
 }
 
 //--------------------------------------------------------------
@@ -153,4 +156,9 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){
 
+}
+//--------------------------------------------------------------
+void ofApp::onBlowpopToggle(int& value){
+    if (value == 0) blowpop_on = false;
+    else if (value == 1) blowpop_on = true;
 }

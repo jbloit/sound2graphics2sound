@@ -44,6 +44,12 @@ void oscManager::update(){
         ofxOscMessage m;
         receiver.getNextMessage(&m);
         
+        // Check for scene control events
+        if(m.getAddress() == "/scene/blowpop"){
+            int value = m.getArgAsInt32(0);
+            ofNotifyEvent(blowpopToggle, value, this);
+        }
+        
         // Check for vocal events
         if(m.getAddress() == "/v/onset"){
             int value = m.getArgAsInt32(0);

@@ -27,7 +27,12 @@ public:
     void setup();
     void update();
 
-    // Events to dispatch to registered clients
+    // ----------- Events to dispatch to registered clients
+    
+    // Scene control
+    ofEvent<int> blowpopToggle;
+    
+    // Vocal mic
     ofEvent<int> vocalOnset;
     ofEvent<float> vocalLoudness;
     ofEvent<float> vocalBrightness;
