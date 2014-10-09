@@ -125,11 +125,11 @@ void blowpop::update(){
             starDrone(stars[i].get()->getId(), stars[i].get()->energy, stars[i].get()->getPosition().x, stars[i].get()->getPosition().y);
         }
         
-        if (stars[i].get()->doGravitate()){
-            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
-            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
-            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
-        }
+//        if (stars[i].get()->doGravitate()){
+//            float mydistance = nucleus.getPosition().distance(stars[i].get()->getPosition());
+//            if (mydistance < 300) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+//            else stars[i].get()->addAttractionPoint(nucleus.getPosition(), 1.f);
+//        }
     }
     
     // play grains when moving
@@ -351,7 +351,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             }
             // bounds-grain collision
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
-                cout << "_--* bounds-grain collision " << endl;
+//                cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
                 playGrain(myGrain->grainId, 1, 0.3);
                 
@@ -387,7 +387,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             
             // bounds-star collision
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_star){
-                cout << "$--$ star-ground collision " << endl;
+//                cout << "$--$ star-ground collision " << endl;
                 StarData * myStar = (StarData*) dataB;
                 playStar(myStar->starId);
 
@@ -484,7 +484,7 @@ void blowpop::addGrain(int grainId){
 void blowpop::addStar(int starId){
     ofPtr<Star> star = ofPtr<Star>(new Star);
     star.get()->create(ofworld.getWorld());
-    star.get()->setPosition(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
+    star.get()->setPosition(ofVec2f(ofRandom(ofGetWidth()), 10.f));
     star.get()->dataSetup(starId);
 
     if (stars.size() > maxPercussionSamples) removeRandomStar();

@@ -28,7 +28,7 @@ void ofApp::setup(){
     gui.add(blowpop_on.setup("blowpop", false));
     previousProjToggle = blowpop_on;
     
-    gui.add(gravity.setup( "gravity", 0, -20, 20 ));
+    gui.add(gravity.setup( "gravity", 10, -20, 20 ));
     previousGravity = gravity;
     
     // Box2D world
