@@ -72,6 +72,7 @@ private:
     
     void addGrain(int grainId);
     void playGrain(int grainId, float rate=1.f, float amplitude=1.f);
+    void grainDrone(int starId, float energy, float x, float y);
     void playStar(int grainId, float rate=1.f, float amplitude=1.f);
     void starDrone(int starId, float energy, float x, float y);
     

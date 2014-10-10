@@ -64,7 +64,7 @@ public:
         
         
         // auto shrink and kill
-        setRadius(getRadius() - 0.01);
+        setRadius(getRadius() - 0.03);
         if (getRadius() < 1.f) myGrainData->toRemove = true;
         
         myGrainData->position = getPosition();

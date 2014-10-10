@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 427.0, 44.0, 1616.0, 969.0 ],
+		"rect" : [ 858.0, 44.0, 1616.0, 969.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -76,8 +76,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 26.0, 424.0, 60.0, 20.0 ],
-					"presentation_rect" : [ 24.0, 419.257812, 0.0, 0.0 ]
+					"patching_rect" : [ 26.0, 424.0, 60.0, 20.0 ]
 				}
 
 			}
@@ -138,13 +137,13 @@
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
 					"id" : "obj-6",
-					"linecount" : 9,
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 570.0, 405.0, 50.0, 125.0 ],
-					"text" : "/blowpop/droneDrum 1.635615 0.501339 0.02784 0"
+					"patching_rect" : [ 570.0, 405.0, 50.0, 31.0 ],
+					"text" : "/blowpop/on 0"
 				}
 
 			}
@@ -2334,7 +2333,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 50.0, 130.0, 47.0, 20.0 ],
+									"patching_rect" : [ 28.0, 80.0, 47.0, 20.0 ],
 									"text" : "adc~ 1"
 								}
 
@@ -2510,7 +2509,7 @@
 							"architecture" : "x86"
 						}
 ,
-						"rect" : [ -427.0, 285.0, 1707.0, 748.0 ],
+						"rect" : [ 170.0, 44.0, 1707.0, 748.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2533,13 +2532,26 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
+									"id" : "obj-12",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 362.0, 160.0, 88.0, 20.0 ],
+									"text" : "print droneVox"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
 									"id" : "obj-3",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 600.0, 490.0, 140.0, 18.0 ],
-									"text" : "1"
+									"text" : "6"
 								}
 
 							}
@@ -4819,6 +4831,15 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-12", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-134", 2 ]
 								}
 
 							}
@@ -9607,27 +9628,27 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-2::obj-15" : [ "toggle[15]", "toggle[7]", 0 ],
-			"obj-31" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-29" : [ "flonum[4]", "flonum[1]", 0 ],
-			"obj-75" : [ "toggle[9]", "toggle[2]", 0 ],
-			"obj-23" : [ "flonum[3]", "flonum[1]", 0 ],
-			"obj-13" : [ "flonum[2]", "flonum[1]", 0 ],
-			"obj-87" : [ "toggle[12]", "toggle[2]", 0 ],
-			"obj-21" : [ "toggle[14]", "toggle[2]", 0 ],
 			"obj-83" : [ "toggle[11]", "toggle[2]", 0 ],
-			"obj-12" : [ "live.toggle", "live.toggle", 0 ],
-			"obj-78" : [ "toggle[10]", "toggle[2]", 0 ],
 			"obj-46" : [ "flonum[1]", "flonum[1]", 0 ],
-			"obj-20" : [ "toggle[2]", "toggle[2]", 0 ],
 			"obj-2::obj-31" : [ "number[1]", "number", 0 ],
 			"obj-2::obj-14" : [ "toggle[6]", "toggle[6]", 0 ],
-			"obj-37" : [ "toggle", "toggle", 0 ],
-			"obj-2::obj-61" : [ "number", "number", 0 ],
 			"obj-2::obj-59" : [ "toggle[8]", "toggle[7]", 0 ],
+			"obj-21" : [ "toggle[14]", "toggle[2]", 0 ],
 			"obj-5" : [ "flonum[5]", "flonum[1]", 0 ],
+			"obj-12" : [ "live.toggle", "live.toggle", 0 ],
+			"obj-75" : [ "toggle[9]", "toggle[2]", 0 ],
+			"obj-20" : [ "toggle[2]", "toggle[2]", 0 ],
 			"obj-91" : [ "toggle[13]", "toggle[2]", 0 ],
-			"obj-51" : [ "flonum", "flonum", 0 ]
+			"obj-29" : [ "flonum[4]", "flonum[1]", 0 ],
+			"obj-37" : [ "toggle", "toggle", 0 ],
+			"obj-23" : [ "flonum[3]", "flonum[1]", 0 ],
+			"obj-2::obj-61" : [ "number", "number", 0 ],
+			"obj-13" : [ "flonum[2]", "flonum[1]", 0 ],
+			"obj-78" : [ "toggle[10]", "toggle[2]", 0 ],
+			"obj-31" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-2::obj-15" : [ "toggle[15]", "toggle[7]", 0 ],
+			"obj-51" : [ "flonum", "flonum", 0 ],
+			"obj-87" : [ "toggle[12]", "toggle[2]", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -9795,6 +9816,10 @@
 			}
 , 			{
 				"name" : "OSC-route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "sogs~.mxo",
 				"type" : "iLaX"
 			}
  ]

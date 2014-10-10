@@ -117,7 +117,7 @@ void blowpop::update(){
         doPop = false;
     }
     
-    // Stars behavior
+    // Stars behaviors
     for(int i=0; i<stars.size(); i++) {
         stars[i].get()->update();
         
@@ -131,9 +131,15 @@ void blowpop::update(){
         }
     }
     
-    // play grains when moving
+    // Grains behaviors
     for(int i=0; i<grains.size(); i++) {
         grains[i].get()->update();
+
+        // Drone the out-of-focus grains
+        if (!grains[i].get()->hasFocus){
+            grainDrone(grains[i].get()->getId(), grains[i].get()->getRadius(), grains[i].get()->getPosition().x, grains[i].get()->getPosition().y);
+        }
+        
         if (grains[i].get()->changedDirection){
             playGrain(grains[i].get()->getId(), grains[i].get()->energy, 1.f/grains.size());
         }
@@ -147,6 +153,7 @@ void blowpop::update(){
         
         // remove grains outside screen
         if (grains[i].get()->shouldRemove()){
+            grainDrone(grains[i].get()->getId(), 0.f, grains[i].get()->getPosition().x, grains[i].get()->getPosition().y); // turn off
             grains.erase(grains.begin()+i);
         }
     }
@@ -429,6 +436,17 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 
 # pragma mark behavior
 // ------------------------------------------------------
+// Trigger the grain's sonic behavior
+void blowpop::grainDrone(int grainId, float energy, float x, float y){
+    ofxOscMessage m;
+    m.setAddress("/blowpop/droneVox");
+    m.addFloatArg(energy);
+    m.addFloatArg(2.f * x / ofGetWidth() - 1.f ); // panning
+    m.addFloatArg( -y / ofGetHeight() + 1.f);     // normalized filter freq 0-1
+    m.addIntArg(grainId);
+    osc->sender.sendMessage(m);
+}
+// ------------------------------------------------------
 // Trigger the grain's sound
 void blowpop::playGrain(int grainId, float rate, float amplitude){
     // play grain
@@ -449,7 +467,6 @@ void blowpop::starDrone(int starId, float energy, float x, float y){
     m.addFloatArg(2.f * x / ofGetWidth() - 1.f ); // panning
     m.addFloatArg( -y / ofGetHeight() + 1.f);     // normalized filter freq 0-1
     m.addIntArg(starId);
-
     osc->sender.sendMessage(m);
 }
 // ------------------------------------------------------
