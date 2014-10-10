@@ -56,7 +56,7 @@ void blowpop::setup(){
     NucleusData * myNucleusData = (NucleusData*) nucleus.getData();
     myNucleusData->bHit = false;
     
-    focus = NULL;
+    focusGrowFactor = 0.f;
     focusJoint = NULL;
 
     drawMembrane = true;
@@ -138,6 +138,14 @@ void blowpop::update(){
             playGrain(grains[i].get()->getId(), grains[i].get()->energy, 1.f/grains.size());
         }
         
+        // grow the focus grain
+        if (grains[i].get()->hasFocus){
+            float currentRadius =  grains[i].get()->getRadius();
+            currentRadius += focusGrowFactor;
+            grains[i].get()->setRadius(currentRadius);
+        }
+        
+        // remove grains outside screen
         if (grains[i].get()->shouldRemove()){
             grains.erase(grains.begin()+i);
         }
@@ -213,19 +221,21 @@ void blowpop::onVocalOnset(int& value){
 // ------------------------------------------------------
 void blowpop::onVocalLoudness(float& value){
     // make focus grain grow / or make it further away from nucleus
-    float grainGrowfactor = 0.2;
-    if (focus != NULL){
-        float currentRadius =  focus->getRadius();
-        currentRadius += grainGrowfactor * value;
-        focus->setRadius(currentRadius);
-    }
     
-    float jointGrowFactor = 2.f;
-    if (focusJoint != NULL){
-        float currentLength =  focusJoint->getLength();
-        currentLength += jointGrowFactor * value;
-        focusJoint->setLength(currentLength);
-    }
+    focusGrowFactor = 0.2 * value;
+//    float grainGrowfactor = 0.2;
+//    if (focus != NULL){
+//        float currentRadius =  focus->getRadius();
+//        currentRadius += grainGrowfactor * value;
+//        focus->setRadius(currentRadius);
+//    }
+    
+//    float jointGrowFactor = 2.f;
+//    if (focusJoint != NULL){
+//        float currentLength =  focusJoint->getLength();
+//        currentLength += jointGrowFactor * value;
+//        focusJoint->setLength(currentLength);
+//    }
     
 }
 // ------------------------------------------------------
@@ -311,7 +321,6 @@ void blowpop::keyPressed(ofKeyEventArgs& args){
     
     if( args.key == ' ' ){
         grains.clear();
-        focus = NULL;
 //        onPercOnset();
     }
     
@@ -459,6 +468,11 @@ void blowpop::playStar(int grainId, float rate, float amplitude){
 // ------------------------------------------------------
 void blowpop::addGrain(int grainId){
     
+    // remove focus from previous grains
+    for (int i = 0; i<grains.size(); i++){
+        grains[i].get()->hasFocus = false;
+    }
+    
     // Create grain
     float r = 5.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
@@ -477,7 +491,7 @@ void blowpop::addGrain(int grainId){
 //    joint.get()->setLength(5);
 //    joints.push_back(joint);
     
-    focus = grains.back().get();
+
 //    focusJoint = joints.back().get();
 }
 
@@ -515,7 +529,6 @@ void blowpop::pop(){
     joints.clear();
     drawMembrane = false;
     focusJoint = NULL;
-    focus = NULL;
     popped = true;
 }
 

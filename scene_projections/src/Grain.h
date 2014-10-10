@@ -47,6 +47,7 @@ public:
         energy = 0.f;
         isMoving = true;
         wasMoving = true;
+        hasFocus = true; // just created grain has focus
 	}
     
     void update(){
@@ -78,8 +79,9 @@ public:
         ofPushMatrix();
         ofTranslate(getPosition());
         ofRotateZ(getRotation());
-
-        ofSetColor(alpha,255,255, alpha);   // velocity --> brightness
+        
+        if (hasFocus) ofSetColor(alpha, 0,0);
+        else ofSetColor(alpha,255,255, alpha);   // velocity --> brightness
         ofFill();
         ofCircle(0, 0, radius);
         ofPopMatrix();
@@ -100,6 +102,7 @@ public:
     bool isMoving;
     float energy;
     int objectId;
+    bool hasFocus;
     
 private:
     GrainData * myGrainData;  // we need this data object, because that's all we have available during a collision event.
