@@ -48,13 +48,13 @@ void blowpop::setup(){
     
     //// Scene elements
     // TODO: see if we want to push that to new class
-    ofVec2f nucleusPos = ofVec2f(ofGetWidth()/2, ofGetHeight()/2);
-    nucleus.setup(ofworld.getWorld(), nucleusPos, 8);
+//    ofVec2f nucleusPos = ofVec2f(ofGetWidth()/2, ofGetHeight()/2);
+//    nucleus.setup(ofworld.getWorld(), nucleusPos, 8);
     
-    // add custom data
-    nucleus.setData(new NucleusData());
-    NucleusData * myNucleusData = (NucleusData*) nucleus.getData();
-    myNucleusData->bHit = false;
+//    // add custom data
+//    nucleus.setData(new NucleusData());
+//    NucleusData * myNucleusData = (NucleusData*) nucleus.getData();
+//    myNucleusData->bHit = false;
     
     focusGrowFactor = 0.f;
     focusJoint = NULL;
@@ -98,7 +98,7 @@ void blowpop::terminate(){
     grains.clear();
     joints.clear();
     stars.clear();
-    nucleus.destroy();
+//    nucleus.destroy();
     
     // notify Max of scene end
     ofxOscMessage m;
@@ -126,7 +126,7 @@ void blowpop::update(){
         }
         for (int j = 0; j<grains.size(); j++){
                 float mydistance = grains[j].get()->getPosition().distance(stars[i].get()->getPosition());
-                if (mydistance < grains[j].get()->getRadius() * 1.5) stars[i].get()->addRepulsionForce(nucleus.getPosition(), 2.f);
+                if (mydistance < grains[j].get()->getRadius() * 1.5) stars[i].get()->addRepulsionForce(grains[j].get()->getPosition(), 2.f);
                 else stars[i].get()->addAttractionPoint( grains[j].get()->getPosition(), grains[j].get()->getRadius()/10.f);
         }
     }
@@ -176,7 +176,7 @@ void blowpop::update(){
 void blowpop::draw(){
     
     // Nucleus
-    nucleus.draw();
+//    nucleus.draw();
     
     // Grains
     for(int i=0; i<grains.size(); i++) {
@@ -379,10 +379,10 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
                 }
             }
             // nucleus-grain collision
-            if (dataA->getType() == BaseUserData::blowpop_nucleus && dataB->getType() == BaseUserData::blowpop_grain){
-//                cout << ".--* nucleus-grain collision " << endl;
-//                destroyJoints();
-            }
+//            if (dataA->getType() == BaseUserData::blowpop_nucleus && dataB->getType() == BaseUserData::blowpop_grain){
+////                cout << ".--* nucleus-grain collision " << endl;
+////                destroyJoints();
+//            }
             // star-grain collision
             if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
 //                cout << "$--* star-grain collision " << endl;
@@ -437,10 +437,10 @@ void blowpop::contactEnd(ofxBox2dContactArgs &e) {
 # pragma mark behavior
 // ------------------------------------------------------
 // Trigger the grain's sonic behavior
-void blowpop::grainDrone(int grainId, float energy, float x, float y){
+void blowpop::grainDrone(int grainId, float radius, float x, float y){
     ofxOscMessage m;
     m.setAddress("/blowpop/droneVox");
-    m.addFloatArg(energy);
+    m.addFloatArg(radius);
     m.addFloatArg(2.f * x / ofGetWidth() - 1.f ); // panning
     m.addFloatArg( -y / ofGetHeight() + 1.f);     // normalized filter freq 0-1
     m.addIntArg(grainId);
