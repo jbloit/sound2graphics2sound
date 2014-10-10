@@ -140,9 +140,6 @@ void blowpop::update(){
             grainDrone(grains[i].get()->getId(), grains[i].get()->getRadius(), grains[i].get()->getPosition().x, grains[i].get()->getPosition().y);
         }
         
-        if (grains[i].get()->changedDirection){
-            playGrain(grains[i].get()->getId(), grains[i].get()->energy, 1.f/grains.size());
-        }
         
         // grow the focus grain
         if (grains[i].get()->hasFocus){
@@ -370,7 +367,7 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
             if (dataA->getType() == BaseUserData::bounds && dataB->getType() == BaseUserData::blowpop_grain){
 //                cout << "_--* bounds-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
-                playGrain(myGrain->grainId, 1, 0.3);
+                playGrain(myGrain->grainId, 1);
                 
                 // did collide with side walls?
                 if ((myGrain->position.x - 10 * myGrain->radius) <= 0 || myGrain->position.x + 10 * myGrain->radius >= ofGetWidth()) {
@@ -385,10 +382,9 @@ void blowpop::contactStart(ofxBox2dContactArgs &e) {
 //            }
             // star-grain collision
             if (dataA->getType() == BaseUserData::blowpop_star && dataB->getType() == BaseUserData::blowpop_grain){
-//                cout << "$--* star-grain collision " << endl;
+                cout << "$--* star-grain collision " << endl;
                 GrainData * myGrain = (GrainData*) dataB;
-                playGrain(myGrain->grainId, 1, 1/grains.size());
-                doPop = true;
+                playGrain(myGrain->grainId, 0.2);
             }
             
             
@@ -448,13 +444,12 @@ void blowpop::grainDrone(int grainId, float radius, float x, float y){
 }
 // ------------------------------------------------------
 // Trigger the grain's sound
-void blowpop::playGrain(int grainId, float rate, float amplitude){
+void blowpop::playGrain(int grainId,float amplitude){
     // play grain
     ofxOscMessage m;
     m.setAddress("/blowpop/playVox");
-    m.addIntArg(grainId);
-    m.addFloatArg(rate);
     m.addFloatArg(amplitude);
+    m.addIntArg(grainId);
     osc->sender.sendMessage(m);
 }
 
