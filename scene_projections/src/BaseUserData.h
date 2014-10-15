@@ -24,7 +24,8 @@ public:
             bounds = 0,
             blowpop_grain = 1,
             blowpop_nucleus = 2,
-            blowpop_star = 3
+            blowpop_star = 3,
+            axle = 4
     };
     
     UserDataType getType() const;

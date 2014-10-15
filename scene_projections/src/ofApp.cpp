@@ -28,6 +28,9 @@ void ofApp::setup(){
     gui.add(blowpop_on.setup("blowpop", false));
     previousProjToggle = blowpop_on;
     
+    gui.add(wheeler_on.setup("wheeler", false));
+    previousWheelerToggle = wheeler_on;
+    
     gui.add(gravity.setup( "gravity", 10, -20, 20 ));
     previousGravity = gravity;
     
@@ -82,6 +85,20 @@ void ofApp::update(){
         previousBlowpopToggle = false;
     }
     if (blowpop_on) blowpop.update();
+    
+    ///// ----- wheeler
+    // detect scene toggle-on event
+    if (wheeler_on && !previousWheelerToggle) {
+        wheeler.setup();
+        previousWheelerToggle = true;
+    }
+    // detect scene toggle-off event
+    if (!wheeler_on && previousWheelerToggle) {
+        wheeler.terminate();
+        previousWheelerToggle = false;
+    }
+    if (wheeler_on) wheeler.update();
+    
 
     if (gravity != previousGravity){
         ofworld.setGravity(0, gravity);
@@ -100,6 +117,7 @@ void ofApp::draw(){
     // draw scenes
     if (proj_on) proj.draw();
     if (blowpop_on) blowpop.draw();
+    if (wheeler_on) wheeler.draw();
     
     
 	// draw the ground

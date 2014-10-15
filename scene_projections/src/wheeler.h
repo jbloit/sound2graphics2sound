@@ -1,27 +1,25 @@
 //
-//  blowPop.h
+//  wheeler.h
 //  shissss
 //
-//  Created by Julien Bloit on 09/09/14.
+//  Created by julien@macmini on 10/15/14.
 //
 //
 
-#ifndef __shissss__blowPop__
-#define __shissss__blowPop__
+#ifndef __shissss__wheeler__
+#define __shissss__wheeler__
 
 #include <iostream>
-
 #include "ofxBox2D.h"
 #include "_projectGlobals.h"
 #include "globals.h"
 #include "oscManager.h"
-#include "dot.h"
 #include "BaseUserData.h"
 #include "Grain.h"
-#include "Hull.h"
 #include "Star.h"
+#include "Axle.h"
 
-class blowpop{
+class wheeler{
     
 public:
     
@@ -46,69 +44,43 @@ public:
     void onPercussionNoisiness(float& value);
     void onPercussionPitch(float& value);
     
-    // Piezo pickup events
+    // Piezo pickup callbacks
     void onPiezo1(int& value);
     void onPiezo2(int& value);
     void onPiezo3(int& value);
     void onPiezo4(int& value);
     
-    //
+    // keyboard callbacks
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);
     
+
+    
 private:
+    // utils
+    oscManager * osc; // pointer to osc the singleton class
     
-    float nucleus_x;
-    float nucleus_y;
-    float radius;
-    int numberOfNodes;
-    ofxBox2dCircle nucleus;                         // center of vocal cluster
-    vector <ofPtr<Grain> >	grains;                 // vocal grains
-    vector <ofPtr<ofxBox2dJoint> > joints;
-//    Grain * focus;                         // pointer to element that currently has focus
-    float focusGrowFactor;
-    ofxBox2dJoint * focusJoint;
-    
-    void addGrain(int grainId);
+    // sound control
     void playGrain(int grainId, float amplitude=1.f);
     void grainDrone(int starId, float energy, float x, float y);
     void playStar(int grainId, float rate=1.f, float amplitude=1.f);
     void starDrone(int starId, float energy, float x, float y);
     
-    void pop();                                     // POP!
-    bool doPop;
-    bool popped; 
+    // scene elements
+    Axle axle;
+    vector <ofPtr<Grain> >	grains;
+    vector <ofPtr<Star> > stars;
     
-    bool blowOut;   // if true, apply force from left to right
-    
-    bool drawMembrane;                              // membrane around grains
-    
-    vector <ofPtr<Star> > stars;                    // percussion stars
+    // scene behavior
+    void addGrain(int grainId);
     void addStar(int starId);
     void removeRandomStar();
+    bool drawSkeleton;
     
-	// this is the function for contacts
+    // collision callbacks
 	void contactStart(ofxBox2dContactArgs &e);
 	void contactEnd(ofxBox2dContactArgs &e);
 
-    
-    bool drawSkeleton;
-    
-    oscManager * osc; // pointer to osc the singleton class
-    
-    Hull hull;
 };
 
-// ---------------------------------- Class(es) for user data attached to physical objects
-
-class NucleusData : public BaseUserData{
-public:
-    NucleusData();
-	int	 nucleusId;
-	bool bHit;
-};
-inline NucleusData::NucleusData(){
-	m_type = blowpop_nucleus;
-}
-
-#endif /* defined(__shissss__blowPop__) */
+#endif /* defined(__shissss__wheeler__) */

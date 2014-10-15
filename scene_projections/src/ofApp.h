@@ -8,6 +8,7 @@
 
 #include "projections.h"
 #include "blowpop.h"
+#include "wheeler.h"
 
 class ofApp : public ofBaseApp {
 	public:
@@ -34,6 +35,7 @@ class ofApp : public ofBaseApp {
     ofxPanel gui;
     bool showMenu;
     
+    // Scenes
     projections proj;
     ofxToggle proj_on;
     bool previousProjToggle;
@@ -41,6 +43,10 @@ class ofApp : public ofBaseApp {
     blowpop blowpop;
     ofxToggle blowpop_on;
     bool previousBlowpopToggle;
+    
+    wheeler wheeler;
+    ofxToggle wheeler_on;
+    bool previousWheelerToggle;
     
     float previousGravity;
     ofxFloatSlider gravity;
