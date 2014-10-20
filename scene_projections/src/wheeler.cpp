@@ -46,6 +46,12 @@ void wheeler::setup(){
     // init vector capacity to avoid dynamic resizes
     grains.reserve(maxVocalSamples);
     stars.reserve(maxPercussionSamples);
+    
+    // init elements
+    axle = ofPtr<Axle>(new Axle);
+//    axle->setPhysics(0.001, 1, 1);
+    axle->setup(ofworld.getWorld(), ofGetWidth()/2 , ofGetHeight()/2, 30);
+    axle->dataSetup(0);
 }
 
 // ------------------------------------------------------
@@ -76,7 +82,7 @@ void wheeler::terminate(){
 	ofRemoveListener(ofworld.contactEndEvents, this, &wheeler::contactEnd);
     grains.clear();
     stars.clear();
-    axle.destroy();
+    axle->destroy();
     
     // notify Max of scene end
     ofxOscMessage m;
@@ -89,7 +95,7 @@ void wheeler::terminate(){
 void wheeler::update(){
     
     // manage scene behavior here
-
+    axle->update();
     
 }
 
@@ -97,7 +103,7 @@ void wheeler::update(){
 void wheeler::draw(){
     
     // Axle
-        axle.draw();
+        axle->draw();
     
     // Grains
     for(int i=0; i<grains.size(); i++) {

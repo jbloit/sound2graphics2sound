@@ -67,7 +67,7 @@ private:
     void starDrone(int starId, float energy, float x, float y);
     
     // scene elements
-    Axle axle;
+    ofPtr<Axle> axle;
     vector <ofPtr<Grain> >	grains;
     vector <ofPtr<Star> > stars;
     
