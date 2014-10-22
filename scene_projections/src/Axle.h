@@ -40,10 +40,11 @@ public:
     // override setup to add an anchor and a joint
     void setup(b2World * b2dworld, float x, float y, float radius){
         ofxBox2dCircle::setup(b2dworld, x, y, radius);
-        anchor.setPhysics(0.01, 10, 100);
-        anchor.setup(ofworld.getWorld(), getPosition().x + getRadius(), getPosition().y, 4.f);
+        anchor.setPhysics(10, 0.001, 100);
+        anchor.setup(ofworld.getWorld(), getPosition().x + getRadius(), getPosition().y, 50.f);
         joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
-        joint->setup(ofworld.getWorld(), this->body, anchor.body);
+        joint->setup(ofworld.getWorld(), this->body, anchor.body, 0.8, 0.9, true);
+        joint->setLength(150);
         
     }
     void setup(b2World * b2dworld, ofVec2f &pts, float radius) {
@@ -67,6 +68,7 @@ public:
         if (energy < 0.2f) isMoving = false; else isMoving = true;
         wasMoving = isMoving;
         myData->energy = energy;
+//        cout << "joint reaction force : " << joint->getReactionForce(0.1) << "\n";
         
     }
     
@@ -85,11 +87,10 @@ public:
             ofLine(0, 0, 0, radius);
         ofPopMatrix();
         
-
-        ofSetColor(255);
-        joint->draw();
         ofSetColor(255,0,0);
         anchor.draw();
+        ofSetColor(255);
+        joint->draw();
         
     }
  
@@ -98,11 +99,12 @@ public:
         return myData->elementId;
     }
     
+    ofxBox2dCircle anchor;
     bool isMoving;
     float energy;
     
 private:
-    ofxBox2dCircle anchor;
+
     ofPtr<ofxBox2dJoint> joint;
     AxleData * myData;  // we need this data object, because that's all we have available during a collision event.
     bool wasMoving;

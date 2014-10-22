@@ -70,6 +70,7 @@ private:
     ofPtr<Axle> axle;
     vector <ofPtr<Grain> >	grains;
     vector <ofPtr<Star> > stars;
+    vector <ofPtr<ofxBox2dJoint> > joints;
     
     // scene behavior
     void addGrain(int grainId);

@@ -49,8 +49,8 @@ void wheeler::setup(){
     
     // init elements
     axle = ofPtr<Axle>(new Axle);
-//    axle->setPhysics(0.001, 1, 1);
-    axle->setup(ofworld.getWorld(), ofGetWidth()/2 , ofGetHeight()/2, 30);
+//    axle->setPhysics(100, 0, 100);  // comment out this line to get a static body
+    axle->setup(ofworld.getWorld(), ofGetWidth()/2 , ofGetHeight()/2, 50);
     axle->dataSetup(0);
 }
 
@@ -121,7 +121,7 @@ void wheeler::draw(){
 
 // ------------------------------------------------------
 void wheeler::onVocalOnset(int& value){
-    addGrain(value);
+
 }
 
 // ------------------------------------------------------
@@ -148,7 +148,7 @@ void wheeler::onVocalClass(int& value){
 #pragma mark percussion callbacks
 // ------------------------------------------------------
 void wheeler::onPercussionOnset(int& value){
-
+    addGrain(value);
 }
 // ------------------------------------------------------
 void wheeler::onPercussionBrightness(float &value){
@@ -200,13 +200,8 @@ void wheeler::keyPressed(ofKeyEventArgs& args){
 	}
     
     if( args.key == ' ' ){
-        grains.clear();
-        //        onPercOnset();
+
     }
-    
-    if( args.key == 's' ){
-		drawSkeleton = !drawSkeleton;
-	}
     
 }
 void wheeler::keyReleased(ofKeyEventArgs& args){
@@ -330,22 +325,26 @@ void wheeler::addGrain(int grainId){
     }
     
     // Create grain
-    float r = 5.f;
+    float r = 15.f;
     ofPtr<Grain> grain = ofPtr<Grain>(new Grain);
-    grain.get()->setPhysics(0.0, 0.6, 0.5);
+    grain.get()->setPhysics(0.1, 0.6, 0.5);
     ofVec2f position = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
     grain.get()->setup(ofworld.getWorld(), position, r);
     //    grain.get()->addAttractionPoint(nucleus.getPosition(), 100.f);
-    
     // add custom data
     grain.get()->dataSetup(grainId);
     grains.push_back(grain);
     
-    //    // now connect circle to the nucleus
-    //    ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
-    //    joint.get()->setup(ofworld.getWorld(), nucleus.body, grains.back().get()->body);
-    //    joint.get()->setLength(5);
-    //    joints.push_back(joint);
+    // now connect to the chain
+    ofPtr<ofxBox2dJoint> joint = ofPtr<ofxBox2dJoint>(new ofxBox2dJoint);
+    if (grains.size() == 1)
+        joint.get()->setup(ofworld.getWorld(), grain.get()->body, axle->anchor.body, 10, 0.9, true);
+    else
+        joint.get()->setup(ofworld.getWorld(), grain.get()->body, grains[grains.size()-2].get()->body, 10, 10, true);
+    
+    joint.get()->setLength(50);
+    
+    joints.push_back(joint);
     
     
     //    focusJoint = joints.back().get();
